@@ -1,6 +1,6 @@
 ---
 layout: page
-description: "Seize the day and live it to the full."
+description: "Thinking will not overcome fear but action will."
 ---
 
 {% for post in paginator.posts %}
