@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      ReactiveCocoa ½ø½×
-subtitle:   º¯ÊýÊ½±à³Ì¿ò¼Ü ReactiveCocoa ½ø½×
+title:      ReactiveCocoa è¿›é˜¶
+subtitle:   å‡½æ•°å¼ç¼–ç¨‹æ¡†æž¶ ReactiveCocoa è¿›é˜¶
 date:       2017-01-06
 author:     BY
 header-img: img/post-bg-ios9-web.jpg
@@ -9,93 +9,93 @@ catalog: true
 tags:
     - iOS
     - ReactiveCocoa
-    - º¯ÊýÊ½±à³Ì
-    - ¿ªÔ´¿ò¼Ü
+    - å‡½æ•°å¼ç¼–ç¨‹
+    - å¼€æºæ¡†æž¶
 ---
-# Ç°ÑÔ
+# å‰è¨€
 
->ÔÚ[ÉÏÆªÎÄÕÂ](http://qiubaiying.github.io/2016/12/26/ReactiveCocoa-»ù´¡/)ÖÐ½éÉÜÁË**ReactiveCocoa**µÄ»ù´¡ÖªÊ¶,½ÓÏÂÀ´ÎÒÃÇÀ´ÉîÈë½éÉÜ**ReactiveCocoa**¼°ÆäÔÚ**MVVM**ÖÐµÄÓÃ·¨¡£
-
-
-![ReactiveCocoa½ø½×Ë¼Î¬µ¼Í¼](https://ww3.sinaimg.cn/large/006y8lVagw1fbgye3re5xj30je0iomz8.jpg)
-# ³£¼û²Ù×÷·½·¨½éÉÜ
+>åœ¨[ä¸Šç¯‡æ–‡ç« ](http://qiubaiying.github.io/2016/12/26/ReactiveCocoa-åŸºç¡€/)ä¸­ä»‹ç»äº†**ReactiveCocoa**çš„åŸºç¡€çŸ¥è¯†,æŽ¥ä¸‹æ¥æˆ‘ä»¬æ¥æ·±å…¥ä»‹ç»**ReactiveCocoa**åŠå…¶åœ¨**MVVM**ä¸­çš„ç”¨æ³•ã€‚
 
 
-#### ²Ù×÷ÐëÖª
+![ReactiveCocoaè¿›é˜¶æ€ç»´å¯¼å›¾](https://ww3.sinaimg.cn/large/006y8lVagw1fbgye3re5xj30je0iomz8.jpg)
+# å¸¸è§æ“ä½œæ–¹æ³•ä»‹ç»
 
-ËùÓÐµÄÐÅºÅ£¨RACSignal£©¶¼¿ÉÒÔ½øÐÐ²Ù×÷´¦Àí£¬ÒòÎªËùÓÐ²Ù×÷·½·¨¶¼¶¨ÒåÔÚRACStream.hÖÐ£¬Òò´ËÖ»Òª¼Ì³ÐRACStream¾ÍÓÐÁË²Ù×÷´¦Àí·½·¨¡£
-#### ²Ù×÷Ë¼Ïë
 
-ÔËÓÃµÄÊÇHook£¨¹³×Ó£©Ë¼Ïë£¬HookÊÇÒ»ÖÖÓÃÓÚ¸Ä±äAPI(Ó¦ÓÃ³ÌÐò±à³Ì½Ó¿Ú£º·½·¨)Ö´ÐÐ½á¹ûµÄ¼¼Êõ.
+#### æ“ä½œé¡»çŸ¥
 
-HookÓÃ´¦£º½Ø»ñAPIµ÷ÓÃµÄ¼¼Êõ¡£
+æ‰€æœ‰çš„ä¿¡å·ï¼ˆRACSignalï¼‰éƒ½å¯ä»¥è¿›è¡Œæ“ä½œå¤„ç†ï¼Œå› ä¸ºæ‰€æœ‰æ“ä½œæ–¹æ³•éƒ½å®šä¹‰åœ¨RACStream.hä¸­ï¼Œå› æ­¤åªè¦ç»§æ‰¿RACStreamå°±æœ‰äº†æ“ä½œå¤„ç†æ–¹æ³•ã€‚
+#### æ“ä½œæ€æƒ³
 
-ÓÐ¹ØHookµÄÖªÊ¶¿ÉÒÔ¿´ÎÒµÄÕâÆª²©¿Í[¡¶Objective-C Runtime µÄÒ»Ð©»ù±¾Ê¹ÓÃ¡·](http://www.jianshu.com/p/ff114e69cc0a)ÖÐµÄ *¸ü»»´úÂëµÄÊµÏÖ·½·¨* Ò»½Ú,
+è¿ç”¨çš„æ˜¯Hookï¼ˆé’©å­ï¼‰æ€æƒ³ï¼ŒHookæ˜¯ä¸€ç§ç”¨äºŽæ”¹å˜API(åº”ç”¨ç¨‹åºç¼–ç¨‹æŽ¥å£ï¼šæ–¹æ³•)æ‰§è¡Œç»“æžœçš„æŠ€æœ¯.
 
-HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
+Hookç”¨å¤„ï¼šæˆªèŽ·APIè°ƒç”¨çš„æŠ€æœ¯ã€‚
 
-#### ²Ù×÷·½·¨
+æœ‰å…³Hookçš„çŸ¥è¯†å¯ä»¥çœ‹æˆ‘çš„è¿™ç¯‡åšå®¢[ã€ŠObjective-C Runtime çš„ä¸€äº›åŸºæœ¬ä½¿ç”¨ã€‹](http://www.jianshu.com/p/ff114e69cc0a)ä¸­çš„ *æ›´æ¢ä»£ç çš„å®žçŽ°æ–¹æ³•* ä¸€èŠ‚,
 
-#### **bind**£¨°ó¶¨£©- ReactiveCocoaºËÐÄ·½·¨
+HookåŽŸç†ï¼šåœ¨æ¯æ¬¡è°ƒç”¨ä¸€ä¸ªAPIè¿”å›žç»“æžœä¹‹å‰ï¼Œå…ˆæ‰§è¡Œä½ è‡ªå·±çš„æ–¹æ³•ï¼Œæ”¹å˜ç»“æžœçš„è¾“å‡ºã€‚
 
-**ReactiveCocoa** ²Ù×÷µÄºËÐÄ·½·¨ÊÇ **bind**£¨°ó¶¨£©,¶øÇÒÒ²ÊÇRACÖÐºËÐÄ¿ª·¢·½Ê½¡£Ö®Ç°µÄ¿ª·¢·½Ê½ÊÇ¸³Öµ£¬¶øÓÃRAC¿ª·¢£¬Ó¦¸Ã°ÑÖØÐÄ·ÅÔÚ°ó¶¨£¬Ò²¾ÍÊÇ¿ÉÒÔÔÚ´´½¨Ò»¸ö¶ÔÏóµÄÊ±ºò£¬¾Í°ó¶¨ºÃÒÔºóÏëÒª×öµÄÊÂÇé£¬¶ø²»ÊÇµÈ¸³ÖµÖ®ºóÔÚÈ¥×öÊÂÇé¡£
+#### æ“ä½œæ–¹æ³•
 
-ÁÐÈç£¬°ÑÊý¾ÝÕ¹Ê¾µ½¿Ø¼þÉÏ£¬Ö®Ç°¶¼ÊÇÖØÐ´¿Ø¼þµÄ `setModel` ·½·¨£¬ÓÃRAC¾Í¿ÉÒÔÔÚÒ»¿ªÊ¼´´½¨¿Ø¼þµÄÊ±ºò£¬¾Í°ó¶¨ºÃÊý¾Ý¡£
+#### **bind**ï¼ˆç»‘å®šï¼‰- ReactiveCocoaæ ¸å¿ƒæ–¹æ³•
 
-- **×÷ÓÃ**
+**ReactiveCocoa** æ“ä½œçš„æ ¸å¿ƒæ–¹æ³•æ˜¯ **bind**ï¼ˆç»‘å®šï¼‰,è€Œä¸”ä¹Ÿæ˜¯RACä¸­æ ¸å¿ƒå¼€å‘æ–¹å¼ã€‚ä¹‹å‰çš„å¼€å‘æ–¹å¼æ˜¯èµ‹å€¼ï¼Œè€Œç”¨RACå¼€å‘ï¼Œåº”è¯¥æŠŠé‡å¿ƒæ”¾åœ¨ç»‘å®šï¼Œä¹Ÿå°±æ˜¯å¯ä»¥åœ¨åˆ›å»ºä¸€ä¸ªå¯¹è±¡çš„æ—¶å€™ï¼Œå°±ç»‘å®šå¥½ä»¥åŽæƒ³è¦åšçš„äº‹æƒ…ï¼Œè€Œä¸æ˜¯ç­‰èµ‹å€¼ä¹‹åŽåœ¨åŽ»åšäº‹æƒ…ã€‚
 
-	RACµ×²ã¶¼ÊÇµ÷ÓÃ**bind**£¬ ÔÚ¿ª·¢ÖÐºÜÉÙÖ±½ÓÊ¹ÓÃ **bind** ·½·¨£¬**bind**ÊôÓÚRACÖÐµÄµ×²ã·½·¨£¬ÎÒÃÇÖ»ÐèÒªµ÷ÓÃ·â×°ºÃµÄ·½·¨£¬**bind**ÓÃ×÷ÁË½â¼´¿É.
+åˆ—å¦‚ï¼ŒæŠŠæ•°æ®å±•ç¤ºåˆ°æŽ§ä»¶ä¸Šï¼Œä¹‹å‰éƒ½æ˜¯é‡å†™æŽ§ä»¶çš„ `setModel` æ–¹æ³•ï¼Œç”¨RACå°±å¯ä»¥åœ¨ä¸€å¼€å§‹åˆ›å»ºæŽ§ä»¶çš„æ—¶å€™ï¼Œå°±ç»‘å®šå¥½æ•°æ®ã€‚
 
-- **bind·½·¨Ê¹ÓÃ²½Öè**
-     1. ´«ÈëÒ»¸ö·µ»ØÖµ `RACStreamBindBlock` µÄ block¡£
-     2. ÃèÊöÒ»¸ö `RACStreamBindBlock` ÀàÐÍµÄ `bindBlock`×÷ÎªblockµÄ·µ»ØÖµ¡£
-     3. ÃèÊöÒ»¸ö·µ»Ø½á¹ûµÄÐÅºÅ£¬×÷Îª `bindBlock` µÄ·µ»ØÖµ¡£
+- **ä½œç”¨**
+
+	RACåº•å±‚éƒ½æ˜¯è°ƒç”¨**bind**ï¼Œ åœ¨å¼€å‘ä¸­å¾ˆå°‘ç›´æŽ¥ä½¿ç”¨ **bind** æ–¹æ³•ï¼Œ**bind**å±žäºŽRACä¸­çš„åº•å±‚æ–¹æ³•ï¼Œæˆ‘ä»¬åªéœ€è¦è°ƒç”¨å°è£…å¥½çš„æ–¹æ³•ï¼Œ**bind**ç”¨ä½œäº†è§£å³å¯.
+
+- **bindæ–¹æ³•ä½¿ç”¨æ­¥éª¤**
+     1. ä¼ å…¥ä¸€ä¸ªè¿”å›žå€¼ `RACStreamBindBlock` çš„ blockã€‚
+     2. æè¿°ä¸€ä¸ª `RACStreamBindBlock` ç±»åž‹çš„ `bindBlock`ä½œä¸ºblockçš„è¿”å›žå€¼ã€‚
+     3. æè¿°ä¸€ä¸ªè¿”å›žç»“æžœçš„ä¿¡å·ï¼Œä½œä¸º `bindBlock` çš„è¿”å›žå€¼ã€‚
      
-     ×¢Òâ£ºÔÚbindBlockÖÐ×öÐÅºÅ½á¹ûµÄ´¦Àí¡£
-- 	**bind·½·¨²ÎÊý**
+     æ³¨æ„ï¼šåœ¨bindBlockä¸­åšä¿¡å·ç»“æžœçš„å¤„ç†ã€‚
+- 	**bindæ–¹æ³•å‚æ•°**
 	
 	**RACStreamBindBlock**:
 `typedef RACStream * (^RACStreamBindBlock)(id value, BOOL *stop);`
 
-     `²ÎÊýÒ»(value)`:±íÊ¾½ÓÊÕµ½ÐÅºÅµÄÔ­Ê¼Öµ£¬»¹Ã»×ö´¦Àí
+     `å‚æ•°ä¸€(value)`:è¡¨ç¤ºæŽ¥æ”¶åˆ°ä¿¡å·çš„åŽŸå§‹å€¼ï¼Œè¿˜æ²¡åšå¤„ç†
      
-     `²ÎÊý¶þ(*stop)`:ÓÃÀ´¿ØÖÆ°ó¶¨Block£¬Èç¹û*stop = yes,ÄÇÃ´¾Í»á½áÊø°ó¶¨¡£
+     `å‚æ•°äºŒ(*stop)`:ç”¨æ¥æŽ§åˆ¶ç»‘å®šBlockï¼Œå¦‚æžœ*stop = yes,é‚£ä¹ˆå°±ä¼šç»“æŸç»‘å®šã€‚
      
-     `·µ»ØÖµ`£ºÐÅºÅ£¬×öºÃ´¦Àí£¬ÔÚÍ¨¹ýÕâ¸öÐÅºÅ·µ»Ø³öÈ¥£¬Ò»°ãÊ¹ÓÃ `RACReturnSignal`,ÐèÒªÊÖ¶¯µ¼ÈëÍ·ÎÄ¼þ`RACReturnSignal.h`
+     `è¿”å›žå€¼`ï¼šä¿¡å·ï¼Œåšå¥½å¤„ç†ï¼Œåœ¨é€šè¿‡è¿™ä¸ªä¿¡å·è¿”å›žå‡ºåŽ»ï¼Œä¸€èˆ¬ä½¿ç”¨ `RACReturnSignal`,éœ€è¦æ‰‹åŠ¨å¯¼å…¥å¤´æ–‡ä»¶`RACReturnSignal.h`
 
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
-	¼ÙÉèÏë¼àÌýÎÄ±¾¿òµÄÄÚÈÝ£¬²¢ÇÒÔÚÃ¿´ÎÊä³ö½á¹ûµÄÊ±ºò£¬¶¼ÔÚÎÄ±¾¿òµÄÄÚÈÝÆ´½ÓÒ»¶ÎÎÄ×Ö¡°Êä³ö£º¡±
+	å‡è®¾æƒ³ç›‘å¬æ–‡æœ¬æ¡†çš„å†…å®¹ï¼Œå¹¶ä¸”åœ¨æ¯æ¬¡è¾“å‡ºç»“æžœçš„æ—¶å€™ï¼Œéƒ½åœ¨æ–‡æœ¬æ¡†çš„å†…å®¹æ‹¼æŽ¥ä¸€æ®µæ–‡å­—â€œè¾“å‡ºï¼šâ€
 
-	- Ê¹ÓÃ·â×°ºÃµÄ·½·¨£ºÔÚ·µ»Ø½á¹ûºó£¬Æ´½Ó¡£
+	- ä½¿ç”¨å°è£…å¥½çš„æ–¹æ³•ï¼šåœ¨è¿”å›žç»“æžœåŽï¼Œæ‹¼æŽ¥ã€‚
 
 		```
 		[_textField.rac_textSignal subscribeNext:^(id x) {
 		
-			// ÔÚ·µ»Ø½á¹ûºó£¬Æ´½Ó Êä³ö£º
-			NSLog(@"Êä³ö:%@",x);
+			// åœ¨è¿”å›žç»“æžœåŽï¼Œæ‹¼æŽ¥ è¾“å‡ºï¼š
+			NSLog(@"è¾“å‡º:%@",x);
 		
 		}];
 		```
 
 
-	- ·½Ê½¶þ:£¬Ê¹ÓÃRACÖÐ `bind` ·½·¨×ö´¦Àí£¬ÔÚ·µ»Ø½á¹ûÇ°£¬Æ´½Ó¡£
+	- æ–¹å¼äºŒ:ï¼Œä½¿ç”¨RACä¸­ `bind` æ–¹æ³•åšå¤„ç†ï¼Œåœ¨è¿”å›žç»“æžœå‰ï¼Œæ‹¼æŽ¥ã€‚
 	  
-		ÕâÀïÐèÒªÊÖ¶¯µ¼Èë`#import <ReactiveCocoa/RACReturnSignal.h>`£¬²ÅÄÜÊ¹ÓÃ`RACReturnSignal`
+		è¿™é‡Œéœ€è¦æ‰‹åŠ¨å¯¼å…¥`#import <ReactiveCocoa/RACReturnSignal.h>`ï¼Œæ‰èƒ½ä½¿ç”¨`RACReturnSignal`
 
 		```	
 		[[_textField.rac_textSignal bind:^RACStreamBindBlock{
-		   // Ê²Ã´Ê±ºòµ÷ÓÃ:
-		   // block×÷ÓÃ:±íÊ¾°ó¶¨ÁËÒ»¸öÐÅºÅ.
+		   // ä»€ä¹ˆæ—¶å€™è°ƒç”¨:
+		   // blockä½œç”¨:è¡¨ç¤ºç»‘å®šäº†ä¸€ä¸ªä¿¡å·.
 		
 		   return ^RACStream *(id value, BOOL *stop){
 		
-		       // Ê²Ã´Ê±ºòµ÷ÓÃblock:µ±ÐÅºÅÓÐÐÂµÄÖµ·¢³ö£¬¾Í»áÀ´µ½Õâ¸öblock¡£
+		       // ä»€ä¹ˆæ—¶å€™è°ƒç”¨block:å½“ä¿¡å·æœ‰æ–°çš„å€¼å‘å‡ºï¼Œå°±ä¼šæ¥åˆ°è¿™ä¸ªblockã€‚
 		
-		       // block×÷ÓÃ:×ö·µ»ØÖµµÄ´¦Àí
+		       // blockä½œç”¨:åšè¿”å›žå€¼çš„å¤„ç†
 		
-		       // ×öºÃ´¦Àí£¬ÔÚ·µ»Ø½á¹ûÇ°£¬Æ´½Ó Êä³ö:
-		       return [RACReturnSignal return:[NSString stringWithFormat:@"Êä³ö:%@",value]];
+		       // åšå¥½å¤„ç†ï¼Œåœ¨è¿”å›žç»“æžœå‰ï¼Œæ‹¼æŽ¥ è¾“å‡º:
+		       return [RACReturnSignal return:[NSString stringWithFormat:@"è¾“å‡º:%@",value]];
 		   };
 		
 		}] subscribeNext:^(id x) {
@@ -106,158 +106,158 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 		```
 
-- **µ×²ãÊµÏÖ**
-     1. Ô´ÐÅºÅµ÷ÓÃbind,»áÖØÐÂ´´½¨Ò»¸ö°ó¶¨ÐÅºÅ¡£
-     2. µ±°ó¶¨ÐÅºÅ±»¶©ÔÄ£¬¾Í»áµ÷ÓÃ°ó¶¨ÐÅºÅÖÐµÄ `didSubscribe` £¬Éú³ÉÒ»¸ö `bindingBlock` ¡£
-     3. µ±Ô´ÐÅºÅÓÐÄÚÈÝ·¢³ö£¬¾Í»á°ÑÄÚÈÝ´«µÝµ½ `bindingBlock` ´¦Àí£¬µ÷ÓÃ`bindingBlock(value,stop)`
-     4. µ÷ÓÃ`bindingBlock(value,stop)`£¬»á·µ»ØÒ»¸öÄÚÈÝ´¦ÀíÍê³ÉµÄÐÅºÅ`RACReturnSignal`¡£
-     5. ¶©ÔÄ`RACReturnSignal`£¬¾Í»áÄÃµ½°ó¶¨ÐÅºÅµÄ¶©ÔÄÕß£¬°Ñ´¦ÀíÍê³ÉµÄÐÅºÅÄÚÈÝ·¢ËÍ³öÀ´¡£
+- **åº•å±‚å®žçŽ°**
+     1. æºä¿¡å·è°ƒç”¨bind,ä¼šé‡æ–°åˆ›å»ºä¸€ä¸ªç»‘å®šä¿¡å·ã€‚
+     2. å½“ç»‘å®šä¿¡å·è¢«è®¢é˜…ï¼Œå°±ä¼šè°ƒç”¨ç»‘å®šä¿¡å·ä¸­çš„ `didSubscribe` ï¼Œç”Ÿæˆä¸€ä¸ª `bindingBlock` ã€‚
+     3. å½“æºä¿¡å·æœ‰å†…å®¹å‘å‡ºï¼Œå°±ä¼šæŠŠå†…å®¹ä¼ é€’åˆ° `bindingBlock` å¤„ç†ï¼Œè°ƒç”¨`bindingBlock(value,stop)`
+     4. è°ƒç”¨`bindingBlock(value,stop)`ï¼Œä¼šè¿”å›žä¸€ä¸ªå†…å®¹å¤„ç†å®Œæˆçš„ä¿¡å·`RACReturnSignal`ã€‚
+     5. è®¢é˜…`RACReturnSignal`ï¼Œå°±ä¼šæ‹¿åˆ°ç»‘å®šä¿¡å·çš„è®¢é˜…è€…ï¼ŒæŠŠå¤„ç†å®Œæˆçš„ä¿¡å·å†…å®¹å‘é€å‡ºæ¥ã€‚
     
-     ×¢Òâ:²»Í¬¶©ÔÄÕß£¬±£´æ²»Í¬µÄnextBlock£¬¿´Ô´ÂëµÄÊ±ºò£¬Ò»¶¨Òª¿´Çå³þ¶©ÔÄÕßÊÇÄÄ¸ö¡£
+     æ³¨æ„:ä¸åŒè®¢é˜…è€…ï¼Œä¿å­˜ä¸åŒçš„nextBlockï¼Œçœ‹æºç çš„æ—¶å€™ï¼Œä¸€å®šè¦çœ‹æ¸…æ¥šè®¢é˜…è€…æ˜¯å“ªä¸ªã€‚
 
-#### Ó³Éä
+#### æ˜ å°„
 
-Ó³ÉäÖ÷ÒªÓÃÕâÁ½¸ö·½·¨ÊµÏÖ£º**flattenMap**,**Map**,ÓÃÓÚ°ÑÔ´ÐÅºÅÄÚÈÝÓ³Éä³ÉÐÂµÄÄÚÈÝ¡£
+æ˜ å°„ä¸»è¦ç”¨è¿™ä¸¤ä¸ªæ–¹æ³•å®žçŽ°ï¼š**flattenMap**,**Map**,ç”¨äºŽæŠŠæºä¿¡å·å†…å®¹æ˜ å°„æˆæ–°çš„å†…å®¹ã€‚
 
 ###### flattenMap
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	°ÑÔ´ÐÅºÅµÄÄÚÈÝÓ³Éä³ÉÒ»¸öÐÂµÄÐÅºÅ£¬ÐÅºÅ¿ÉÒÔÊÇÈÎÒâÀàÐÍ
+	æŠŠæºä¿¡å·çš„å†…å®¹æ˜ å°„æˆä¸€ä¸ªæ–°çš„ä¿¡å·ï¼Œä¿¡å·å¯ä»¥æ˜¯ä»»æ„ç±»åž‹
 
-- **Ê¹ÓÃ²½Öè**
+- **ä½¿ç”¨æ­¥éª¤**
 
-     1. ´«ÈëÒ»¸öblock£¬blockÀàÐÍÊÇ·µ»ØÖµ`RACStream`£¬²ÎÊývalue
-     2. ²ÎÊývalue¾ÍÊÇÔ´ÐÅºÅµÄÄÚÈÝ£¬ÄÃµ½Ô´ÐÅºÅµÄÄÚÈÝ×ö´¦Àí
-     3. °ü×°³É`RACReturnSignal`ÐÅºÅ£¬·µ»Ø³öÈ¥¡£
+     1. ä¼ å…¥ä¸€ä¸ªblockï¼Œblockç±»åž‹æ˜¯è¿”å›žå€¼`RACStream`ï¼Œå‚æ•°value
+     2. å‚æ•°valueå°±æ˜¯æºä¿¡å·çš„å†…å®¹ï¼Œæ‹¿åˆ°æºä¿¡å·çš„å†…å®¹åšå¤„ç†
+     3. åŒ…è£…æˆ`RACReturnSignal`ä¿¡å·ï¼Œè¿”å›žå‡ºåŽ»ã€‚
 
 
 
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
-	¼àÌýÎÄ±¾¿òµÄÄÚÈÝ¸Ä±ä£¬°Ñ½á¹¹ÖØÐÂÓ³Éä³ÉÒ»¸öÐÂÖµ.
+	ç›‘å¬æ–‡æœ¬æ¡†çš„å†…å®¹æ”¹å˜ï¼ŒæŠŠç»“æž„é‡æ–°æ˜ å°„æˆä¸€ä¸ªæ–°å€¼.
 	
 	```
 	[[_textField.rac_textSignal flattenMap:^RACStream *(id value) {
         
-        // blockµ÷ÓÃÊ±»ú£ºÐÅºÅÔ´·¢³öµÄÊ±ºò
+        // blockè°ƒç”¨æ—¶æœºï¼šä¿¡å·æºå‘å‡ºçš„æ—¶å€™
         
-        // block×÷ÓÃ£º¸Ä±äÐÅºÅµÄÄÚÈÝ
+        // blockä½œç”¨ï¼šæ”¹å˜ä¿¡å·çš„å†…å®¹
         
-        // ·µ»ØRACReturnSignal
-        return [RACReturnSignal return:[NSString stringWithFormat:@"ÐÅºÅÄÚÈÝ£º%@", value]];
+        // è¿”å›žRACReturnSignal
+        return [RACReturnSignal return:[NSString stringWithFormat:@"ä¿¡å·å†…å®¹ï¼š%@", value]];
         
     }] subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
     }];
     ```
-- **µ×²ãÊµÏÖ**
+- **åº•å±‚å®žçŽ°**
 
-     0. **flattenMap**ÄÚ²¿µ÷ÓÃ `bind` ·½·¨ÊµÏÖµÄ,**flattenMap**ÖÐblockµÄ·µ»ØÖµ£¬»á×÷ÎªbindÖÐbindBlockµÄ·µ»ØÖµ¡£
-     1. µ±¶©ÔÄ°ó¶¨ÐÅºÅ£¬¾Í»áÉú³É `bindBlock`¡£
-     2. µ±Ô´ÐÅºÅ·¢ËÍÄÚÈÝ£¬¾Í»áµ÷ÓÃ` bindBlock(value, *stop)`
-     3. µ÷ÓÃ`bindBlock`£¬ÄÚ²¿¾Í»áµ÷ÓÃ **flattenMap** µÄ bloc k£¬**flattenMap** µÄblock×÷ÓÃ£º¾ÍÊÇ°Ñ´¦ÀíºÃµÄÊý¾Ý°ü×°³ÉÐÅºÅ¡£
-     4. ·µ»ØµÄÐÅºÅ×îÖÕ»á×÷Îª `bindBlock` ÖÐµÄ·µ»ØÐÅºÅ£¬µ±×ö `bindBlock` µÄ·µ»ØÐÅºÅ¡£
-     5. ¶©ÔÄ `bindBlock` µÄ·µ»ØÐÅºÅ£¬¾Í»áÄÃµ½°ó¶¨ÐÅºÅµÄ¶©ÔÄÕß£¬°Ñ´¦ÀíÍê³ÉµÄÐÅºÅÄÚÈÝ·¢ËÍ³öÀ´¡£
+     0. **flattenMap**å†…éƒ¨è°ƒç”¨ `bind` æ–¹æ³•å®žçŽ°çš„,**flattenMap**ä¸­blockçš„è¿”å›žå€¼ï¼Œä¼šä½œä¸ºbindä¸­bindBlockçš„è¿”å›žå€¼ã€‚
+     1. å½“è®¢é˜…ç»‘å®šä¿¡å·ï¼Œå°±ä¼šç”Ÿæˆ `bindBlock`ã€‚
+     2. å½“æºä¿¡å·å‘é€å†…å®¹ï¼Œå°±ä¼šè°ƒç”¨` bindBlock(value, *stop)`
+     3. è°ƒç”¨`bindBlock`ï¼Œå†…éƒ¨å°±ä¼šè°ƒç”¨ **flattenMap** çš„ bloc kï¼Œ**flattenMap** çš„blockä½œç”¨ï¼šå°±æ˜¯æŠŠå¤„ç†å¥½çš„æ•°æ®åŒ…è£…æˆä¿¡å·ã€‚
+     4. è¿”å›žçš„ä¿¡å·æœ€ç»ˆä¼šä½œä¸º `bindBlock` ä¸­çš„è¿”å›žä¿¡å·ï¼Œå½“åš `bindBlock` çš„è¿”å›žä¿¡å·ã€‚
+     5. è®¢é˜… `bindBlock` çš„è¿”å›žä¿¡å·ï¼Œå°±ä¼šæ‹¿åˆ°ç»‘å®šä¿¡å·çš„è®¢é˜…è€…ï¼ŒæŠŠå¤„ç†å®Œæˆçš„ä¿¡å·å†…å®¹å‘é€å‡ºæ¥ã€‚
 	
 ###### Map
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
  
-	°ÑÔ´ÐÅºÅµÄÖµÓ³Éä³ÉÒ»¸öÐÂµÄÖµ
+	æŠŠæºä¿¡å·çš„å€¼æ˜ å°„æˆä¸€ä¸ªæ–°çš„å€¼
 
 	
-- **Ê¹ÓÃ²½Öè**
-     1. ´«ÈëÒ»¸öblock,ÀàÐÍÊÇ·µ»Ø¶ÔÏó£¬²ÎÊýÊÇ `value`
-     2. `value`¾ÍÊÇÔ´ÐÅºÅµÄÄÚÈÝ£¬Ö±½ÓÄÃµ½Ô´ÐÅºÅµÄÄÚÈÝ×ö´¦Àí
-     3. °Ñ´¦ÀíºÃµÄÄÚÈÝ£¬Ö±½Ó·µ»Ø¾ÍºÃÁË£¬²»ÓÃ°ü×°³ÉÐÅºÅ£¬·µ»ØµÄÖµ£¬¾ÍÊÇÓ³ÉäµÄÖµ¡£
+- **ä½¿ç”¨æ­¥éª¤**
+     1. ä¼ å…¥ä¸€ä¸ªblock,ç±»åž‹æ˜¯è¿”å›žå¯¹è±¡ï¼Œå‚æ•°æ˜¯ `value`
+     2. `value`å°±æ˜¯æºä¿¡å·çš„å†…å®¹ï¼Œç›´æŽ¥æ‹¿åˆ°æºä¿¡å·çš„å†…å®¹åšå¤„ç†
+     3. æŠŠå¤„ç†å¥½çš„å†…å®¹ï¼Œç›´æŽ¥è¿”å›žå°±å¥½äº†ï¼Œä¸ç”¨åŒ…è£…æˆä¿¡å·ï¼Œè¿”å›žçš„å€¼ï¼Œå°±æ˜¯æ˜ å°„çš„å€¼ã€‚
     
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
-	¼àÌýÎÄ±¾¿òµÄÄÚÈÝ¸Ä±ä£¬°Ñ½á¹¹ÖØÐÂÓ³Éä³ÉÒ»¸öÐÂÖµ.
+	ç›‘å¬æ–‡æœ¬æ¡†çš„å†…å®¹æ”¹å˜ï¼ŒæŠŠç»“æž„é‡æ–°æ˜ å°„æˆä¸€ä¸ªæ–°å€¼.
      
     ```
 	[[_textField.rac_textSignal map:^id(id value) {
        
-       // Æ´½ÓÍêºó£¬·µ»Ø¶ÔÏó
-        return [NSString stringWithFormat:@"ÐÅºÅÄÚÈÝ: %@", value];
+       // æ‹¼æŽ¥å®ŒåŽï¼Œè¿”å›žå¯¹è±¡
+        return [NSString stringWithFormat:@"ä¿¡å·å†…å®¹: %@", value];
         
     }] subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
     }];
 	```
-- **µ×²ãÊµÏÖ**:
-     0. Mapµ×²ãÆäÊµÊÇµ÷ÓÃ `flatternMa`p,`Map` ÖÐblockÖÐµÄ·µ»ØµÄÖµ»á×÷Îª `flatternMap` ÖÐblockÖÐµÄÖµ
-     1. µ±¶©ÔÄ°ó¶¨ÐÅºÅ£¬¾Í»áÉú³É `bindBlock` 
-     3. µ±Ô´ÐÅºÅ·¢ËÍÄÚÈÝ£¬¾Í»áµ÷ÓÃ `bindBlock(value, *stop)`
-     4. µ÷ÓÃ `bindBlock` £¬ÄÚ²¿¾Í»áµ÷ÓÃ `flattenMapµÄblock`
-     5. `flattenMapµÄblock` ÄÚ²¿»áµ÷ÓÃ `Map` ÖÐµÄblock£¬°Ñ `Map` ÖÐµÄblock·µ»ØµÄÄÚÈÝ°ü×°³É·µ»ØµÄÐÅºÅ
-     5. ·µ»ØµÄÐÅºÅ×îÖÕ»á×÷Îª `bindBlock` ÖÐµÄ·µ»ØÐÅºÅ£¬µ±×ö `bindBlock` µÄ·µ»ØÐÅºÅ
-     6. ¶©ÔÄ `bindBlock` µÄ·µ»ØÐÅºÅ£¬¾Í»áÄÃµ½°ó¶¨ÐÅºÅµÄ¶©ÔÄÕß£¬°Ñ´¦ÀíÍê³ÉµÄÐÅºÅÄÚÈÝ·¢ËÍ³öÀ´¡£
+- **åº•å±‚å®žçŽ°**:
+     0. Mapåº•å±‚å…¶å®žæ˜¯è°ƒç”¨ `flatternMa`p,`Map` ä¸­blockä¸­çš„è¿”å›žçš„å€¼ä¼šä½œä¸º `flatternMap` ä¸­blockä¸­çš„å€¼
+     1. å½“è®¢é˜…ç»‘å®šä¿¡å·ï¼Œå°±ä¼šç”Ÿæˆ `bindBlock` 
+     3. å½“æºä¿¡å·å‘é€å†…å®¹ï¼Œå°±ä¼šè°ƒç”¨ `bindBlock(value, *stop)`
+     4. è°ƒç”¨ `bindBlock` ï¼Œå†…éƒ¨å°±ä¼šè°ƒç”¨ `flattenMapçš„block`
+     5. `flattenMapçš„block` å†…éƒ¨ä¼šè°ƒç”¨ `Map` ä¸­çš„blockï¼ŒæŠŠ `Map` ä¸­çš„blockè¿”å›žçš„å†…å®¹åŒ…è£…æˆè¿”å›žçš„ä¿¡å·
+     5. è¿”å›žçš„ä¿¡å·æœ€ç»ˆä¼šä½œä¸º `bindBlock` ä¸­çš„è¿”å›žä¿¡å·ï¼Œå½“åš `bindBlock` çš„è¿”å›žä¿¡å·
+     6. è®¢é˜… `bindBlock` çš„è¿”å›žä¿¡å·ï¼Œå°±ä¼šæ‹¿åˆ°ç»‘å®šä¿¡å·çš„è®¢é˜…è€…ï¼ŒæŠŠå¤„ç†å®Œæˆçš„ä¿¡å·å†…å®¹å‘é€å‡ºæ¥ã€‚
 
-###### FlatternMap ºÍ Map µÄÇø±ð
--  **FlatternMap** ÖÐµÄBlock **·µ»ØÐÅºÅ**¡£ 
-2. **Map** ÖÐµÄBlock **·µ»Ø¶ÔÏó**¡£
-3. ¿ª·¢ÖÐ£¬Èç¹ûÐÅºÅ·¢³öµÄÖµ **²»ÊÇÐÅºÅ** £¬Ó³ÉäÒ»°ãÊ¹ÓÃ `Map`
-4. Èç¹ûÐÅºÅ·¢³öµÄÖµ **ÊÇÐÅºÅ**£¬Ó³ÉäÒ»°ãÊ¹ÓÃ `FlatternMap`¡£
+###### FlatternMap å’Œ Map çš„åŒºåˆ«
+-  **FlatternMap** ä¸­çš„Block **è¿”å›žä¿¡å·**ã€‚ 
+2. **Map** ä¸­çš„Block **è¿”å›žå¯¹è±¡**ã€‚
+3. å¼€å‘ä¸­ï¼Œå¦‚æžœä¿¡å·å‘å‡ºçš„å€¼ **ä¸æ˜¯ä¿¡å·** ï¼Œæ˜ å°„ä¸€èˆ¬ä½¿ç”¨ `Map`
+4. å¦‚æžœä¿¡å·å‘å‡ºçš„å€¼ **æ˜¯ä¿¡å·**ï¼Œæ˜ å°„ä¸€èˆ¬ä½¿ç”¨ `FlatternMap`ã€‚
 
 
 
-- `signalOfsignals`ÓÃ **FlatternMap**
+- `signalOfsignals`ç”¨ **FlatternMap**
 
 	```
-    // ´´½¨ÐÅºÅÖÐµÄÐÅºÅ
+    // åˆ›å»ºä¿¡å·ä¸­çš„ä¿¡å·
     RACSubject *signalOfsignals = [RACSubject subject];
     RACSubject *signal = [RACSubject subject];
 
     [[signalOfsignals flattenMap:^RACStream *(id value) {
 
-     // µ±signalOfsignalsµÄsignals·¢³öÐÅºÅ²Å»áµ÷ÓÃ
+     // å½“signalOfsignalsçš„signalså‘å‡ºä¿¡å·æ‰ä¼šè°ƒç”¨
 
         return value;
 
     }] subscribeNext:^(id x) {
 
-        // Ö»ÓÐsignalOfsignalsµÄsignal·¢³öÐÅºÅ²Å»áµ÷ÓÃ£¬ÒòÎªÄÚ²¿¶©ÔÄÁËbindBlockÖÐ·µ»ØµÄÐÅºÅ£¬Ò²¾ÍÊÇflattenMap·µ»ØµÄÐÅºÅ¡£
-        // Ò²¾ÍÊÇflattenMap·µ»ØµÄÐÅºÅ·¢³öÄÚÈÝ£¬²Å»áµ÷ÓÃ¡£
+        // åªæœ‰signalOfsignalsçš„signalå‘å‡ºä¿¡å·æ‰ä¼šè°ƒç”¨ï¼Œå› ä¸ºå†…éƒ¨è®¢é˜…äº†bindBlockä¸­è¿”å›žçš„ä¿¡å·ï¼Œä¹Ÿå°±æ˜¯flattenMapè¿”å›žçš„ä¿¡å·ã€‚
+        // ä¹Ÿå°±æ˜¯flattenMapè¿”å›žçš„ä¿¡å·å‘å‡ºå†…å®¹ï¼Œæ‰ä¼šè°ƒç”¨ã€‚
 
-        NSLog(@"signalOfsignals£º%@",x);
+        NSLog(@"signalOfsignalsï¼š%@",x);
     }];
 
-    // ÐÅºÅµÄÐÅºÅ·¢ËÍÐÅºÅ
+    // ä¿¡å·çš„ä¿¡å·å‘é€ä¿¡å·
     [signalOfsignals sendNext:signal];
 
-    // ÐÅºÅ·¢ËÍÄÚÈÝ
+    // ä¿¡å·å‘é€å†…å®¹
     [signal sendNext:@"hi"];
 	
 	```
 	
-#### ×éºÏ
+#### ç»„åˆ
 
-×éºÏ¾ÍÊÇ½«¶à¸öÐÅºÅ°´ÕÕÄ³ÖÖ¹æÔò½øÐÐÆ´½Ó£¬ºÏ³ÉÐÂµÄÐÅºÅ¡£
+ç»„åˆå°±æ˜¯å°†å¤šä¸ªä¿¡å·æŒ‰ç…§æŸç§è§„åˆ™è¿›è¡Œæ‹¼æŽ¥ï¼Œåˆæˆæ–°çš„ä¿¡å·ã€‚
 
 ###### concat
 
-- **×÷ÓÃ** 
+- **ä½œç”¨** 
 
-	°´**Ë³ÐòÆ´½Ó**ÐÅºÅ£¬µ±¶à¸öÐÅºÅ·¢³öµÄÊ±ºò£¬ÓÐË³ÐòµÄ½ÓÊÕÐÅºÅ¡£
-- **µ×²ãÊµÏÖ**
-     1. µ±Æ´½ÓÐÅºÅ±»¶©ÔÄ£¬¾Í»áµ÷ÓÃÆ´½ÓÐÅºÅµÄdidSubscribe
-     2. didSubscribeÖÐ£¬»áÏÈ¶©ÔÄµÚÒ»¸öÔ´ÐÅºÅ£¨signalA£©
-     3. »áÖ´ÐÐµÚÒ»¸öÔ´ÐÅºÅ£¨signalA£©µÄdidSubscribe
-     4. µÚÒ»¸öÔ´ÐÅºÅ£¨signalA£©didSubscribeÖÐ·¢ËÍÖµ£¬¾Í»áµ÷ÓÃµÚÒ»¸öÔ´ÐÅºÅ£¨signalA£©¶©ÔÄÕßµÄnextBlock,Í¨¹ýÆ´½ÓÐÅºÅµÄ¶©ÔÄÕß°ÑÖµ·¢ËÍ³öÀ´.
-     5. µÚÒ»¸öÔ´ÐÅºÅ£¨signalA£©didSubscribeÖÐ·¢ËÍÍê³É£¬¾Í»áµ÷ÓÃµÚÒ»¸öÔ´ÐÅºÅ£¨signalA£©¶©ÔÄÕßµÄcompletedBlock,¶©ÔÄµÚ¶þ¸öÔ´ÐÅºÅ£¨signalB£©ÕâÊ±ºò²Å¼¤»î£¨signalB£©¡£
-     6. ¶©ÔÄµÚ¶þ¸öÔ´ÐÅºÅ£¨signalB£©,Ö´ÐÐµÚ¶þ¸öÔ´ÐÅºÅ£¨signalB£©µÄdidSubscribe
-     7. µÚ¶þ¸öÔ´ÐÅºÅ£¨signalA£©didSubscribeÖÐ·¢ËÍÖµ,¾Í»áÍ¨¹ýÆ´½ÓÐÅºÅµÄ¶©ÔÄÕß°ÑÖµ·¢ËÍ³öÀ´.
-- **Ê¹ÓÃ²½Öè**
+	æŒ‰**é¡ºåºæ‹¼æŽ¥**ä¿¡å·ï¼Œå½“å¤šä¸ªä¿¡å·å‘å‡ºçš„æ—¶å€™ï¼Œæœ‰é¡ºåºçš„æŽ¥æ”¶ä¿¡å·ã€‚
+- **åº•å±‚å®žçŽ°**
+     1. å½“æ‹¼æŽ¥ä¿¡å·è¢«è®¢é˜…ï¼Œå°±ä¼šè°ƒç”¨æ‹¼æŽ¥ä¿¡å·çš„didSubscribe
+     2. didSubscribeä¸­ï¼Œä¼šå…ˆè®¢é˜…ç¬¬ä¸€ä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰
+     3. ä¼šæ‰§è¡Œç¬¬ä¸€ä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰çš„didSubscribe
+     4. ç¬¬ä¸€ä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰didSubscribeä¸­å‘é€å€¼ï¼Œå°±ä¼šè°ƒç”¨ç¬¬ä¸€ä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰è®¢é˜…è€…çš„nextBlock,é€šè¿‡æ‹¼æŽ¥ä¿¡å·çš„è®¢é˜…è€…æŠŠå€¼å‘é€å‡ºæ¥.
+     5. ç¬¬ä¸€ä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰didSubscribeä¸­å‘é€å®Œæˆï¼Œå°±ä¼šè°ƒç”¨ç¬¬ä¸€ä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰è®¢é˜…è€…çš„completedBlock,è®¢é˜…ç¬¬äºŒä¸ªæºä¿¡å·ï¼ˆsignalBï¼‰è¿™æ—¶å€™æ‰æ¿€æ´»ï¼ˆsignalBï¼‰ã€‚
+     6. è®¢é˜…ç¬¬äºŒä¸ªæºä¿¡å·ï¼ˆsignalBï¼‰,æ‰§è¡Œç¬¬äºŒä¸ªæºä¿¡å·ï¼ˆsignalBï¼‰çš„didSubscribe
+     7. ç¬¬äºŒä¸ªæºä¿¡å·ï¼ˆsignalAï¼‰didSubscribeä¸­å‘é€å€¼,å°±ä¼šé€šè¿‡æ‹¼æŽ¥ä¿¡å·çš„è®¢é˜…è€…æŠŠå€¼å‘é€å‡ºæ¥.
+- **ä½¿ç”¨æ­¥éª¤**
 
-	1. Ê¹ÓÃ`concat:`Æ´½ÓÐÅºÅ
-	2. ¶©ÔÄÆ´½ÓÐÅºÅ£¬ÄÚ²¿»á×Ô¶¯°´Æ´½ÓË³Ðò¶©ÔÄÐÅºÅ
-- **Ê¹ÓÃ**
+	1. ä½¿ç”¨`concat:`æ‹¼æŽ¥ä¿¡å·
+	2. è®¢é˜…æ‹¼æŽ¥ä¿¡å·ï¼Œå†…éƒ¨ä¼šè‡ªåŠ¨æŒ‰æ‹¼æŽ¥é¡ºåºè®¢é˜…ä¿¡å·
+- **ä½¿ç”¨**
 
-	Æ´½ÓÐÅºÅ `signalA`¡¢ `signalB`¡¢ `signalC`
+	æ‹¼æŽ¥ä¿¡å· `signalA`ã€ `signalB`ã€ `signalC`
 	
 	```
 	RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -287,15 +287,15 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         return nil;
     }];
     
-    // Æ´½Ó A B, °ÑsignalAÆ´½Óµ½signalBºó£¬signalA·¢ËÍÍê³É£¬signalB²Å»á±»¼¤»î¡£
+    // æ‹¼æŽ¥ A B, æŠŠsignalAæ‹¼æŽ¥åˆ°signalBåŽï¼ŒsignalAå‘é€å®Œæˆï¼ŒsignalBæ‰ä¼šè¢«æ¿€æ´»ã€‚
     RACSignal *concatSignalAB = [signalA concat:signalB];
     
     // A B + C
     RACSignal *concatSignalABC = [concatSignalAB concat:signalC];
     
     
-    // ¶©ÔÄÆ´½ÓµÄÐÅºÅ, ÄÚ²¿»á°´Ë³Ðò¶©ÔÄ A->B->C
-    // ×¢Òâ£ºµÚÒ»¸öÐÅºÅ±ØÐë·¢ËÍÍê³É£¬µÚ¶þ¸öÐÅºÅ²Å»á±»¼¤»î...
+    // è®¢é˜…æ‹¼æŽ¥çš„ä¿¡å·, å†…éƒ¨ä¼šæŒ‰é¡ºåºè®¢é˜… A->B->C
+    // æ³¨æ„ï¼šç¬¬ä¸€ä¸ªä¿¡å·å¿…é¡»å‘é€å®Œæˆï¼Œç¬¬äºŒä¸ªä¿¡å·æ‰ä¼šè¢«æ¿€æ´»...
     [concatSignalABC subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
@@ -303,15 +303,15 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 	```
 
 ######  then
-- **×÷ÓÃ** 
+- **ä½œç”¨** 
 
-	ÓÃÓÚÁ¬½ÓÁ½¸öÐÅºÅ£¬µ±µÚÒ»¸öÐÅºÅÍê³É£¬²Å»áÁ¬½Óthen·µ»ØµÄÐÅºÅ¡£
-- **µ×²ãÊµÏÖ**
+	ç”¨äºŽè¿žæŽ¥ä¸¤ä¸ªä¿¡å·ï¼Œå½“ç¬¬ä¸€ä¸ªä¿¡å·å®Œæˆï¼Œæ‰ä¼šè¿žæŽ¥thenè¿”å›žçš„ä¿¡å·ã€‚
+- **åº•å±‚å®žçŽ°**
 	
-	1. ÏÈ¹ýÂËµôÖ®Ç°µÄÐÅºÅ·¢³öµÄÖµ
-	2. Ê¹ÓÃconcatÁ¬½Óthen·µ»ØµÄÐÅºÅ
+	1. å…ˆè¿‡æ»¤æŽ‰ä¹‹å‰çš„ä¿¡å·å‘å‡ºçš„å€¼
+	2. ä½¿ç”¨concatè¿žæŽ¥thenè¿”å›žçš„ä¿¡å·
 	
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
 	```
    [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -333,29 +333,29 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
       
     }] subscribeNext:^(id x) {
       
-      // Ö»ÄÜ½ÓÊÕµ½µÚ¶þ¸öÐÅºÅµÄÖµ£¬Ò²¾ÍÊÇthen·µ»ØÐÅºÅµÄÖµ
+      // åªèƒ½æŽ¥æ”¶åˆ°ç¬¬äºŒä¸ªä¿¡å·çš„å€¼ï¼Œä¹Ÿå°±æ˜¯thenè¿”å›žä¿¡å·çš„å€¼
       NSLog(@"%@", x);
       
     }];
     
     ///
-    Êä³ö£º2
+    è¾“å‡ºï¼š2
 	```
-- **×¢Òâ**
+- **æ³¨æ„**
 
-	×¢ÒâÊ¹ÓÃ`then`£¬Ö®Ç°ÐÅºÅµÄÖµ»á±»ºöÂÔµô.
+	æ³¨æ„ä½¿ç”¨`then`ï¼Œä¹‹å‰ä¿¡å·çš„å€¼ä¼šè¢«å¿½ç•¥æŽ‰.
 
 ###### merge
-- **×÷ÓÃ** 
+- **ä½œç”¨** 
 	
-	ºÏ²¢ÐÅºÅ,ÈÎºÎÒ»¸öÐÅºÅ·¢ËÍÊý¾Ý£¬¶¼ÄÜ¼àÌýµ½.
-- **µ×²ãÊµÏÖ**
+	åˆå¹¶ä¿¡å·,ä»»ä½•ä¸€ä¸ªä¿¡å·å‘é€æ•°æ®ï¼Œéƒ½èƒ½ç›‘å¬åˆ°.
+- **åº•å±‚å®žçŽ°**
 
-     1. ºÏ²¢ÐÅºÅ±»¶©ÔÄµÄÊ±ºò£¬¾Í»á±éÀúËùÓÐÐÅºÅ£¬²¢ÇÒ·¢³öÕâÐ©ÐÅºÅ¡£
-     2. Ã¿·¢³öÒ»¸öÐÅºÅ£¬Õâ¸öÐÅºÅ¾Í»á±»¶©ÔÄ
-     3. Ò²¾ÍÊÇºÏ²¢ÐÅºÅÒ»±»¶©ÔÄ£¬¾Í»á¶©ÔÄÀïÃæËùÓÐµÄÐÅºÅ¡£
-     4. Ö»ÒªÓÐÒ»¸öÐÅºÅ±»·¢³ö¾Í»á±»¼àÌý¡£
-- **Ê¹ÓÃ**
+     1. åˆå¹¶ä¿¡å·è¢«è®¢é˜…çš„æ—¶å€™ï¼Œå°±ä¼šéåŽ†æ‰€æœ‰ä¿¡å·ï¼Œå¹¶ä¸”å‘å‡ºè¿™äº›ä¿¡å·ã€‚
+     2. æ¯å‘å‡ºä¸€ä¸ªä¿¡å·ï¼Œè¿™ä¸ªä¿¡å·å°±ä¼šè¢«è®¢é˜…
+     3. ä¹Ÿå°±æ˜¯åˆå¹¶ä¿¡å·ä¸€è¢«è®¢é˜…ï¼Œå°±ä¼šè®¢é˜…é‡Œé¢æ‰€æœ‰çš„ä¿¡å·ã€‚
+     4. åªè¦æœ‰ä¸€ä¸ªä¿¡å·è¢«å‘å‡ºå°±ä¼šè¢«ç›‘å¬ã€‚
+- **ä½¿ç”¨**
 
 	```
 	RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -372,7 +372,7 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         return nil;
     }];
 
-    // ºÏ²¢ÐÅºÅ, ÈÎºÎÒ»¸öÐÅºÅ·¢ËÍÊý¾Ý£¬¶¼ÄÜ¼àÌýµ½
+    // åˆå¹¶ä¿¡å·, ä»»ä½•ä¸€ä¸ªä¿¡å·å‘é€æ•°æ®ï¼Œéƒ½èƒ½ç›‘å¬åˆ°
     RACSignal *mergeSianl = [signalA merge:signalB];
 
     [mergeSianl subscribeNext:^(id x) {
@@ -380,24 +380,24 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"%@", x);
     }];
     
-    // Êä³ö
-	2017-01-03 13:29:08.013 ReactiveCocoa½ø½×[3627:718315] A
-	2017-01-03 13:29:08.014 ReactiveCocoa½ø½×[3627:718315] B
+    // è¾“å‡º
+	2017-01-03 13:29:08.013 ReactiveCocoaè¿›é˜¶[3627:718315] A
+	2017-01-03 13:29:08.014 ReactiveCocoaè¿›é˜¶[3627:718315] B
 
     
 	```
 
 ###### zip
 
-- **×÷ÓÃ** 
+- **ä½œç”¨** 
 	
-	°ÑÁ½¸öÐÅºÅÑ¹Ëõ³ÉÒ»¸öÐÅºÅ£¬Ö»ÓÐµ±Á½¸öÐÅºÅ **Í¬Ê±** ·¢³öÐÅºÅÄÚÈÝÊ±£¬²¢ÇÒ°ÑÁ½¸öÐÅºÅµÄÄÚÈÝºÏ²¢³ÉÒ»¸öÔª×é£¬²Å»á´¥·¢Ñ¹ËõÁ÷µÄnextÊÂ¼þ¡£
-- **µ×²ãÊµÏÖ**
+	æŠŠä¸¤ä¸ªä¿¡å·åŽ‹ç¼©æˆä¸€ä¸ªä¿¡å·ï¼Œåªæœ‰å½“ä¸¤ä¸ªä¿¡å· **åŒæ—¶** å‘å‡ºä¿¡å·å†…å®¹æ—¶ï¼Œå¹¶ä¸”æŠŠä¸¤ä¸ªä¿¡å·çš„å†…å®¹åˆå¹¶æˆä¸€ä¸ªå…ƒç»„ï¼Œæ‰ä¼šè§¦å‘åŽ‹ç¼©æµçš„nextäº‹ä»¶ã€‚
+- **åº•å±‚å®žçŽ°**
 	
-	1. ¶¨ÒåÑ¹ËõÐÅºÅ£¬ÄÚ²¿¾Í»á×Ô¶¯¶©ÔÄsignalA£¬signalB
-	2. Ã¿µ±signalA»òÕßsignalB·¢³öÐÅºÅ£¬¾Í»áÅÐ¶ÏsignalA£¬signalBÓÐÃ»ÓÐ·¢³ö¸öÐÅºÅ£¬ÓÐ¾Í»á°ÑÃ¿¸öÐÅºÅ µÚÒ»´Î ·¢³öµÄÖµ°ü×°³ÉÔª×é·¢³ö
+	1. å®šä¹‰åŽ‹ç¼©ä¿¡å·ï¼Œå†…éƒ¨å°±ä¼šè‡ªåŠ¨è®¢é˜…signalAï¼ŒsignalB
+	2. æ¯å½“signalAæˆ–è€…signalBå‘å‡ºä¿¡å·ï¼Œå°±ä¼šåˆ¤æ–­signalAï¼ŒsignalBæœ‰æ²¡æœ‰å‘å‡ºä¸ªä¿¡å·ï¼Œæœ‰å°±ä¼šæŠŠæ¯ä¸ªä¿¡å· ç¬¬ä¸€æ¬¡ å‘å‡ºçš„å€¼åŒ…è£…æˆå…ƒç»„å‘å‡º
 	     
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
 	```
 	RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -424,12 +424,12 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"%@", x);
     }];
 	
-	// Êä³ö
-	2017-01-03 13:48:09.234 ReactiveCocoa½ø½×[3997:789720] zipWith: <RACTuple: 0x600000004df0> (
+	// è¾“å‡º
+	2017-01-03 13:48:09.234 ReactiveCocoaè¿›é˜¶[3997:789720] zipWith: <RACTuple: 0x600000004df0> (
     A1,
     B1
 	)
-	2017-01-03 13:48:09.234 ReactiveCocoa½ø½×[3997:789720] zipWith: <RACTuple: 0x608000003410> (
+	2017-01-03 13:48:09.234 ReactiveCocoaè¿›é˜¶[3997:789720] zipWith: <RACTuple: 0x608000003410> (
     A2,
     B2
 	)
@@ -437,16 +437,16 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 	
 	
 ###### combineLatest
-- **×÷ÓÃ** 
+- **ä½œç”¨** 
 	
-	½«¶à¸öÐÅºÅºÏ²¢ÆðÀ´£¬²¢ÇÒÄÃµ½¸÷¸öÐÅºÅ×îºóÒ»¸öÖµ,±ØÐëÃ¿¸öºÏ²¢µÄsignalÖÁÉÙ¶¼ÓÐ¹ýÒ»´ÎsendNext£¬²Å»á´¥·¢ºÏ²¢µÄÐÅºÅ¡£
+	å°†å¤šä¸ªä¿¡å·åˆå¹¶èµ·æ¥ï¼Œå¹¶ä¸”æ‹¿åˆ°å„ä¸ªä¿¡å·æœ€åŽä¸€ä¸ªå€¼,å¿…é¡»æ¯ä¸ªåˆå¹¶çš„signalè‡³å°‘éƒ½æœ‰è¿‡ä¸€æ¬¡sendNextï¼Œæ‰ä¼šè§¦å‘åˆå¹¶çš„ä¿¡å·ã€‚
 
-- **µ×²ãÊµÏÖ**
+- **åº•å±‚å®žçŽ°**
 	
- 	1. µ±×éºÏÐÅºÅ±»¶©ÔÄ£¬ÄÚ²¿»á×Ô¶¯¶©ÔÄsignalA£¬signalB,±ØÐëÁ½¸öÐÅºÅ¶¼·¢³öÄÚÈÝ£¬²Å»á±»´¥·¢¡£
- 	2. ²¢ÇÒ°ÑÁ½¸öÐÅºÅµÄ ×îºóÒ»´Î ·¢ËÍµÄÖµ×éºÏ³ÉÔª×é·¢³ö¡£
+ 	1. å½“ç»„åˆä¿¡å·è¢«è®¢é˜…ï¼Œå†…éƒ¨ä¼šè‡ªåŠ¨è®¢é˜…signalAï¼ŒsignalB,å¿…é¡»ä¸¤ä¸ªä¿¡å·éƒ½å‘å‡ºå†…å®¹ï¼Œæ‰ä¼šè¢«è§¦å‘ã€‚
+ 	2. å¹¶ä¸”æŠŠä¸¤ä¸ªä¿¡å·çš„ æœ€åŽä¸€æ¬¡ å‘é€çš„å€¼ç»„åˆæˆå…ƒç»„å‘å‡ºã€‚
 	     
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
 	```
 	RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -473,48 +473,48 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"combineLatest:%@", x);
     }];
 	
-	// Êä³ö
-	2017-01-03 13:48:09.235 ReactiveCocoa½ø½×[3997:789720] combineLatest:<RACTuple: 0x60800000e150> (
+	// è¾“å‡º
+	2017-01-03 13:48:09.235 ReactiveCocoaè¿›é˜¶[3997:789720] combineLatest:<RACTuple: 0x60800000e150> (
     A2,
     B1
 	)
-	2017-01-03 13:48:09.235 ReactiveCocoa½ø½×[3997:789720] combineLatest:<RACTuple: 0x600000004db0> (
+	2017-01-03 13:48:09.235 ReactiveCocoaè¿›é˜¶[3997:789720] combineLatest:<RACTuple: 0x600000004db0> (
     A2,
     B2
 	)
-	2017-01-03 13:48:09.236 ReactiveCocoa½ø½×[3997:789720] combineLatest:<RACTuple: 0x60800000e180> (
+	2017-01-03 13:48:09.236 ReactiveCocoaè¿›é˜¶[3997:789720] combineLatest:<RACTuple: 0x60800000e180> (
     A2,
     B3
 	)
 	```
 	
-- **×¢Òâ**
+- **æ³¨æ„**
 
-	**combineLatest**Óë**zip**ÓÃ·¨ÏàËÆ£¬±ØÐëÃ¿¸öºÏ²¢µÄsignalÖÁÉÙ¶¼ÓÐ¹ýÒ»´ÎsendNext£¬²Å»á´¥·¢ºÏ²¢µÄÐÅºÅ¡£
+	**combineLatest**ä¸Ž**zip**ç”¨æ³•ç›¸ä¼¼ï¼Œå¿…é¡»æ¯ä¸ªåˆå¹¶çš„signalè‡³å°‘éƒ½æœ‰è¿‡ä¸€æ¬¡sendNextï¼Œæ‰ä¼šè§¦å‘åˆå¹¶çš„ä¿¡å·ã€‚
 	
-	Çø±ð¿´ÏÂÍ¼£º
+	åŒºåˆ«çœ‹ä¸‹å›¾ï¼š
 	
 	![](https://ww2.sinaimg.cn/large/006y8lVagw1fbdf6cyez6j30id0kkabf.jpg)
 
 
 ###### reduce   
 
-- **×÷ÓÃ** 
+- **ä½œç”¨** 
 	
-	°ÑÐÅºÅ·¢³öÔª×éµÄÖµ¾ÛºÏ³ÉÒ»¸öÖµ
-- **µ×²ãÊµÏÖ**
+	æŠŠä¿¡å·å‘å‡ºå…ƒç»„çš„å€¼èšåˆæˆä¸€ä¸ªå€¼
+- **åº•å±‚å®žçŽ°**
 	
- 	1. ¶©ÔÄ¾ÛºÏÐÅºÅ£¬
- 	2. Ã¿´ÎÓÐÄÚÈÝ·¢³ö£¬¾Í»áÖ´ÐÐreduceblcok£¬°ÑÐÅºÅÄÚÈÝ×ª»»³Éreduceblcok·µ»ØµÄÖµ¡£
+ 	1. è®¢é˜…èšåˆä¿¡å·ï¼Œ
+ 	2. æ¯æ¬¡æœ‰å†…å®¹å‘å‡ºï¼Œå°±ä¼šæ‰§è¡Œreduceblcokï¼ŒæŠŠä¿¡å·å†…å®¹è½¬æ¢æˆreduceblcokè¿”å›žçš„å€¼ã€‚
 	     
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
-     ³£¼ûµÄÓÃ·¨£¬£¨ÏÈ×éºÏÔÚ¾ÛºÏ£©`combineLatest:(id<NSFastEnumeration>)signals reduce:(id (^)())reduceBlock`
+     å¸¸è§çš„ç”¨æ³•ï¼Œï¼ˆå…ˆç»„åˆåœ¨èšåˆï¼‰`combineLatest:(id<NSFastEnumeration>)signals reduce:(id (^)())reduceBlock`
      
-     reduceÖÐµÄblock¼ò½é:
+     reduceä¸­çš„blockç®€ä»‹:
      
-     reduceblcokÖÐµÄ²ÎÊý£¬ÓÐ¶àÉÙÐÅºÅ×éºÏ£¬reduceblcok¾ÍÓÐ¶àÉÙ²ÎÊý£¬Ã¿¸ö²ÎÊý¾ÍÊÇÖ®Ç°ÐÅºÅ·¢³öµÄÄÚÈÝ
-     reduceblcokµÄ·µ»ØÖµ£º¾ÛºÏÐÅºÅÖ®ºóµÄÄÚÈÝ¡£
+     reduceblcokä¸­çš„å‚æ•°ï¼Œæœ‰å¤šå°‘ä¿¡å·ç»„åˆï¼Œreduceblcokå°±æœ‰å¤šå°‘å‚æ•°ï¼Œæ¯ä¸ªå‚æ•°å°±æ˜¯ä¹‹å‰ä¿¡å·å‘å‡ºçš„å†…å®¹
+     reduceblcokçš„è¿”å›žå€¼ï¼šèšåˆä¿¡å·ä¹‹åŽçš„å†…å®¹ã€‚
 
 
 
@@ -547,71 +547,71 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"%@", x);
     }];
     
-    // Êä³ö
-    2017-01-03 15:42:41.803 ReactiveCocoa½ø½×[4248:1264674] A2 B1
-	2017-01-03 15:42:41.803 ReactiveCocoa½ø½×[4248:1264674] A2 B2
-	2017-01-03 15:42:41.803 ReactiveCocoa½ø½×[4248:1264674] A2 B3
+    // è¾“å‡º
+    2017-01-03 15:42:41.803 ReactiveCocoaè¿›é˜¶[4248:1264674] A2 B1
+	2017-01-03 15:42:41.803 ReactiveCocoaè¿›é˜¶[4248:1264674] A2 B2
+	2017-01-03 15:42:41.803 ReactiveCocoaè¿›é˜¶[4248:1264674] A2 B3
     
 	```
 	
-#### ¹ýÂË
+#### è¿‡æ»¤
 
-¹ýÂË¾ÍÊÇ¹ýÂËÐÅºÅÖÐµÄ ÌØ¶¨Öµ £¬»òÕß¹ýÂËÖ¸¶¨ ·¢ËÍ´ÎÊý µÄÐÅºÅ¡£
+è¿‡æ»¤å°±æ˜¯è¿‡æ»¤ä¿¡å·ä¸­çš„ ç‰¹å®šå€¼ ï¼Œæˆ–è€…è¿‡æ»¤æŒ‡å®š å‘é€æ¬¡æ•° çš„ä¿¡å·ã€‚
 
 ###### filter
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	¹ýÂËÐÅºÅ£¬Ê¹ÓÃËü¿ÉÒÔ»ñÈ¡Âú×ãÌõ¼þµÄÐÅºÅ.
+	è¿‡æ»¤ä¿¡å·ï¼Œä½¿ç”¨å®ƒå¯ä»¥èŽ·å–æ»¡è¶³æ¡ä»¶çš„ä¿¡å·.
 	
-	blockµÄ·µ»ØÖµÊÇBoolÖµ£¬·µ»Ø`NO`Ôò¹ýÂË¸ÃÐÅºÅ
+	blockçš„è¿”å›žå€¼æ˜¯Boolå€¼ï¼Œè¿”å›ž`NO`åˆ™è¿‡æ»¤è¯¥ä¿¡å·
 	
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
 	```
-	// ¹ýÂË:
-	// Ã¿´ÎÐÅºÅ·¢³ö£¬»áÏÈÖ´ÐÐ¹ýÂËÌõ¼þÅÐ¶Ï.
+	// è¿‡æ»¤:
+	// æ¯æ¬¡ä¿¡å·å‘å‡ºï¼Œä¼šå…ˆæ‰§è¡Œè¿‡æ»¤æ¡ä»¶åˆ¤æ–­.
 	[[_textField.rac_textSignal filter:^BOOL(NSString *value) {
         
-        NSLog(@"Ô­ÐÅºÅ: %@", value);
+        NSLog(@"åŽŸä¿¡å·: %@", value);
 
-        // ¹ýÂË ³¤¶È <= 3 µÄÐÅºÅ
+        // è¿‡æ»¤ é•¿åº¦ <= 3 çš„ä¿¡å·
         return value.length > 3;
         
     }] subscribeNext:^(id x) {
         
-        NSLog(@"³¤¶È´óÓÚ3µÄÐÅºÅ£º%@", x);
+        NSLog(@"é•¿åº¦å¤§äºŽ3çš„ä¿¡å·ï¼š%@", x);
     }];
     
-    // ÔÚ_textFieldÖÐÊä³ö12345
-	// Êä³ö
-	2017-01-03 16:36:54.938 ReactiveCocoa½ø½×[4714:1552910] Ô­ÐÅºÅ: 1
-	2017-01-03 16:36:55.383 ReactiveCocoa½ø½×[4714:1552910] Ô­ÐÅºÅ: 12
-	2017-01-03 16:36:55.706 ReactiveCocoa½ø½×[4714:1552910] Ô­ÐÅºÅ: 123
-	2017-01-03 16:36:56.842 ReactiveCocoa½ø½×[4714:1552910] Ô­ÐÅºÅ: 1234
-	2017-01-03 16:36:56.842 ReactiveCocoa½ø½×[4714:1552910] ³¤¶È´óÓÚ3µÄÐÅºÅ£º1234
-	2017-01-03 16:36:58.350 ReactiveCocoa½ø½×[4714:1552910] Ô­ÐÅºÅ: 12345
-	2017-01-03 16:36:58.351 ReactiveCocoa½ø½×[4714:1552910] ³¤¶È´óÓÚ3µÄÐÅºÅ£º12345
+    // åœ¨_textFieldä¸­è¾“å‡º12345
+	// è¾“å‡º
+	2017-01-03 16:36:54.938 ReactiveCocoaè¿›é˜¶[4714:1552910] åŽŸä¿¡å·: 1
+	2017-01-03 16:36:55.383 ReactiveCocoaè¿›é˜¶[4714:1552910] åŽŸä¿¡å·: 12
+	2017-01-03 16:36:55.706 ReactiveCocoaè¿›é˜¶[4714:1552910] åŽŸä¿¡å·: 123
+	2017-01-03 16:36:56.842 ReactiveCocoaè¿›é˜¶[4714:1552910] åŽŸä¿¡å·: 1234
+	2017-01-03 16:36:56.842 ReactiveCocoaè¿›é˜¶[4714:1552910] é•¿åº¦å¤§äºŽ3çš„ä¿¡å·ï¼š1234
+	2017-01-03 16:36:58.350 ReactiveCocoaè¿›é˜¶[4714:1552910] åŽŸä¿¡å·: 12345
+	2017-01-03 16:36:58.351 ReactiveCocoaè¿›é˜¶[4714:1552910] é•¿åº¦å¤§äºŽ3çš„ä¿¡å·ï¼š12345
 	```
 	
 ###### ignore
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	ºöÂÔÄ³Ð©ÐÅºÅ.
+	å¿½ç•¥æŸäº›ä¿¡å·.
 	
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	ºöÂÔÄ³Ð©ÖµµÄÐÅºÅ.
+	å¿½ç•¥æŸäº›å€¼çš„ä¿¡å·.
 	
-	µ×²ãµ÷ÓÃÁË `filter` Óë ¹ýÂËÖµ½øÐÐ±È½Ï£¬ÈôÏàµÈ·µ»ØÔò `NO`
+	åº•å±‚è°ƒç”¨äº† `filter` ä¸Ž è¿‡æ»¤å€¼è¿›è¡Œæ¯”è¾ƒï¼Œè‹¥ç›¸ç­‰è¿”å›žåˆ™ `NO`
 	
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
 	```
-  	// ÄÚ²¿µ÷ÓÃfilter¹ýÂË£¬ºöÂÔµô×Ö·ûÎª @¡°1¡±µÄÖµ
+  	// å†…éƒ¨è°ƒç”¨filterè¿‡æ»¤ï¼Œå¿½ç•¥æŽ‰å­—ç¬¦ä¸º @â€œ1â€çš„å€¼
 [[_textField.rac_textSignal ignore:@"1"] subscribeNext:^(id x) {
 
  	 NSLog(@"%@",x);
@@ -622,11 +622,11 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 ###### distinctUntilChanged
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	µ±ÉÏÒ»´ÎµÄÖµºÍµ±Ç°µÄÖµÓÐÃ÷ÏÔµÄ±ä»¯¾Í»á·¢³öÐÅºÅ£¬·ñÔò»á±»ºöÂÔµô¡£
+	å½“ä¸Šä¸€æ¬¡çš„å€¼å’Œå½“å‰çš„å€¼æœ‰æ˜Žæ˜¾çš„å˜åŒ–å°±ä¼šå‘å‡ºä¿¡å·ï¼Œå¦åˆ™ä¼šè¢«å¿½ç•¥æŽ‰ã€‚
 	
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 
 	```
 	[[_textField.rac_textSignal distinctUntilChanged] subscribeNext:^(id x) {
@@ -637,14 +637,14 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 	
 ###### skip	
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	Ìø¹ý **µÚN´Î** µÄ·¢ËÍµÄÐÅºÅ.
+	è·³è¿‡ **ç¬¬Næ¬¡** çš„å‘é€çš„ä¿¡å·.
 	
-- **Ê¹ÓÃ**
+- **ä½¿ç”¨**
 	
 	```
-// ±íÊ¾ÊäÈëµÚÒ»´Î£¬²»»á±»¼àÌýµ½£¬Ìø¹ýµÚÒ»´Î·¢³öµÄÐÅºÅ
+// è¡¨ç¤ºè¾“å…¥ç¬¬ä¸€æ¬¡ï¼Œä¸ä¼šè¢«ç›‘å¬åˆ°ï¼Œè·³è¿‡ç¬¬ä¸€æ¬¡å‘å‡ºçš„ä¿¡å·
 [[_textField.rac_textSignal skip:1] subscribeNext:^(id x) {
 
    NSLog(@"%@",x);
@@ -654,15 +654,15 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 
 ##### take
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	È¡ **Ç°N´Î** µÄ·¢ËÍµÄÐÅºÅ.
-- **Ê¹ÓÃ**
+	å– **å‰Næ¬¡** çš„å‘é€çš„ä¿¡å·.
+- **ä½¿ç”¨**
 
 	```
 	RACSubject *subject = [RACSubject subject] ;
     
-    // È¡ Ç°Á½´Î ·¢ËÍµÄÐÅºÅ
+    // å– å‰ä¸¤æ¬¡ å‘é€çš„ä¿¡å·
     [[subject take:2] subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
@@ -672,25 +672,25 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
     [subject sendNext:@2];
     [subject sendNext:@3];
     
-    // Êä³ö
-	2017-01-03 17:35:54.566 ReactiveCocoa½ø½×[4969:1677908] 1
-	2017-01-03 17:35:54.567 ReactiveCocoa½ø½×[4969:1677908] 2
+    // è¾“å‡º
+	2017-01-03 17:35:54.566 ReactiveCocoaè¿›é˜¶[4969:1677908] 1
+	2017-01-03 17:35:54.567 ReactiveCocoaè¿›é˜¶[4969:1677908] 2
 	```
 
 ###### takeLast
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	È¡ **×îºóN´Î** µÄ·¢ËÍµÄÐÅºÅ
+	å– **æœ€åŽNæ¬¡** çš„å‘é€çš„ä¿¡å·
 	
-	Ç°ÌáÌõ¼þ£¬¶©ÔÄÕß±ØÐëµ÷ÓÃÍê³É `sendCompleted`£¬ÒòÎªÖ»ÓÐÍê³É£¬¾ÍÖªµÀ×Ü¹²ÓÐ¶àÉÙÐÅºÅ.
+	å‰ææ¡ä»¶ï¼Œè®¢é˜…è€…å¿…é¡»è°ƒç”¨å®Œæˆ `sendCompleted`ï¼Œå› ä¸ºåªæœ‰å®Œæˆï¼Œå°±çŸ¥é“æ€»å…±æœ‰å¤šå°‘ä¿¡å·.
 	
-- **Ê¹ÓÃ**	
+- **ä½¿ç”¨**	
 
 	```
 	RACSubject *subject = [RACSubject subject] ;
     
-    // È¡ ºóÁ½´Î ·¢ËÍµÄÐÅºÅ
+    // å– åŽä¸¤æ¬¡ å‘é€çš„ä¿¡å·
     [[subject takeLast:2] subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
@@ -700,38 +700,38 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
     [subject sendNext:@2];
     [subject sendNext:@3];
     
-    // ±ØÐë ÌøÓÃÍê³É
+    // å¿…é¡» è·³ç”¨å®Œæˆ
     [subject sendCompleted];
 	```
 
 ###### takeUntil
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	»ñÈ¡ÐÅºÅÖ±µ½Ä³¸öÐÅºÅÖ´ÐÐÍê³É
-- **Ê¹ÓÃ**	
+	èŽ·å–ä¿¡å·ç›´åˆ°æŸä¸ªä¿¡å·æ‰§è¡Œå®Œæˆ
+- **ä½¿ç”¨**	
 
 	```
-	// ¼àÌýÎÄ±¾¿òµÄ¸Ä±äÖ±µ½µ±Ç°¶ÔÏó±»Ïú»Ù
+	// ç›‘å¬æ–‡æœ¬æ¡†çš„æ”¹å˜ç›´åˆ°å½“å‰å¯¹è±¡è¢«é”€æ¯
 [_textField.rac_textSignal takeUntil:self.rac_willDeallocSignal];
 	```
 	
 ###### switchToLatest
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	ÓÃÓÚsignalOfSignals£¨ÐÅºÅµÄÐÅºÅ£©£¬ÓÐÊ±ºòÐÅºÅÒ²»á·¢³öÐÅºÅ£¬»áÔÚsignalOfSignalsÖÐ£¬»ñÈ¡signalOfSignals·¢ËÍµÄ×îÐÂÐÅºÅ¡£
+	ç”¨äºŽsignalOfSignalsï¼ˆä¿¡å·çš„ä¿¡å·ï¼‰ï¼Œæœ‰æ—¶å€™ä¿¡å·ä¹Ÿä¼šå‘å‡ºä¿¡å·ï¼Œä¼šåœ¨signalOfSignalsä¸­ï¼ŒèŽ·å–signalOfSignalså‘é€çš„æœ€æ–°ä¿¡å·ã€‚
 	
-- **×¢Òâ**
+- **æ³¨æ„**
 
-	switchToLatest£ºÖ»ÄÜÓÃÓÚÐÅºÅÖÐµÄÐÅºÅ
+	switchToLatestï¼šåªèƒ½ç”¨äºŽä¿¡å·ä¸­çš„ä¿¡å·
 
-- **Ê¹ÓÃ**	
+- **ä½¿ç”¨**	
 
 	```
 	RACSubject *signalOfSignals = [RACSubject subject];
     RACSubject *signal = [RACSubject subject];
     
-    // »ñÈ¡ÐÅºÅÖÐÐÅºÅ×î½ü·¢³öÐÅºÅ£¬¶©ÔÄ×î½ü·¢³öµÄÐÅºÅ¡£
+    // èŽ·å–ä¿¡å·ä¸­ä¿¡å·æœ€è¿‘å‘å‡ºä¿¡å·ï¼Œè®¢é˜…æœ€è¿‘å‘å‡ºçš„ä¿¡å·ã€‚
     [signalOfSignals.switchToLatest subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
@@ -741,17 +741,17 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
     [signal sendNext:@1];
 	```
 
-#### ÖÈÐò
+#### ç§©åº
 
-ÖÈÐò°üÀ¨ `doNext` ºÍ `doCompleted` ÕâÁ½¸ö·½·¨£¬Ö÷ÒªÊÇÔÚ Ö´ÐÐ`sendNext` »òÕß `sendCompleted`Ö®Ç°£¬ÏÈÖ´ÐÐÕâÐ©·½·¨ÖÐBlock¡£
+ç§©åºåŒ…æ‹¬ `doNext` å’Œ `doCompleted` è¿™ä¸¤ä¸ªæ–¹æ³•ï¼Œä¸»è¦æ˜¯åœ¨ æ‰§è¡Œ`sendNext` æˆ–è€… `sendCompleted`ä¹‹å‰ï¼Œå…ˆæ‰§è¡Œè¿™äº›æ–¹æ³•ä¸­Blockã€‚
 
 ###### doNext 
 	
-Ö´ÐÐ`sendNext`Ö®Ç°£¬»áÏÈÖ´ÐÐÕâ¸ö`doNext`µÄ Block
+æ‰§è¡Œ`sendNext`ä¹‹å‰ï¼Œä¼šå…ˆæ‰§è¡Œè¿™ä¸ª`doNext`çš„ Block
 
 ###### doCompleted
 
-Ö´ÐÐ`sendCompleted`Ö®Ç°£¬»áÏÈÖ´ÐÐÕâ`doCompleted`µÄ`Block`
+æ‰§è¡Œ`sendCompleted`ä¹‹å‰ï¼Œä¼šå…ˆæ‰§è¡Œè¿™`doCompleted`çš„`Block`
 
 ```
 [[[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -764,12 +764,12 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
     
 }] doNext:^(id x) {
     
-    // Ö´ÐÐ [subscriber sendNext:@"hi"] Ö®Ç°»áµ÷ÓÃÕâ¸ö Block
+    // æ‰§è¡Œ [subscriber sendNext:@"hi"] ä¹‹å‰ä¼šè°ƒç”¨è¿™ä¸ª Block
     NSLog(@"doNext");
     
 }] doCompleted:^{
     
-    // Ö´ÐÐ [subscriber sendCompleted] Ö®Ç°»áµ÷ÓÃÕâ Block
+    // æ‰§è¡Œ [subscriber sendCompleted] ä¹‹å‰ä¼šè°ƒç”¨è¿™ Block
     NSLog(@"doCompleted");
 }] subscribeNext:^(id x) {
     
@@ -779,19 +779,19 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 ```
 
-#### Ïß³Ì
+#### çº¿ç¨‹
 
-**ReactiveCocoa** ÖÐµÄÏß³Ì²Ù×÷ °üÀ¨ `deliverOn` ºÍ `subscribeOn`ÕâÁ½ÖÖ£¬½« *´«µÝµÄÄÚÈÝ* »ò ´´½¨ÐÅºÅÊ± *blockÖÐµÄ´úÂë* ÇÐ»»µ½Ö¸¶¨µÄÏß³ÌÖÐÖ´ÐÐ¡£
+**ReactiveCocoa** ä¸­çš„çº¿ç¨‹æ“ä½œ åŒ…æ‹¬ `deliverOn` å’Œ `subscribeOn`è¿™ä¸¤ç§ï¼Œå°† *ä¼ é€’çš„å†…å®¹* æˆ– åˆ›å»ºä¿¡å·æ—¶ *blockä¸­çš„ä»£ç * åˆ‡æ¢åˆ°æŒ‡å®šçš„çº¿ç¨‹ä¸­æ‰§è¡Œã€‚
 
 ###### deliverOn
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	ÄÚÈÝ´«µÝÇÐ»»µ½ÖÆ¶¨Ïß³ÌÖÐ£¬¸±×÷ÓÃÔÚÔ­À´Ïß³ÌÖÐ,°ÑÔÚ´´½¨ÐÅºÅÊ±blockÖÐµÄ´úÂë³ÆÖ®Îª¸±×÷ÓÃ¡£
-- **Ê¹ÓÃ**
+	å†…å®¹ä¼ é€’åˆ‡æ¢åˆ°åˆ¶å®šçº¿ç¨‹ä¸­ï¼Œå‰¯ä½œç”¨åœ¨åŽŸæ¥çº¿ç¨‹ä¸­,æŠŠåœ¨åˆ›å»ºä¿¡å·æ—¶blockä¸­çš„ä»£ç ç§°ä¹‹ä¸ºå‰¯ä½œç”¨ã€‚
+- **ä½¿ç”¨**
 
 	```
-	// ÔÚ×ÓÏß³ÌÖÐÖ´ÐÐ
+	// åœ¨å­çº¿ç¨‹ä¸­æ‰§è¡Œ
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -814,20 +814,20 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
          }];
     });
     
-    // Êä³ö
-2017-01-04 10:35:55.415 ReactiveCocoa½ø½×[1183:224535] <NSThread: 0x608000270f00>{number = 3, name = (null)}
-2017-01-04 10:35:55.415 ReactiveCocoa½ø½×[1183:224482] 123
-2017-01-04 10:35:55.415 ReactiveCocoa½ø½×[1183:224482] <NSThread: 0x600000079bc0>{number = 1, name = main}
+    // è¾“å‡º
+2017-01-04 10:35:55.415 ReactiveCocoaè¿›é˜¶[1183:224535] <NSThread: 0x608000270f00>{number = 3, name = (null)}
+2017-01-04 10:35:55.415 ReactiveCocoaè¿›é˜¶[1183:224482] 123
+2017-01-04 10:35:55.415 ReactiveCocoaè¿›é˜¶[1183:224482] <NSThread: 0x600000079bc0>{number = 1, name = main}
 	```
 	
-	¿ÉÒÔ¿´µ½`¸±×÷ÓÃ`ÔÚ *×ÓÏß³Ì* ÖÐÖ´ÐÐ£¬¶ø `´«µÝµÄÄÚÈÝ` ÔÚ *Ö÷Ïß³Ì* ÖÐ½ÓÊÕ
+	å¯ä»¥çœ‹åˆ°`å‰¯ä½œç”¨`åœ¨ *å­çº¿ç¨‹* ä¸­æ‰§è¡Œï¼Œè€Œ `ä¼ é€’çš„å†…å®¹` åœ¨ *ä¸»çº¿ç¨‹* ä¸­æŽ¥æ”¶
 
 
 ###### subscribeOn
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	**subscribeOn**ÔòÊÇ½« `ÄÚÈÝ´«µÝ` ºÍ `¸±×÷ÓÃ` ¶¼»áÇÐ»»µ½Ö¸¶¨Ïß³ÌÖÐ
-- **Ê¹ÓÃ**
+	**subscribeOn**åˆ™æ˜¯å°† `å†…å®¹ä¼ é€’` å’Œ `å‰¯ä½œç”¨` éƒ½ä¼šåˆ‡æ¢åˆ°æŒ‡å®šçº¿ç¨‹ä¸­
+- **ä½¿ç”¨**
 
 	```
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -842,7 +842,7 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
             
             return nil;
         }]
-          subscribeOn:[RACScheduler mainThreadScheduler]] //´«µÝµÄÄÚÈÝµ½Ö÷Ïß³ÌÖÐ
+          subscribeOn:[RACScheduler mainThreadScheduler]] //ä¼ é€’çš„å†…å®¹åˆ°ä¸»çº¿ç¨‹ä¸­
          subscribeNext:^(id x) {
          
              NSLog(@"%@", x);
@@ -851,51 +851,51 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
          }];
     });	
 	//
-2017-01-04 10:44:47.558 ReactiveCocoa½ø½×[1243:275126] <NSThread: 0x608000077640>{number = 1, name = main}
-2017-01-04 10:44:47.558 ReactiveCocoa½ø½×[1243:275126] 123
-2017-01-04 10:44:47.558 ReactiveCocoa½ø½×[1243:275126] <NSThread: 0x608000077640>{number = 1, name = main}
+2017-01-04 10:44:47.558 ReactiveCocoaè¿›é˜¶[1243:275126] <NSThread: 0x608000077640>{number = 1, name = main}
+2017-01-04 10:44:47.558 ReactiveCocoaè¿›é˜¶[1243:275126] 123
+2017-01-04 10:44:47.558 ReactiveCocoaè¿›é˜¶[1243:275126] <NSThread: 0x608000077640>{number = 1, name = main}
 	```
 	
-	`ÄÚÈÝ´«µÝ` ºÍ `¸±×÷ÓÃ` ¶¼ÇÐ»»µ½ÁË *Ö÷Ïß³Ì* Ö´ÐÐ
+	`å†…å®¹ä¼ é€’` å’Œ `å‰¯ä½œç”¨` éƒ½åˆ‡æ¢åˆ°äº† *ä¸»çº¿ç¨‹* æ‰§è¡Œ
 	
-#### Ê±¼ä
+#### æ—¶é—´
 
-Ê±¼ä²Ù×÷¾Í»áÉèÖÃÐÅºÅ³¬Ê±£¬¶¨Ê±ºÍÑÓÊ±¡£
+æ—¶é—´æ“ä½œå°±ä¼šè®¾ç½®ä¿¡å·è¶…æ—¶ï¼Œå®šæ—¶å’Œå»¶æ—¶ã€‚
 
-###### interval ¶¨Ê±
-- **×÷ÓÃ**
+###### interval å®šæ—¶
+- **ä½œç”¨**
 
-	¶¨Ê±£ºÃ¿¸ôÒ»¶ÎÊ±¼ä·¢³öÐÅºÅ
+	å®šæ—¶ï¼šæ¯éš”ä¸€æ®µæ—¶é—´å‘å‡ºä¿¡å·
 	
 	```
-	// Ã¿¸ô1Ãë·¢ËÍÐÅºÅ£¬Ö¸¶¨µ±Ç°Ïß³ÌÖ´ÐÐ
+	// æ¯éš”1ç§’å‘é€ä¿¡å·ï¼ŒæŒ‡å®šå½“å‰çº¿ç¨‹æ‰§è¡Œ
 	[[RACSignal interval:1 onScheduler:[RACScheduler currentScheduler]] subscribeNext:^(id x) {
         
-        NSLog(@"¶¨Ê±:%@", x);
+        NSLog(@"å®šæ—¶:%@", x);
     }];
     
-	// Êä³ö
-	2017-01-04 13:48:55.196 ReactiveCocoa½ø½×[1980:492724] ¶¨Ê±:2017-01-04 05:48:55 +0000
-	2017-01-04 13:48:56.195 ReactiveCocoa½ø½×[1980:492724] ¶¨Ê±:2017-01-04 05:48:56 +0000
-	2017-01-04 13:48:57.196 ReactiveCocoa½ø½×[1980:492724] ¶¨Ê±:2017-01-04 05:48:57 +0000
+	// è¾“å‡º
+	2017-01-04 13:48:55.196 ReactiveCocoaè¿›é˜¶[1980:492724] å®šæ—¶:2017-01-04 05:48:55 +0000
+	2017-01-04 13:48:56.195 ReactiveCocoaè¿›é˜¶[1980:492724] å®šæ—¶:2017-01-04 05:48:56 +0000
+	2017-01-04 13:48:57.196 ReactiveCocoaè¿›é˜¶[1980:492724] å®šæ—¶:2017-01-04 05:48:57 +0000
 	```
 
 
-###### timeout ³¬Ê±
+###### timeout è¶…æ—¶
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	³¬Ê±£¬¿ÉÒÔÈÃÒ»¸öÐÅºÅÔÚÒ»¶¨µÄÊ±¼äºó£¬×Ô¶¯±¨´í¡£
+	è¶…æ—¶ï¼Œå¯ä»¥è®©ä¸€ä¸ªä¿¡å·åœ¨ä¸€å®šçš„æ—¶é—´åŽï¼Œè‡ªåŠ¨æŠ¥é”™ã€‚
 	
 	```
 	RACSignal *signal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        // ²»·¢ËÍÐÅºÅ£¬Ä£Äâ³¬Ê±×´Ì¬
+        // ä¸å‘é€ä¿¡å·ï¼Œæ¨¡æ‹Ÿè¶…æ—¶çŠ¶æ€
         // [subscriber sendNext:@"hello"];
         //[subscriber sendCompleted];
         
         return nil;
-    }] timeout:1 onScheduler:[RACScheduler currentScheduler]];// ÉèÖÃ1Ãë³¬Ê±
+    }] timeout:1 onScheduler:[RACScheduler currentScheduler]];// è®¾ç½®1ç§’è¶…æ—¶
     
     [signal subscribeNext:^(id x) {
         
@@ -905,19 +905,19 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"%@", error);
     }];
     
-    // Ö´ÐÐ´úÂë 1Ãëºó Êä³ö£º
-    2017-01-04 13:48:55.195 ReactiveCocoa½ø½×[1980:492724] Error Domain=RACSignalErrorDomain Code=1 "(null)"
+    // æ‰§è¡Œä»£ç  1ç§’åŽ è¾“å‡ºï¼š
+    2017-01-04 13:48:55.195 ReactiveCocoaè¿›é˜¶[1980:492724] Error Domain=RACSignalErrorDomain Code=1 "(null)"
 	```
 
-###### delay ÑÓÊ±
-- **×÷ÓÃ**
+###### delay å»¶æ—¶
+- **ä½œç”¨**
 
-	ÑÓÊ±£¬ÑÓ³ÙÒ»¶ÎÊ±¼äºó·¢ËÍÐÅºÅ
+	å»¶æ—¶ï¼Œå»¶è¿Ÿä¸€æ®µæ—¶é—´åŽå‘é€ä¿¡å·
 	
 	```
 	RACSignal *signal2 = [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        [subscriber sendNext:@"ÑÓ³ÙÊä³ö"];
+        [subscriber sendNext:@"å»¶è¿Ÿè¾“å‡º"];
         
         return nil;
     }] delay:2] subscribeNext:^(id x) {
@@ -925,18 +925,18 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"%@", x);
     }];
     
-    // Ö´ÐÐ´úÂë 2Ãëºó Êä³ö
-    2017-01-04 13:55:23.751 ReactiveCocoa½ø½×[2030:525038] ÑÓ³ÙÊä³ö
+    // æ‰§è¡Œä»£ç  2ç§’åŽ è¾“å‡º
+    2017-01-04 13:55:23.751 ReactiveCocoaè¿›é˜¶[2030:525038] å»¶è¿Ÿè¾“å‡º
 	```
 
 
-#### ÖØ¸´
+#### é‡å¤
 
 ###### retry
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	ÖØÊÔ£ºÖ»Òª ·¢ËÍ´íÎó `sendError:`,¾Í»á ÖØÐÂÖ´ÐÐ ´´½¨ÐÅºÅµÄBlock Ö±µ½³É¹¦
+	é‡è¯•ï¼šåªè¦ å‘é€é”™è¯¯ `sendError:`,å°±ä¼š é‡æ–°æ‰§è¡Œ åˆ›å»ºä¿¡å·çš„Block ç›´åˆ°æˆåŠŸ
 	
 	```
 	__block int i = 0;
@@ -949,8 +949,8 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
             
         } else {
             
-            // ·¢ËÍ´íÎó
-            NSLog(@"ÊÕµ½´íÎó:%d", i);
+            // å‘é€é”™è¯¯
+            NSLog(@"æ”¶åˆ°é”™è¯¯:%d", i);
             [subscriber sendError:nil];
         }
         
@@ -968,21 +968,21 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         
     }];
 
-	// Êä³ö
-2017-01-04 14:36:51.594 ReactiveCocoa½ø½×[2443:667226] ÊÕµ½´íÎóÐÅÏ¢:0
-2017-01-04 14:36:51.595 ReactiveCocoa½ø½×[2443:667226] ÊÕµ½´íÎóÐÅÏ¢:1
-2017-01-04 14:36:51.595 ReactiveCocoa½ø½×[2443:667226] ÊÕµ½´íÎóÐÅÏ¢:2
-2017-01-04 14:36:51.596 ReactiveCocoa½ø½×[2443:667226] ÊÕµ½´íÎóÐÅÏ¢:3
-2017-01-04 14:36:51.596 ReactiveCocoa½ø½×[2443:667226] ÊÕµ½´íÎóÐÅÏ¢:4
-2017-01-04 14:36:51.596 ReactiveCocoa½ø½×[2443:667226] Hello
+	// è¾“å‡º
+2017-01-04 14:36:51.594 ReactiveCocoaè¿›é˜¶[2443:667226] æ”¶åˆ°é”™è¯¯ä¿¡æ¯:0
+2017-01-04 14:36:51.595 ReactiveCocoaè¿›é˜¶[2443:667226] æ”¶åˆ°é”™è¯¯ä¿¡æ¯:1
+2017-01-04 14:36:51.595 ReactiveCocoaè¿›é˜¶[2443:667226] æ”¶åˆ°é”™è¯¯ä¿¡æ¯:2
+2017-01-04 14:36:51.596 ReactiveCocoaè¿›é˜¶[2443:667226] æ”¶åˆ°é”™è¯¯ä¿¡æ¯:3
+2017-01-04 14:36:51.596 ReactiveCocoaè¿›é˜¶[2443:667226] æ”¶åˆ°é”™è¯¯ä¿¡æ¯:4
+2017-01-04 14:36:51.596 ReactiveCocoaè¿›é˜¶[2443:667226] Hello
 
 	```
 
 ###### replay
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	ÖØ·Å£ºµ±Ò»¸öÐÅºÅ±»¶à´Î¶©ÔÄ,·´¸´²¥·ÅÄÚÈÝ
+	é‡æ”¾ï¼šå½“ä¸€ä¸ªä¿¡å·è¢«å¤šæ¬¡è®¢é˜…,åå¤æ’­æ”¾å†…å®¹
 	
 	```
 	RACSignal *signal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -1001,24 +1001,24 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         NSLog(@"%@", x);
     }];
     
-    // Êä³ö
-2017-01-04 14:51:01.934 ReactiveCocoa½ø½×[2544:706740] 1
-2017-01-04 14:51:01.934 ReactiveCocoa½ø½×[2544:706740] 2
-2017-01-04 14:51:01.934 ReactiveCocoa½ø½×[2544:706740] 1
-2017-01-04 14:51:01.935 ReactiveCocoa½ø½×[2544:706740] 2
+    // è¾“å‡º
+2017-01-04 14:51:01.934 ReactiveCocoaè¿›é˜¶[2544:706740] 1
+2017-01-04 14:51:01.934 ReactiveCocoaè¿›é˜¶[2544:706740] 2
+2017-01-04 14:51:01.934 ReactiveCocoaè¿›é˜¶[2544:706740] 1
+2017-01-04 14:51:01.935 ReactiveCocoaè¿›é˜¶[2544:706740] 2
 	```
 
 
 ###### throttle
 
-- **×÷ÓÃ**
+- **ä½œç”¨**
 
-	½ÚÁ÷:µ±Ä³¸öÐÅºÅ·¢ËÍ±È½ÏÆµ·±Ê±£¬¿ÉÒÔÊ¹ÓÃ½ÚÁ÷£¬ÔÚÄ³Ò»¶ÎÊ±¼ä²»·¢ËÍÐÅºÅÄÚÈÝ£¬¹ýÁËÒ»¶ÎÊ±¼ä»ñÈ¡ÐÅºÅµÄ×îÐÂÄÚÈÝ·¢³ö¡£
+	èŠ‚æµ:å½“æŸä¸ªä¿¡å·å‘é€æ¯”è¾ƒé¢‘ç¹æ—¶ï¼Œå¯ä»¥ä½¿ç”¨èŠ‚æµï¼Œåœ¨æŸä¸€æ®µæ—¶é—´ä¸å‘é€ä¿¡å·å†…å®¹ï¼Œè¿‡äº†ä¸€æ®µæ—¶é—´èŽ·å–ä¿¡å·çš„æœ€æ–°å†…å®¹å‘å‡ºã€‚
 	
 	```
 	RACSubject *subject = [RACSubject subject];
     
-    // ½ÚÁ÷1Ãë£¬1Ãëºó½ÓÊÕ×îºóÒ»¸ö·¢ËÍµÄÐÅºÅ
+    // èŠ‚æµ1ç§’ï¼Œ1ç§’åŽæŽ¥æ”¶æœ€åŽä¸€ä¸ªå‘é€çš„ä¿¡å·
     [[subject throttle:1] subscribeNext:^(id x) {
         
         NSLog(@"%@", x);
@@ -1028,70 +1028,70 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
     [subject sendNext:@2];
     [subject sendNext:@3];
     
-    // Êä³ö
-    2017-01-04 15:02:37.543 ReactiveCocoa½ø½×[2731:758193] 3
+    // è¾“å‡º
+    2017-01-04 15:02:37.543 ReactiveCocoaè¿›é˜¶[2731:758193] 3
 	```
 
-# MVVM¼Ü¹¹Ë¼Ïë
+# MVVMæž¶æž„æ€æƒ³
 ---
-³ÌÐòÎªÊ²Ã´ÒªÓÐ¼Ü¹¹£¿±ãÓÚ³ÌÐò¿ª·¢ÓëÎ¬»¤.
+ç¨‹åºä¸ºä»€ä¹ˆè¦æœ‰æž¶æž„ï¼Ÿä¾¿äºŽç¨‹åºå¼€å‘ä¸Žç»´æŠ¤.
 
-#### ³£¼ûµÄ¼Ü¹¹
+#### å¸¸è§çš„æž¶æž„
 - **MVC**
 
-	M:Ä£ÐÍ V:ÊÓÍ¼ C:¿ØÖÆÆ÷
+	M:æ¨¡åž‹ V:è§†å›¾ C:æŽ§åˆ¶å™¨
 
 - **MVVM**
 
-	M:Ä£ÐÍ V:ÊÓÍ¼+¿ØÖÆÆ÷ VM:ÊÓÍ¼Ä£ÐÍ
+	M:æ¨¡åž‹ V:è§†å›¾+æŽ§åˆ¶å™¨ VM:è§†å›¾æ¨¡åž‹
 
 - **MVCS**
 
-	 M:Ä£ÐÍ V:ÊÓÍ¼ C:¿ØÖÆÆ÷ C:·þÎñÀà
+	 M:æ¨¡åž‹ V:è§†å›¾ C:æŽ§åˆ¶å™¨ C:æœåŠ¡ç±»
 
 - [**VIPER**](http://www.cocoachina.com/ios/20140703/9016.html)
 
-	V:ÊÓÍ¼ I:½»»¥Æ÷ P:Õ¹Ê¾Æ÷ E:ÊµÌå R:Â·ÓÉ
+	V:è§†å›¾ I:äº¤äº’å™¨ P:å±•ç¤ºå™¨ E:å®žä½“ R:è·¯ç”±
 
-#### MVVM½éÉÜ
+#### MVVMä»‹ç»
 
-- Ä£ÐÍ(M):±£´æÊÓÍ¼Êý¾Ý¡£
+- æ¨¡åž‹(M):ä¿å­˜è§†å›¾æ•°æ®ã€‚
 
-- ÊÓÍ¼+¿ØÖÆÆ÷(V):Õ¹Ê¾ÄÚÈÝ + ÈçºÎÕ¹Ê¾
+- è§†å›¾+æŽ§åˆ¶å™¨(V):å±•ç¤ºå†…å®¹ + å¦‚ä½•å±•ç¤º
 
-- ÊÓÍ¼Ä£ÐÍ(VM):´¦ÀíÕ¹Ê¾µÄÒµÎñÂß¼­£¬°üÀ¨°´Å¥µÄµã»÷£¬Êý¾ÝµÄÇëÇóºÍ½âÎöµÈµÈ¡£
+- è§†å›¾æ¨¡åž‹(VM):å¤„ç†å±•ç¤ºçš„ä¸šåŠ¡é€»è¾‘ï¼ŒåŒ…æ‹¬æŒ‰é’®çš„ç‚¹å‡»ï¼Œæ•°æ®çš„è¯·æ±‚å’Œè§£æžç­‰ç­‰ã€‚
 
-# ÊµÕ½Ò»£ºµÇÂ¼½çÃæ
+# å®žæˆ˜ä¸€ï¼šç™»å½•ç•Œé¢
 
-#### ÐèÇó
-1. ¼àÌýÁ½¸öÎÄ±¾¿òµÄÄÚÈÝ
-2. ÓÐÄÚÈÝµÇÂ¼°´¼ü²ÅÔÊÐí°´Å¥µã»÷
-3. ·µ»ØµÇÂ¼½á¹û
+#### éœ€æ±‚
+1. ç›‘å¬ä¸¤ä¸ªæ–‡æœ¬æ¡†çš„å†…å®¹
+2. æœ‰å†…å®¹ç™»å½•æŒ‰é”®æ‰å…è®¸æŒ‰é’®ç‚¹å‡»
+3. è¿”å›žç™»å½•ç»“æžœ
 
-#### ·ÖÎö
-1. ½çÃæµÄËùÓÐÒµÎñÂß¼­¶¼½»¸ø¿ØÖÆÆ÷×ö´¦Àí
-2. ÔÚMVVM¼Ü¹¹ÖÐ°Ñ¿ØÖÆÆ÷µÄÒµÎñÈ«²¿°áÈ¥VMÄ£ÐÍ£¬Ò²¾ÍÊÇÃ¿¸ö¿ØÖÆÆ÷¶ÔÓ¦Ò»¸öVMÄ£ÐÍ.
+#### åˆ†æž
+1. ç•Œé¢çš„æ‰€æœ‰ä¸šåŠ¡é€»è¾‘éƒ½äº¤ç»™æŽ§åˆ¶å™¨åšå¤„ç†
+2. åœ¨MVVMæž¶æž„ä¸­æŠŠæŽ§åˆ¶å™¨çš„ä¸šåŠ¡å…¨éƒ¨æ¬åŽ»VMæ¨¡åž‹ï¼Œä¹Ÿå°±æ˜¯æ¯ä¸ªæŽ§åˆ¶å™¨å¯¹åº”ä¸€ä¸ªVMæ¨¡åž‹.
 
-#### ²½Öè
-1. ´´½¨LoginViewModelÀà£¬´¦ÀíµÇÂ¼½çÃæÒµÎñÂß¼­.
-2. Õâ¸öÀàÀïÃæÓ¦¸Ã±£´æ×ÅÕËºÅµÄÐÅÏ¢£¬´´½¨Ò»¸öÕËºÅAccountÄ£ÐÍ
-3. LoginViewModelÓ¦¸Ã±£´æ×ÅÕËºÅÐÅÏ¢AccountÄ£ÐÍ¡£
-4. ÐèÒªÊ±¿Ì¼àÌýAccountÄ£ÐÍÖÐµÄÕËºÅºÍÃÜÂëµÄ¸Ä±ä£¬ÔõÃ´¼àÌý£¿
-5. ÔÚ·ÇRAC¿ª·¢ÖÐ£¬¶¼ÊÇÏ°¹ß¸³Öµ£¬ÔÚRAC¿ª·¢ÖÐ£¬ÐèÒª¸Ä±ä¿ª·¢Ë¼Î¬£¬ÓÉ¸³Öµ×ª±äÎª°ó¶¨£¬¿ÉÒÔÔÚÒ»¿ªÊ¼³õÊ¼»¯µÄÊ±ºò£¬¾Í¸øAccountÄ£ÐÍÖÐµÄÊôÐÔ°ó¶¨£¬²¢²»ÐèÒªÖØÐ´set·½·¨¡£
-6. Ã¿´ÎAccountÄ£ÐÍµÄÖµ¸Ä±ä£¬¾ÍÐèÒªÅÐ¶Ï°´Å¥ÄÜ·ñµã»÷£¬ÔÚVMÄ£ÐÍÖÐ×ö´¦Àí£¬¸øÍâ½çÌá¹©Ò»¸öÄÜ·ñµã»÷°´Å¥µÄÐÅºÅ.
-7. Õâ¸öµÇÂ¼ÐÅºÅÐèÒªÅÐ¶ÏAccountÖÐÕËºÅºÍÃÜÂëÊÇ·ñÓÐÖµ£¬ÓÃKVO¼àÌýÕâÁ½¸öÖµµÄ¸Ä±ä£¬°ÑËûÃÇ¾ÛºÏ³ÉµÇÂ¼ÐÅºÅ.
-8. ¼àÌý°´Å¥µÄµã»÷£¬ÓÉVM´¦Àí£¬Ó¦¸Ã¸øVMÉùÃ÷Ò»¸öRACCommand£¬×¨ÃÅ´¦ÀíµÇÂ¼ÒµÎñÂß¼­.
-9. Ö´ÐÐÃüÁî£¬°ÑÊý¾Ý°ü×°³ÉÐÅºÅ´«µÝ³öÈ¥
-10. ¼àÌýÃüÁîÖÐÐÅºÅµÄÊý¾Ý´«µÝ
-11. ¼àÌýÃüÁîµÄÖ´ÐÐÊ±¿Ì
+#### æ­¥éª¤
+1. åˆ›å»ºLoginViewModelç±»ï¼Œå¤„ç†ç™»å½•ç•Œé¢ä¸šåŠ¡é€»è¾‘.
+2. è¿™ä¸ªç±»é‡Œé¢åº”è¯¥ä¿å­˜ç€è´¦å·çš„ä¿¡æ¯ï¼Œåˆ›å»ºä¸€ä¸ªè´¦å·Accountæ¨¡åž‹
+3. LoginViewModelåº”è¯¥ä¿å­˜ç€è´¦å·ä¿¡æ¯Accountæ¨¡åž‹ã€‚
+4. éœ€è¦æ—¶åˆ»ç›‘å¬Accountæ¨¡åž‹ä¸­çš„è´¦å·å’Œå¯†ç çš„æ”¹å˜ï¼Œæ€Žä¹ˆç›‘å¬ï¼Ÿ
+5. åœ¨éžRACå¼€å‘ä¸­ï¼Œéƒ½æ˜¯ä¹ æƒ¯èµ‹å€¼ï¼Œåœ¨RACå¼€å‘ä¸­ï¼Œéœ€è¦æ”¹å˜å¼€å‘æ€ç»´ï¼Œç”±èµ‹å€¼è½¬å˜ä¸ºç»‘å®šï¼Œå¯ä»¥åœ¨ä¸€å¼€å§‹åˆå§‹åŒ–çš„æ—¶å€™ï¼Œå°±ç»™Accountæ¨¡åž‹ä¸­çš„å±žæ€§ç»‘å®šï¼Œå¹¶ä¸éœ€è¦é‡å†™setæ–¹æ³•ã€‚
+6. æ¯æ¬¡Accountæ¨¡åž‹çš„å€¼æ”¹å˜ï¼Œå°±éœ€è¦åˆ¤æ–­æŒ‰é’®èƒ½å¦ç‚¹å‡»ï¼Œåœ¨VMæ¨¡åž‹ä¸­åšå¤„ç†ï¼Œç»™å¤–ç•Œæä¾›ä¸€ä¸ªèƒ½å¦ç‚¹å‡»æŒ‰é’®çš„ä¿¡å·.
+7. è¿™ä¸ªç™»å½•ä¿¡å·éœ€è¦åˆ¤æ–­Accountä¸­è´¦å·å’Œå¯†ç æ˜¯å¦æœ‰å€¼ï¼Œç”¨KVOç›‘å¬è¿™ä¸¤ä¸ªå€¼çš„æ”¹å˜ï¼ŒæŠŠä»–ä»¬èšåˆæˆç™»å½•ä¿¡å·.
+8. ç›‘å¬æŒ‰é’®çš„ç‚¹å‡»ï¼Œç”±VMå¤„ç†ï¼Œåº”è¯¥ç»™VMå£°æ˜Žä¸€ä¸ªRACCommandï¼Œä¸“é—¨å¤„ç†ç™»å½•ä¸šåŠ¡é€»è¾‘.
+9. æ‰§è¡Œå‘½ä»¤ï¼ŒæŠŠæ•°æ®åŒ…è£…æˆä¿¡å·ä¼ é€’å‡ºåŽ»
+10. ç›‘å¬å‘½ä»¤ä¸­ä¿¡å·çš„æ•°æ®ä¼ é€’
+11. ç›‘å¬å‘½ä»¤çš„æ‰§è¡Œæ—¶åˆ»
 
 
 
-#### ÔËÐÐÐ§¹û
+#### è¿è¡Œæ•ˆæžœ
 
-![µÇÂ¼½çÃæ](https://ww3.sinaimg.cn/large/006y8lVagw1fbgvoh8yu6j30bj0l43yz.jpg)
+![ç™»å½•ç•Œé¢](https://ww3.sinaimg.cn/large/006y8lVagw1fbgvoh8yu6j30bj0l43yz.jpg)
 
-#### ´úÂë
+#### ä»£ç 
 
 `MyViewController.m`
 
@@ -1127,17 +1127,17 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 
 
-// ÊÓÍ¼Ä£ÐÍ°ó¶¨
+// è§†å›¾æ¨¡åž‹ç»‘å®š
 - (void)bindModel {
 
-    // ¸øÄ£ÐÍµÄÊôÐÔ°ó¶¨ÐÅºÅ
+    // ç»™æ¨¡åž‹çš„å±žæ€§ç»‘å®šä¿¡å·
     //
     RAC(self.loginViewModel.account, account) = _accountField.rac_textSignal;
     RAC(self.loginViewModel.account, pwd) = _pwdField.rac_textSignal;
     
     RAC(self.loginBtn, enabled) = self.loginViewModel.enableLoginSignal;
     
-    // ¼àÌýµÇÂ¼µã»÷
+    // ç›‘å¬ç™»å½•ç‚¹å‡»
     [[_loginBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         
         [self.loginViewModel.LoginCommand execute:nil];
@@ -1178,7 +1178,7 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 @property (nonatomic, strong) Account *account;
 
-// ÊÇ·ñÔÊÐíµÇÂ¼µÄÐÅºÅ
+// æ˜¯å¦å…è®¸ç™»å½•çš„ä¿¡å·
 @property (nonatomic, strong, readonly) RACSignal *enableLoginSignal;
 
 @property (nonatomic, strong, readonly) RACCommand *LoginCommand;
@@ -1213,24 +1213,24 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 - (void)initialBind {
 
-    // ¼àÌýÕËºÅÊôÐÔ¸Ä±ä£¬ °ÑËûÃÇºÏ³ÉÒ»¸öÐÅºÅ
+    // ç›‘å¬è´¦å·å±žæ€§æ”¹å˜ï¼Œ æŠŠä»–ä»¬åˆæˆä¸€ä¸ªä¿¡å·
     _enableLoginSignal = [RACSubject combineLatest:@[RACObserve(self.account, account), RACObserve(self.account, pwd)] reduce:^id(NSString *accout, NSString *pwd){
         
         return @(accout.length && pwd.length);
     }];
     
-    // ´¦ÀíÒµÎñÂß¼­
+    // å¤„ç†ä¸šåŠ¡é€»è¾‘
     _LoginCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         
-        NSLog(@"µã»÷ÁËµÇÂ¼");
+        NSLog(@"ç‚¹å‡»äº†ç™»å½•");
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             
-            // Ä£·ÂÍøÂçÑÓ³Ù
+            // æ¨¡ä»¿ç½‘ç»œå»¶è¿Ÿ
 
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
-                // ·µ»ØµÇÂ¼³É¹¦ ·¢ËÍ³É¹¦ÐÅºÅ
-                [subscriber sendNext:@"µÇÂ¼³É¹¦"];
+                // è¿”å›žç™»å½•æˆåŠŸ å‘é€æˆåŠŸä¿¡å·
+                [subscriber sendNext:@"ç™»å½•æˆåŠŸ"];
             });
             
             return nil;
@@ -1238,11 +1238,11 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
     }];
     
     
-    // ¼àÌýµÇÂ¼²úÉúµÄÊý¾Ý
+    // ç›‘å¬ç™»å½•äº§ç”Ÿçš„æ•°æ®
     [_LoginCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
        
-        if ([x isEqualToString:@"µÇÂ¼³É¹¦"]) {
-            NSLog(@"µÇÂ¼³É¹¦");
+        if ([x isEqualToString:@"ç™»å½•æˆåŠŸ"]) {
+            NSLog(@"ç™»å½•æˆåŠŸ");
         }
         
     }];
@@ -1251,11 +1251,11 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
         
         if ([x isEqualToNumber:@(YES)]) {
             
-            NSLog(@"ÕýÔÚµÇÂ½...");
+            NSLog(@"æ­£åœ¨ç™»é™†...");
         } else {
             
-        // µÇÂ¼³É¹¦
-        NSLog(@"µÇÂ½³É¹¦");
+        // ç™»å½•æˆåŠŸ
+        NSLog(@"ç™»é™†æˆåŠŸ");
         
         }
         
@@ -1281,31 +1281,31 @@ HookÔ­Àí£ºÔÚÃ¿´Îµ÷ÓÃÒ»¸öAPI·µ»Ø½á¹ûÖ®Ç°£¬ÏÈÖ´ÐÐÄã×Ô¼ºµÄ·½·¨£¬¸Ä±ä½á¹ûµÄÊä³ö¡£
 
 ```
 
-# ÊµÕ½¶þ£ºÍøÂçÇëÇóÊý¾Ý
+# å®žæˆ˜äºŒï¼šç½‘ç»œè¯·æ±‚æ•°æ®
 
-#### ÐèÇó
-1. ÇëÇóÒ»¶ÎÍøÂçÊý¾Ý£¬½«ÇëÇóµ½µÄÊý¾ÝÔÚ`tableView`ÉÏÕ¹Ê¾
-2. ¸ÃÊý¾ÝÎª¶¹°êÍ¼ÊéµÄËÑË÷·µ»Ø½á¹û£¬URL£ºurl:https://api.douban.com/v2/book/search?q=Îò¿Õ´«
+#### éœ€æ±‚
+1. è¯·æ±‚ä¸€æ®µç½‘ç»œæ•°æ®ï¼Œå°†è¯·æ±‚åˆ°çš„æ•°æ®åœ¨`tableView`ä¸Šå±•ç¤º
+2. è¯¥æ•°æ®ä¸ºè±†ç“£å›¾ä¹¦çš„æœç´¢è¿”å›žç»“æžœï¼ŒURLï¼šurl:https://api.douban.com/v2/book/search?q=æ‚Ÿç©ºä¼ 
 
-#### ·ÖÎö
-1. ½çÃæµÄËùÓÐÒµÎñÂß¼­¶¼½»¸ø**¿ØÖÆÆ÷**×ö´¦Àí
-2. ÍøÂçÇëÇó½»¸ø**MV**Ä£ÐÍ´¦Àí
+#### åˆ†æž
+1. ç•Œé¢çš„æ‰€æœ‰ä¸šåŠ¡é€»è¾‘éƒ½äº¤ç»™**æŽ§åˆ¶å™¨**åšå¤„ç†
+2. ç½‘ç»œè¯·æ±‚äº¤ç»™**MV**æ¨¡åž‹å¤„ç†
 
-#### ²½Öè
+#### æ­¥éª¤
 
-1. ¿ØÖÆÆ÷Ìá¹©Ò»¸öÊÓÍ¼Ä£ÐÍ£¨requesViewModel£©£¬´¦Àí½çÃæµÄÒµÎñÂß¼­
-2. VMÌá¹©Ò»¸öÃüÁî£¬´¦ÀíÇëÇóÒµÎñÂß¼­
-3. ÔÚ´´½¨ÃüÁîµÄblockÖÐ£¬»á°ÑÇëÇó°ü×°³ÉÒ»¸öÐÅºÅ£¬µÈÇëÇó³É¹¦µÄÊ±ºò£¬¾Í»á°ÑÊý¾Ý´«µÝ³öÈ¥¡£
-4. ÇëÇóÊý¾Ý³É¹¦£¬Ó¦¸Ã°Ñ×Öµä×ª»»³ÉÄ£ÐÍ£¬±£´æµ½ÊÓÍ¼Ä£ÐÍÖÐ£¬¿ØÖÆÆ÷ÏëÓÃ¾ÍÖ±½Ó´ÓÊÓÍ¼Ä£ÐÍÖÐ»ñÈ¡¡£
+1. æŽ§åˆ¶å™¨æä¾›ä¸€ä¸ªè§†å›¾æ¨¡åž‹ï¼ˆrequesViewModelï¼‰ï¼Œå¤„ç†ç•Œé¢çš„ä¸šåŠ¡é€»è¾‘
+2. VMæä¾›ä¸€ä¸ªå‘½ä»¤ï¼Œå¤„ç†è¯·æ±‚ä¸šåŠ¡é€»è¾‘
+3. åœ¨åˆ›å»ºå‘½ä»¤çš„blockä¸­ï¼Œä¼šæŠŠè¯·æ±‚åŒ…è£…æˆä¸€ä¸ªä¿¡å·ï¼Œç­‰è¯·æ±‚æˆåŠŸçš„æ—¶å€™ï¼Œå°±ä¼šæŠŠæ•°æ®ä¼ é€’å‡ºåŽ»ã€‚
+4. è¯·æ±‚æ•°æ®æˆåŠŸï¼Œåº”è¯¥æŠŠå­—å…¸è½¬æ¢æˆæ¨¡åž‹ï¼Œä¿å­˜åˆ°è§†å›¾æ¨¡åž‹ä¸­ï¼ŒæŽ§åˆ¶å™¨æƒ³ç”¨å°±ç›´æŽ¥ä»Žè§†å›¾æ¨¡åž‹ä¸­èŽ·å–ã€‚
 
-#### ÆäËû
+#### å…¶ä»–
 
-ÍøÂçÇëÇóÓëÍ¼Æ¬»º´æÓÃµ½ÁË[AFNetworking](https://github.com/AFNetworking/AFNetworking) ºÍ [SDWebImage](https://github.com/rs/SDWebImage),×ÔÐÐÔÚPodsÖÐµ¼Èë¡£
+ç½‘ç»œè¯·æ±‚ä¸Žå›¾ç‰‡ç¼“å­˜ç”¨åˆ°äº†[AFNetworking](https://github.com/AFNetworking/AFNetworking) å’Œ [SDWebImage](https://github.com/rs/SDWebImage),è‡ªè¡Œåœ¨Podsä¸­å¯¼å…¥ã€‚
 
 ```
 platform :ios, '8.0'
 
-target 'ReactiveCocoa½ø½×' do
+target 'ReactiveCocoaè¿›é˜¶' do
 
 use_frameworks!
 pod 'ReactiveCocoa', '~> 2.5'
@@ -1314,12 +1314,12 @@ pod 'SDWebImage'
 end
 ```
 
-#### ÔËÐÐÐ§¹û
+#### è¿è¡Œæ•ˆæžœ
 
 ![](https://ww3.sinaimg.cn/large/006y8lVagw1fbgw1xnz74j30bj0l4408.jpg)
 
 
-#### ´úÂë
+#### ä»£ç 
 
 `SearchViewController.m`
 
@@ -1412,10 +1412,10 @@ end
 
 @interface RequestViewModel : NSObject
 
-// ÇëÇóÃüÁî
+// è¯·æ±‚å‘½ä»¤
 @property (nonatomic, strong, readonly) RACCommand *reuqesCommand;
 
-//Ä£ÐÍÊý×é
+//æ¨¡åž‹æ•°ç»„
 @property (nonatomic, strong) NSArray *models;
 
 
@@ -1468,7 +1468,7 @@ end
       RACSignal *requestSiganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
           
           NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-          parameters[@"q"] = @"Îò¿Õ´«";
+          parameters[@"q"] = @"æ‚Ÿç©ºä¼ ";
           
           //
           [[AFHTTPSessionManager manager] GET:@"https://api.douban.com/v2/book/search" parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -1476,7 +1476,7 @@ end
               NSLog(@"downloadProgress: %@", downloadProgress);
           } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               
-              // Êý¾ÝÇëÇó³É¹¦¾Í½²Êý¾Ý·¢ËÍ³öÈ¥
+              // æ•°æ®è¯·æ±‚æˆåŠŸå°±è®²æ•°æ®å‘é€å‡ºåŽ»
               NSLog(@"responseObject:%@", responseObject);
               
               [subscriber sendNext:responseObject];
@@ -1492,7 +1492,7 @@ end
          return nil;
       }];
         
-        // ÔÚ·µ»ØÊý¾ÝÐÅºÅÊ±£¬°ÑÊý¾ÝÖÐµÄ×ÖµäÓ³Éä³ÉÄ£ÐÍÐÅºÅ£¬´«µÝ³öÈ¥
+        // åœ¨è¿”å›žæ•°æ®ä¿¡å·æ—¶ï¼ŒæŠŠæ•°æ®ä¸­çš„å­—å…¸æ˜ å°„æˆæ¨¡åž‹ä¿¡å·ï¼Œä¼ é€’å‡ºåŽ»
         return [requestSiganl map:^id(NSDictionary *value) {
             
             NSMutableArray *dictArr = value[@"books"];
@@ -1515,4 +1515,4 @@ end
 
 ```
 
->×îºó¸½ÉÏGitHub£º<https://github.com/qiubaiying/ReactiveCocoa_Demo>
+>æœ€åŽé™„ä¸ŠGitHubï¼š<https://github.com/qiubaiying/ReactiveCocoa_Demo>
