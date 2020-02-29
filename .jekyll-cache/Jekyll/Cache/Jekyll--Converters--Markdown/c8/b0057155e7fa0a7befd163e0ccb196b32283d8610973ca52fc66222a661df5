@@ -1,0 +1,61 @@
+I"	<h1 id="矩阵求导">矩阵求导</h1>
+
+<hr />
+
+<h3 id="前言">前言</h3>
+
+<p>对向量求梯度在学电磁场的时候碰到过，矩阵求导也在神经网络的反向传播里碰到，之前一直没有搞清楚，这次好好整理一下矩阵求导的规则。</p>
+
+<h3 id="1布局约定layout-conventions">1.布局约定(Layout conventions)</h3>
+
+<ul>
+  <li>
+    <p>布局约定有分子布局(Numerator layout)和分母布局(Denominator layout)。</p>
+  </li>
+  <li>
+    <p>分子布局如下：</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><script type="math/tex">\frac{\partial y}{\partial \mathbf{x}}</script>为行向量，<script type="math/tex">\frac{\partial \mathbf{y}}{\partial x}</script>为列向量</p>
+</blockquote>
+
+<ul>
+  <li>分母布局如下：</li>
+</ul>
+
+<blockquote>
+  <p><script type="math/tex">\frac{\partial y}{\partial \mathbf{x}}</script>为列向量，<script type="math/tex">\frac{\partial \mathbf{y}}{\partial x}</script>为行向量</p>
+</blockquote>
+
+<p>wiki上还有写第三种情况，有兴趣的戳<a href="https://en.wikipedia.org/wiki/Matrix_calculus#Other_matrix_derivatives">wiki</a>。</p>
+
+<h3 id="2矩阵求导">2.矩阵求导</h3>
+
+<ul>
+  <li>该篇文章使用分子布局。</li>
+</ul>
+
+<p>若<script type="math/tex">\mathbf{y}=[y_1\quad y_2\quad ...\quad y_m]^T,x</script>为标量，则有</p>
+
+<blockquote>
+  <script type="math/tex; mode=display">\quad \frac{\partial \mathbf{y}}{\partial x}=[\frac{\partial {y_1}}{\partial x}\quad \frac{\partial {y_2}}{\partial x}\quad ... \frac{\partial {y_m}}{\partial x}]^T</script>
+</blockquote>
+
+<p>若<script type="math/tex">\mathbf{x}=[x_1\quad x_2\quad ...\quad x_n]^T,y</script>为标量，则有</p>
+
+<blockquote>
+  <script type="math/tex; mode=display">\quad \frac{\partial y}{\partial \mathbf{x}}=[\frac{\partial y}{\partial {x_1}}\quad \frac{\partial y}{\partial {x_2}}\quad ... \frac{\partial y}{\partial {x_n}}]</script>
+</blockquote>
+
+<hr />
+
+<h3 id="参考文章">参考文章</h3>
+<p><a href="https://en.wikipedia.org/wiki/Matrix_calculus#Other_matrix_derivatives">维基百科 Matrix calculus</a></p>
+
+<p><a href="https://blog.csdn.net/u010976453/article/details/54381248">机器学习中的线性代数之矩阵求导</a></p>
+
+<p><a href="https://www.cnblogs.com/crackpotisback/p/5545708.html">矩阵的导数与迹</a></p>
+
+:ET
