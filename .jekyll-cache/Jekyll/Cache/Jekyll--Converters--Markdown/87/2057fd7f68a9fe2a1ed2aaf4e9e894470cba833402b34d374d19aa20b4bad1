@@ -1,0 +1,42 @@
+I"�	<h2 id="前言">前言</h2>
+
+<ul>
+  <li>
+    <p>非常感谢<a href="https://github.com/qiubaiying/qiubaiying.github.io">github@qiubaiying</a>的博客项目，之前有过几次想弄博客都卡在了域名备案，买国外服务器又觉得太贵，这个项目用github的免费服务器搭博客，不用备案域名，还非常方便快捷，直接进上面的链接按照步骤很快就能搭好自己的博客。</p>
+  </li>
+  <li>
+    <p>上面的链接只是搭建基础，还有很多扩展功能，我找到了另一位使用这个项目的博主<a href="http://a-suozhang.xyz/">A_Suozhang’s Blog</a>，他在文章<a href="http://a-suozhang.xyz/2019/09/09/Set-Up-Blog/">建立博客的过程</a>中提到了图床、压缩图片、本地调试、数学公式、Gittalk评论功能的实现方式。其中本地调试和数学公式感觉尤为重要，本地调试可以让你修改一部分就刷新一下看看网页的预览效果，而不用上传到云端等刷新，数学公式就不用说了。</p>
+  </li>
+</ul>
+
+<h2 id="遇到的一些问题">遇到的一些问题</h2>
+
+<ul>
+  <li>
+    <p>我在按照上面的教程增加数学公式的支持后，每篇文章突然出现了一个滚动条，我右键滚动条审查元素可以找到滚动条对应文件是css目录下的hux-blog.min.css，在文件中找到</p>
+
+    <p><code class="highlighter-rouge">article{overflow-x:hidden;}</code></p>
+
+    <p>改成</p>
+
+    <p><code class="highlighter-rouge">article{overflow-x:hidden;overflow-y:hidden;}</code></p>
+
+    <p>问题解决。</p>
+  </li>
+  <li>
+    <p>在ubuntu下本地调试很顺利，然鹅在windows本地调试的时候，博客首页一直加载不出来文章，解决一些运行<code class="highlighter-rouge">jekyll s</code>的警告之后剩一个</p>
+    <blockquote>
+      <p>Deprecation: You appear to have pagination turned on,but you haven’t included the ‘jekyll-paginate’ gem.Ensure you have ‘plugins: [jekyll-paginate]’ in your configuration file.</p>
+    </blockquote>
+
+    <p>为此尝试了网上能普遍说可以的几个方法都没有用，最后放弃了。如果想要预览可以直接在网站后面加后缀，或者在<code class="highlighter-rouge">TAG</code>页面进行访问。</p>
+  </li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://github.com/qiubaiying/qiubaiying.github.io">github@qiubaiying</a></p>
+
+<p><a href="http://a-suozhang.xyz/2019/09/09/Set-Up-Blog/">建立博客的过程</a></p>
+
+:ET
