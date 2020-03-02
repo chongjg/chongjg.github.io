@@ -124,7 +124,7 @@ $$P(x)=\sum_{i}P(c=i)P(x\vert c=i)$$
 ## 第四章 数值计算
 
 #### 1.上溢和下溢
-* 当接近零的数被四舍五入为零时发生下溢。当大量级的数被近似为∞或-∞时发生上溢。
+* 当接近零的数被四舍五入为零时发生下溢。当大量级的数被近似为$$\infty$$或$$-\infty$$时发生上溢。
 * 在进行底层库开发时必须要考虑这些问题。
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-19.png)
