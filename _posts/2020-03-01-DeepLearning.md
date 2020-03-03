@@ -11,7 +11,7 @@ tags:                               #标签
     - 机器学习
 ---
 
-（图片截自《DeepLearning》中文版）
+（所有截图及部分文字出自《DeepLearning》中文版）
 
 ## 第一章 引言
 
@@ -36,14 +36,14 @@ tags:                               #标签
 
 $$\mathbf A \cdot \vec a=\vec b$$
 
-* 则矩阵$$\mathbf A$$的特征向量就可以理解为：线性变换$$\mathbf A$$只会使其进行缩放。
+* 则矩阵$$\mathbf A$$的**特征向量**就可以理解为：线性变换$$\mathbf A$$只会使其进行缩放。
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-5.png)
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-6.png)
 
 #### 3.奇异值分解
 
-* $$\mathbf A$$的奇异向量、奇异值与$$\mathbf A\mathbf A^T,\mathbf A^T\mathbf A$$的特征向量、特征值之间的关系推导：
+* $$\mathbf A$$的**奇异向量**、**奇异值**与$$\mathbf A\mathbf A^T,\mathbf A^T\mathbf A$$的**特征向量**、**特征值**之间的关系推导：
 
 $$\mathbf A=\mathbf{UDV}^T$$
 
@@ -70,7 +70,7 @@ $$\mathbf D^T\mathbf D=diag(\lambda')$$
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-11.png)
 
 #### 6.主成分分析
-* 主成分分析可以将数据降维，比如将有$$n$$个变量的数据只用$$m$$个变量来表示且使其尽量不丢失信息（这是因为有的变量之间是相关的）
+* **主成分分析**可以将数据降维，比如将有$$n$$个变量的数据只用$$m$$个变量来表示且使其尽量不丢失信息（这是因为有的变量之间是相关的）
 
 * 同样可以理解为一种精度损失较小的压缩方式，通过编码和解码进行转换。
 
@@ -96,16 +96,16 @@ $$g(f(\vec x^{(i)}))=\mathbf D\vec c^{(i)}$$
 
 #### 概念
 
-* 可数无限多：无限多个，但是可以与自然数一一对应
-* 在给定随机变量$$Z$$后，若两个随机变量$$X$$和$$Y$$是独立的，则称$$X$$和$$Y$$在给定$$Z$$时是条件独立的。
-* 协方差在某种意义上给出了两个变量线性相关性的强度以及这些变量的尺度：
+* **可数无限多**：无限多个，但是可以与自然数一一对应
+* 在给定随机变量$$Z$$后，若两个随机变量$$X$$和$$Y$$是独立的，则称$$X$$和$$Y$$在给定$$Z$$时是**条件独立**的。
+* **协方差**在某种意义上给出了两个变量线性相关性的强度以及这些变量的尺度：
 
 $$Cov\big(f(x),g(y)\big)=E\bigg[\Big(f(x)-E\big[f(x)\big])\cdot \Big(g(y)-E\big[g(y)\big]\Big)\bigg]$$
 
 * 若协方差绝对值很大，则变量变化很大且同时距离各自均值的位置很远，若为正则说明倾向于同时大于或同时小于均值，若为负则说明倾向于一个大于均值另一个小于均值。
 两个变量如果独立，协方差一定为零。
 两个变量如果协方差为零，它们之间一定没有线性关系。
-* 中心极限定理：无穷个独立随机变量的和服从正态分布
+* **中心极限定理**：无穷个独立随机变量的和服从正态分布
 * 指数分布可以使$$x<0$$时概率为$$0$$
 
 $$p(x;\lambda)=\lambda \mathbf 1_{x\geq 0}\exp(-\lambda x)$$
@@ -119,12 +119,12 @@ $$Laplace(x;\mu;\gamma)=\frac{1}{2\gamma}\exp(-\frac{\vert x-\mu \vert}{\gamma})
 
 $$P(x)=\sum_{i}P(c=i)P(x\vert c=i)$$
 
-* 这里$$P(c=i)$$就是选择第$$i$$个分布的概率，$$P(x\vert c=i)$$就是第$$i$$个分布。一个非常强大且常见的混合模型是高斯混合模型（Gaussian Mixture Model）它的组件$$P(x\vert c=i)$$是高斯分布。
+* 这里$$P(c=i)$$就是选择第$$i$$个分布的概率，$$P(x\vert c=i)$$就是第$$i$$个分布。一个非常强大且常见的混合模型是**高斯混合模型（Gaussian Mixture Model）**它的组件$$P(x\vert c=i)$$是高斯分布。
 
 ## 第四章 数值计算
 
 #### 1.上溢和下溢
-* 当接近零的数被四舍五入为零时发生下溢。当大量级的数被近似为$$\infty$$或$$-\infty$$时发生上溢。
+* 当接近零的数被四舍五入为零时发生**下溢**。当大量级的数被近似为$$\infty$$或$$-\infty$$时发生**上溢**。
 * 在进行底层库开发时必须要考虑这些问题。
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-19.png)
@@ -141,7 +141,7 @@ $$P(x)=\sum_{i}P(c=i)P(x\vert c=i)$$
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-23.png)
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-24.png)
 
-* 单纯的梯度下降无法包含Hessian的曲率信息，可能出现如下情况，最陡峭的方向并不是最有前途的下降方向，如果考虑曲率，因为最陡峭的方向梯度减少得更快，所以会对方向有一定的校正作用。
+* 单纯的梯度下降无法包含**Hessian**的曲率信息，可能出现如下情况，最陡峭的方向并不是最有前途的下降方向，如果考虑曲率，因为最陡峭的方向梯度减少得更快，所以会对方向有一定的校正作用。
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-25.png)
 
@@ -178,4 +178,47 @@ $$P(x)=\sum_{i}P(c=i)P(x\vert c=i)$$
 
 #### 3.数据集表示：设计矩阵
 
+* 当每个数据格式一致时，一般一行表示一个数据
+
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-31.png)
+
+#### 4.估计和偏差
+
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-32.png)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-33.png)
+
+#### 5.逻辑回归
+
+* 本书的大部分监督学习算法都是基于估计概率分布$$p(y\vert \mathbf{x,\theta})$$的，算法的目的就是确定最好的参数$$\mathbf{\theta}$$
+
+* **逻辑回归**实际是用于分类而不是回归，实际是用sigmoid函数$$\sigma(x)=\frac{1}{1+\exp(-x)}$$将线性函数的输出压缩进区间$$(0,1)$$。并将其解释为概率：
+
+$$p(y=1\vert \mathbf{x;\theta})=\sigma(\mathbf{\theta}^T\mathbf x)$$
+
+* 逻辑回归需要最大化对数似然来搜索最优解，可以使用梯度下降的方法。
+
+#### 6.支持向量机
+
+* **支持向量机**基于线性函数$$\mathbf{w}^T\mathbf x+b$$，当$$\mathbf{w}^T\mathbf x+b$$为正时，预测属于正类；当$$\mathbf{w}^T\mathbf x+b$$为负时预测属于负类。
+
+* 支持向量机的**核技巧**，重写线性函数为：
+
+$$\mathbf{w}^T\mathbf x+b=b+\sum_{i=1}^m\alpha_i\mathbf x^T\mathbf x^{(i)}$$
+
+* 这里实际上就是通过$$\sum_{i=0}^m\alpha_i\mathbf x^{(i)}_k=\mathbf w_k$$把参数转化了一下。于是可以将$$\mathbf x$$替换为特征函数$$\phi(\mathbf x)$$，也可以将点积替换为**核函数**
+
+$$k(\mathbf x,\mathbf x^{(i)})=\phi(\mathbf x)\cdot\phi(\mathbf x^{(i)})$$
+
+* 运算符$$\cdot$$可以是真的点积，也可以是类似点积的运算。使用核估计替换点积之后，即使用下面函数进行预测：
+
+$$f(\mathbf x)=b+\sum_i\alpha_ik(\mathbf x,\mathbf x^{(i)})$$
+
+* 最常用的核函数是**高斯核**
+
+$$k(\mathbf u,\mathbf v)=N(\mathbf u-\mathbf v;\mathbf 0,\sigma^2I)$$
+
+* 其中$$N(x;\mathbf{\mu},\mathbf{\sum})$$是标准正态密度。这个核也被称为**径向基函数核**，因为其值沿$$v$$中从$$u$$向外辐射的方向减小。可以认为高斯核在执行一种**模板匹配**，训练标签$$y$$相对的训练样本$$\mathbf x$$变成了类别$$y$$的模板，当测试点$$\mathbf x'$$和模板$$\mathbf x$$的欧几里得距离很小，对应的高斯核相应很大，就说明$$\mathbf x'$$和模板$$\mathbf x$$非常相似。总的来说，预测将会组合很多这种通过训练样本相似度加权的训练标签。
+
+* 支持向量机不是唯一可以使用核技巧来增强的算法。
+
+* 判断新样本时，只需要计算非零$$\alpha_i$$对应的训练样本的核函数，这些训练样本被称为**支持向量**
