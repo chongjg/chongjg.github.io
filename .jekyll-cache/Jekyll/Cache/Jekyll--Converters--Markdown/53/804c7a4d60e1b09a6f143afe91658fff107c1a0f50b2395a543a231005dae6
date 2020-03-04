@@ -1,0 +1,301 @@
+I"%G<p>（所有截图及部分文字出自《DeepLearning》中文版）</p>
+
+<h2 id="第一章-引言">第一章 引言</h2>
+
+<h4 id="1数据的不同表示对算法可能有较大影响">1.数据的不同表示对算法可能有较大影响</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-1.png" alt="" /></p>
+
+<h4 id="2可通过表示学习的方法去寻找一种较好的表示方法特征而不是手动去找比如深度学习可以直接输入图片它自动找到最好的特征">2.可通过表示学习的方法去寻找一种较好的表示方法（特征），而不是手动去找，比如深度学习可以直接输入图片它自动找到最好的特征。</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-2.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-3.png" alt="" /></p>
+
+<h2 id="第二章-线性代数">第二章 线性代数</h2>
+
+<h4 id="1向量的l_0范数是向量的非零元素个数l_infty范数是向量元素绝对值的最大值">1.向量的<script type="math/tex">L_{0}</script>范数是向量的非零元素个数，<script type="math/tex">L_{\infty}</script>范数是向量元素绝对值的最大值。</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-4.png" alt="" /></p>
+
+<h4 id="2关于特征向量的理解">2.关于特征向量的理解</h4>
+
+<ul>
+  <li>矩阵可以看做是向量的线性变换，对于<script type="math/tex">n</script>维非零向量<script type="math/tex">\vec a,\vec b</script>，会存在线性变换（<script type="math/tex">n</script>阶方阵）<script type="math/tex">\mathbf A</script>满足</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathbf A \cdot \vec a=\vec b</script>
+
+<ul>
+  <li>则矩阵<script type="math/tex">\mathbf A</script>的<strong>特征向量</strong>就可以理解为：线性变换<script type="math/tex">\mathbf A</script>只会使其进行缩放。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-5.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-6.png" alt="" /></p>
+
+<h4 id="3奇异值分解">3.奇异值分解</h4>
+
+<ul>
+  <li><script type="math/tex">\mathbf A</script>的<strong>奇异向量</strong>、<strong>奇异值</strong>与<script type="math/tex">\mathbf A\mathbf A^T,\mathbf A^T\mathbf A</script>的<strong>特征向量</strong>、<strong>特征值</strong>之间的关系推导：</li>
+</ul>
+
+<script type="math/tex; mode=display">\mathbf A=\mathbf{UDV}^T</script>
+
+<script type="math/tex; mode=display">\mathbf A^T=\mathbf{VD}^T\mathbf U^T</script>
+
+<script type="math/tex; mode=display">\mathbf{AA}^T=\mathbf{UDV}^T\mathbf{VD}^T\mathbf U^T=\mathbf{UDD}^T\mathbf U^T=\mathbf Udiag(\lambda)\mathbf U^T</script>
+
+<script type="math/tex; mode=display">\mathbf A^T\mathbf A=\mathbf{VD}^T\mathbf U^T\mathbf{UDV}^T=\mathbf{VD}^T\mathbf{DV}^T=\mathbf Vdiag(\lambda')\mathbf V^T</script>
+
+<script type="math/tex; mode=display">\mathbf{DD}^T=diag(\lambda)</script>
+
+<script type="math/tex; mode=display">\mathbf D^T\mathbf D=diag(\lambda')</script>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-7.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-8.png" alt="" /></p>
+
+<h4 id="4moore-penrose伪逆">4.Moore-Penrose伪逆</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-9.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-10.png" alt="" /></p>
+
+<h4 id="5行列式">5.行列式</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-11.png" alt="" /></p>
+
+<h4 id="6主成分分析">6.主成分分析</h4>
+<ul>
+  <li>
+    <p><strong>主成分分析</strong>可以将数据降维，比如将有<script type="math/tex">n</script>个变量的数据只用<script type="math/tex">m</script>个变量来表示且使其尽量不丢失信息（这是因为有的变量之间是相关的）</p>
+  </li>
+  <li>
+    <p>同样可以理解为一种精度损失较小的压缩方式，通过编码和解码进行转换。</p>
+  </li>
+  <li>
+    <p>有<script type="math/tex">N</script>个<script type="math/tex">n</script>维向量<script type="math/tex">\vec x^{(1)}...\vec x^{(N)}</script>，要找到一个编码函数将每个<script type="math/tex">\vec x^{(i)}</script>编码成<script type="math/tex">l</script>维向量<script type="math/tex">\vec c^{(i)}</script></p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\vec c^{(i)}=f(\vec x^{(i)})</script>
+
+<ul>
+  <li>PCA由选定的解码函数而定。例如使用简单的矩阵乘法解码：</li>
+</ul>
+
+<script type="math/tex; mode=display">g(f(\vec x^{(i)}))=\mathbf D\vec c^{(i)}</script>
+
+<ul>
+  <li>PCA的目标就是找到合适的编码函数使得<script type="math/tex">\vec x^{(i)}</script>与<script type="math/tex">g(f(\vec x^{(i)}))</script>尽可能接近。上述函数的求解方法如下：</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-12.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-13.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-14.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-15.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-16.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-17.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-18.png" alt="" /></p>
+
+<h2 id="第三章-概率与信息论">第三章 概率与信息论</h2>
+
+<h4 id="概念">概念</h4>
+
+<ul>
+  <li><strong>可数无限多</strong>：无限多个，但是可以与自然数一一对应</li>
+  <li>在给定随机变量<script type="math/tex">Z</script>后，若两个随机变量<script type="math/tex">X</script>和<script type="math/tex">Y</script>是独立的，则称<script type="math/tex">X</script>和<script type="math/tex">Y</script>在给定<script type="math/tex">Z</script>时是<strong>条件独立</strong>的。</li>
+  <li><strong>协方差</strong>在某种意义上给出了两个变量线性相关性的强度以及这些变量的尺度：</li>
+</ul>
+
+<script type="math/tex; mode=display">Cov\big(f(x),g(y)\big)=E\bigg[\Big(f(x)-E\big[f(x)\big])\cdot \Big(g(y)-E\big[g(y)\big]\Big)\bigg]</script>
+
+<ul>
+  <li>若协方差绝对值很大，则变量变化很大且同时距离各自均值的位置很远，若为正则说明倾向于同时大于或同时小于均值，若为负则说明倾向于一个大于均值另一个小于均值。
+两个变量如果独立，协方差一定为零。
+两个变量如果协方差为零，它们之间一定没有线性关系。</li>
+  <li><strong>中心极限定理</strong>：无穷个独立随机变量的和服从正态分布</li>
+  <li>指数分布可以使<script type="math/tex">% <![CDATA[
+x<0 %]]></script>时概率为<script type="math/tex">0</script></li>
+</ul>
+
+<script type="math/tex; mode=display">p(x;\lambda)=\lambda \mathbf 1_{x\geq 0}\exp(-\lambda x)</script>
+
+<ul>
+  <li>Laplace分布允许我们在任意一点<script type="math/tex">\mu</script>处设置概率质量的峰值</li>
+</ul>
+
+<script type="math/tex; mode=display">Laplace(x;\mu;\gamma)=\frac{1}{2\gamma}\exp(-\frac{\vert x-\mu \vert}{\gamma})</script>
+
+<ul>
+  <li>分布的混合：
+混合分布由一些组件分布构成。每次实验，样本是由哪个组件分布产生的取决于从一个 Multinoulli 分布中采样的结果：</li>
+</ul>
+
+<script type="math/tex; mode=display">P(x)=\sum_{i}P(c=i)P(x\vert c=i)</script>
+
+<ul>
+  <li>这里<script type="math/tex">P(c=i)</script>就是选择第<script type="math/tex">i</script>个分布的概率，<script type="math/tex">P(x\vert c=i)</script>就是第<script type="math/tex">i</script>个分布。一个非常强大且常见的混合模型是<strong>高斯混合模型（Gaussian Mixture Model）</strong>它的组件<script type="math/tex">P(x\vert c=i)</script>是高斯分布。</li>
+</ul>
+
+<h2 id="第四章-数值计算">第四章 数值计算</h2>
+
+<h4 id="1上溢和下溢">1.上溢和下溢</h4>
+<ul>
+  <li>当接近零的数被四舍五入为零时发生<strong>下溢</strong>。当大量级的数被近似为<script type="math/tex">\infty</script>或<script type="math/tex">-\infty</script>时发生<strong>上溢</strong>。</li>
+  <li>在进行底层库开发时必须要考虑这些问题。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-19.png" alt="" /></p>
+
+<h4 id="2病态条件">2.病态条件</h4>
+<ul>
+  <li>函数输出不能对输入过于敏感，因为输入存在舍入误差。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-20.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-21.png" alt="" /></p>
+
+<h4 id="3hessian矩阵">3.Hessian矩阵</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-22.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-23.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-24.png" alt="" /></p>
+
+<ul>
+  <li>单纯的梯度下降无法包含<strong>Hessian</strong>的曲率信息，可能出现如下情况，最陡峭的方向并不是最有前途的下降方向，如果考虑曲率，因为最陡峭的方向梯度减少得更快，所以会对方向有一定的校正作用。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-25.png" alt="" /></p>
+
+<h4 id="4lipschitz连续">4.Lipschitz连续</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-26.png" alt="" /></p>
+
+<h2 id="第五章-机器学习基础">第五章 机器学习基础</h2>
+
+<h4 id="1常见的机器学习任务">1.常见的机器学习任务</h4>
+
+<ul>
+  <li>分类：<script type="math/tex">\mathbb R^n\rightarrow\{1,...,k\}</script></li>
+  <li>输入缺失分类：仅需要学习一个描述联合概率分布的函数。如有两个特征输入进行分类，只需要知道联合概率分布函数<script type="math/tex">P(Y\vert X_1,X_2)</script>即可，当一个特征缺失时直接进行积分/求和即可。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-27.png" alt="" /></p>
+
+<ul>
+  <li>回归：<script type="math/tex">\mathbb R^n\rightarrow\mathbb R</script></li>
+  <li>转录：图片/音频<script type="math/tex">\rightarrow</script>文本</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-28.png" alt="" /></p>
+
+<ul>
+  <li>机器翻译：文本（语言A）<script type="math/tex">\rightarrow</script>文本（语言B）</li>
+  <li>结构化输出：结构化输出任务的输出是向量或者其他包含多个值的数据结构。如图像语义分割</li>
+  <li>异常检测：如信用卡欺诈检测，盗贼购买和卡主购买有出入，检测不正常购买行为。</li>
+  <li>合成与采样：如通过文本生成某个人的声音、视频游戏自动生成大型物体或风景的纹理</li>
+  <li>缺失值填补</li>
+  <li>去噪</li>
+  <li>密度估计/概率质量函数估计</li>
+</ul>
+
+<h4 id="2无监督学习与监督学习">2.无监督学习与监督学习</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-29.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-30.png" alt="" /></p>
+
+<h4 id="3数据集表示设计矩阵">3.数据集表示：设计矩阵</h4>
+
+<ul>
+  <li>当每个数据格式一致时，一般一行表示一个数据</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-31.png" alt="" /></p>
+
+<h4 id="4估计和偏差">4.估计和偏差</h4>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-32.png" alt="" />
+<img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-33.png" alt="" /></p>
+
+<h4 id="5逻辑回归">5.逻辑回归</h4>
+
+<ul>
+  <li>
+    <p>本书的大部分监督学习算法都是基于估计概率分布<script type="math/tex">p(y\vert \mathbf{x,\theta})</script>的，算法的目的就是确定最好的参数<script type="math/tex">\mathbf{\theta}</script></p>
+  </li>
+  <li>
+    <p><strong>逻辑回归</strong>实际是用于分类而不是回归，实际是用sigmoid函数<script type="math/tex">\sigma(x)=\frac{1}{1+\exp(-x)}</script>将线性函数的输出压缩进区间<script type="math/tex">(0,1)</script>。并将其解释为概率：</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">p(y=1\vert \mathbf{x;\theta})=\sigma(\mathbf{\theta}^T\mathbf x)</script>
+
+<ul>
+  <li>逻辑回归需要最大化对数似然来搜索最优解，可以使用梯度下降的方法。</li>
+</ul>
+
+<h4 id="6支持向量机">6.支持向量机</h4>
+
+<ul>
+  <li>
+    <p><strong>支持向量机</strong>基于线性函数<script type="math/tex">\mathbf{w}^T\mathbf x+b</script>，当<script type="math/tex">\mathbf{w}^T\mathbf x+b</script>为正时，预测属于正类；当<script type="math/tex">\mathbf{w}^T\mathbf x+b</script>为负时预测属于负类。</p>
+  </li>
+  <li>
+    <p>支持向量机的<strong>核技巧</strong>，重写线性函数为：</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\mathbf{w}^T\mathbf x+b=b+\sum_{i=1}^m\alpha_i\mathbf x^T\mathbf x^{(i)}</script>
+
+<ul>
+  <li>这里实际上就是通过<script type="math/tex">\sum_{i=0}^m\alpha_i\mathbf x^{(i)}_k=\mathbf w_k</script>把参数转化了一下。于是可以将<script type="math/tex">\mathbf x</script>替换为特征函数<script type="math/tex">\phi(\mathbf x)</script>，也可以将点积替换为<strong>核函数</strong></li>
+</ul>
+
+<script type="math/tex; mode=display">k(\mathbf x,\mathbf x^{(i)})=\phi(\mathbf x)\cdot\phi(\mathbf x^{(i)})</script>
+
+<ul>
+  <li>运算符<script type="math/tex">\cdot</script>可以是真的点积，也可以是类似点积的运算。使用核估计替换点积之后，即使用下面函数进行预测：</li>
+</ul>
+
+<script type="math/tex; mode=display">f(\mathbf x)=b+\sum_i\alpha_ik(\mathbf x,\mathbf x^{(i)})</script>
+
+<ul>
+  <li>最常用的核函数是<strong>高斯核</strong></li>
+</ul>
+
+<script type="math/tex; mode=display">k(\mathbf u,\mathbf v)=N(\mathbf u-\mathbf v;\mathbf 0,\sigma^2I)</script>
+
+<ul>
+  <li>
+    <p>其中<script type="math/tex">N(x;\mathbf{\mu},\mathbf{\sum})</script>是标准正态密度。这个核也被称为<strong>径向基函数核</strong>，因为其值沿<script type="math/tex">v</script>中从<script type="math/tex">u</script>向外辐射的方向减小。可以认为高斯核在执行一种<strong>模板匹配</strong>，训练标签<script type="math/tex">y</script>相对的训练样本<script type="math/tex">\mathbf x</script>变成了类别<script type="math/tex">y</script>的模板，当测试点<script type="math/tex">\mathbf x'</script>和模板<script type="math/tex">\mathbf x</script>的欧几里得距离很小，对应的高斯核相应很大，就说明<script type="math/tex">\mathbf x'</script>和模板<script type="math/tex">\mathbf x</script>非常相似。总的来说，预测将会组合很多这种通过训练样本相似度加权的训练标签。</p>
+  </li>
+  <li>
+    <p>支持向量机不是唯一可以使用核技巧来增强的算法。</p>
+  </li>
+  <li>
+    <p>判断新样本时，只需要计算非零<script type="math/tex">\alpha_i</script>对应的训练样本的核函数，这些训练样本被称为<strong>支持向量</strong></p>
+  </li>
+</ul>
+
+<h4 id="7k-最近邻">7.k-最近邻</h4>
+
+<ul>
+  <li>
+    <p><strong>k-最近邻</strong>算法没有任何参数，而是一个直接使用训练数据的简单函数。当对新的输入<script type="math/tex">\mathbf x</script>进行输出时，在训练集<script type="math/tex">\mathbf X</script>上找到<script type="math/tex">\mathbf x</script>的k-最近邻，然后返回这些最近邻对应的输出值的平均值作为<script type="math/tex">\mathbf x</script>的输出。</p>
+  </li>
+  <li>
+    <p>可以看出该算法对每一个特征的重要性没有很好的划分，如果有很多维的特征而只有少数影响到结果，那么这种方法的输出会受到大多数的不相关特征的严重影响。</p>
+  </li>
+</ul>
+
+<h4 id="8决策树">8.决策树</h4>
+
+<ul>
+  <li>
+    <p><strong>决策树</strong>及其变种是另一类将输入空间分成不同的区域，每个区域有独立参数(停顿)的算法。</p>
+  </li>
+  <li>
+    <p>下图是一个例子，决策树可以把二维平面不停地划分，然后每个区域代表一个输出（可能相同）。</p>
+  </li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-34.png" alt="" /></p>
+:ET
