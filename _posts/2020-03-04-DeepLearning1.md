@@ -93,6 +93,45 @@ $$g(f(\vec x^{(i)}))=\mathbf D\vec c^{(i)}$$
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-17.png)
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-18.png)
 
+#### 一点小尝试
+
+* 用**Matlab**复现奇异值分解压缩图片的想法，图片大小$$300*400$$，每个像素$$8bit$$，总共占用$$120KB$$
+
+* 好的，结果惨不忍睹，本来还准备对比一下空间占用的，看来没啥意义了。当保存最大的$$50$$个奇异值及对应奇异向量时，需要空间$$(300*50+50*50+50*400)*4Byte$$共$$150KB$$（假设用float4字节存实数），然而图片质量受损严重。
+
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/food.png)
+
+* Matlab代码如下：
+
+```
+clc;
+clear all;
+close all;
+
+img = imread('food.jpg');
+img = rgb2gray(img);
+img = imresize(img, [300 400]);
+img = im2double(img);
+[U, S, V] = svd(img);
+
+P1 = U * S * V';
+
+left = 50;
+U = U(:, 1 : left);
+S = S(1 : left, 1 : left);
+V = V(:, 1 : left);
+P2 = U * S * V';
+
+figure(1);
+set(gcf,'outerposition',get(0,'screensize'));
+subplot(1, 2, 1);
+imshow(P1);
+title('原图', 'FontSize', 20);
+subplot(1, 2, 2);
+imshow(P2);
+title('压缩图', 'FontSize', 20);
+```
+
 ## 第三章 概率与信息论
 
 #### 概念
@@ -260,7 +299,7 @@ $$Var[\mathbf x]=\frac{1}{m-1}\mathbf X^T\mathbf X$$
 
 $$\mathbf X^T\mathbf X=\mathbf W\mathbf \Lambda\mathbf W^T$$
 
-* 再结合前面特征分解或奇异分解的知识，不难得出
+* 再结合前面特征分解或奇异值分解的知识，不难得出
 
 $$\mathbf X^T\mathbf X=(\mathbf{U\Sigma W}^T)^T\mathbf{U\Sigma W}^T=\mathbf{W\Sigma}^2\mathbf W^T$$
 
