@@ -1,0 +1,14 @@
+I"<p>（所有截图及部分文字出自《DeepLearning》中文版）</p>
+
+<h2 id="第六章-深度前馈网络">第六章 深度前馈网络</h2>
+
+<ul>
+  <li>
+    <p><strong>深度前馈网络</strong>，也叫作<strong>前馈神经网络</strong>或者<strong>多层感知机</strong></p>
+  </li>
+  <li>
+    <p>模型被称为<strong>前向</strong>是因为输出与模型之间没有<strong>反馈</strong>连接。当包含反馈连接时，被称为<strong>循环神经网络</strong>，在第十章将会提到。</p>
+  </li>
+</ul>
+
+:ET

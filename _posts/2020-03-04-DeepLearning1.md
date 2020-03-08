@@ -111,7 +111,7 @@ close all;
 img = imread('food.jpg');
 img = rgb2gray(img);
 img = imresize(img, [300 400]);
-img = im2double(img);
+img = im2single(img);
 [U, S, V] = svd(img);
 
 P1 = U * S * V';
