@@ -1,0 +1,77 @@
+I""
+<h4 id="前言">前言</h4>
+
+<ul>
+  <li>
+    <p>下面的代码的功能是将一张图片设置为桌面，同时复制一份命名为日期保存到一个文件夹中。</p>
+  </li>
+  <li>
+    <p>要注意参考博客中的代码设置桌面后重启会变成纯黑桌面，只需要把桌面设置函数的第二个参数从0改成1即可重启后不重置。</p>
+  </li>
+  <li>
+    <p>我整这个东西就是想把每日任务放到桌面上，有了这个稍微便捷一点点吧，还可以自动记录。</p>
+  </li>
+  <li>
+    <p>本来还想弄一个txt2img的，这样就不用进visio导出图片了，而是直接编辑文本。</p>
+  </li>
+  <li>
+    <p>但是在github上找到的代码运行出了问题，弄了很久没能解决，暂时先不管了，要是我坚持每天完成任务坚持了几个月就来把这个坑填了。</p>
+  </li>
+</ul>
+
+<h4 id="代码">代码</h4>
+
+<ul>
+  <li>
+    <p>由于to_string是C++11引入的新功能，在编译时需要加上“C++11”编译支持</p>
+  </li>
+  <li>
+    <p>也就是在命令行里直接编译时可使用</p>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">g++ changeDesktop.cpp -o changeDesktop -std=c++11</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include&lt;io.h&gt;
+#include&lt;ctime&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;windows.h&gt;
+
+using namespace std;
+
+string getYearMonthDay(){
+    time_t timer;
+    time(&amp;timer);
+    tm* t_tm = localtime(&amp;timer);
+
+    string Year = to_string(t_tm-&gt;tm_year+1900);
+    string Month = to_string(t_tm-&gt;tm_mon+1);
+    string Day = to_string(t_tm-&gt;tm_mday);
+
+    return "record-" + Year + "-" + Month + "-" + Day;
+}
+
+int main(){
+    string PictureFullPath = "C:/Users/chongjg/Mirror/Task/DailyRecord/todolist.png";
+
+    if(SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, (PVOID)PictureFullPath.c_str(), 0)){
+        SystemParametersInfoA(SPI_SETDESKWALLPAPER, true, (PVOID)PictureFullPath.c_str(), SPIF_SENDCHANGE);
+        cout&lt;&lt;"桌面更新成功！"&lt;&lt;endl&lt;&lt;endl;
+
+        string src = PictureFullPath;
+        string dst = "C:/Users/chongjg/Mirror/Task/DailyRecord/pic/" + getYearMonthDay() + ".png";
+        CopyFile(src.c_str(), dst.c_str(), false);//false代表覆盖，true不覆盖
+    }
+    else
+        cout&lt;&lt;"桌面更新失败！"&lt;&lt;endl;
+
+    return 0;
+}
+</code></pre></div></div>
+
+<h4 id="参考">参考</h4>
+
+<p><a href="https://www.cnblogs.com/xiaoxi666/p/6544478.html">获取bing图片并自动设置为电脑桌面背景</a></p>
+
+:ET
