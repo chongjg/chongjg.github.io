@@ -44,11 +44,11 @@ tags:                               #标签
 
 ## 2.Neighborhood Metrics
 
-* 这一部分内容来自论文[《Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics》][1]
+* 这一部分内容来自论文[Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics][1]
 
 * 考虑如何拆分柱子，实际上就是考虑怎么给柱子里包含的像素分配权值进行一个排序，然后分配灰度值的时候就可以不用全分配一个，而且可以按照权值挨个分配更好地利用灰度值提高对比度。
 
-### 2.1 Voting Metric
+#### 2.1 Voting Metric
 
 * 这是论文中提到第一个算法，很好理解，就是看自己的周围$$8$$个像素，比自己黑的有多少个，本着提高对比度的原则，周围比自己黑的越多，就应该在柱子里尽量分配更白的颜色。
 
@@ -64,7 +64,7 @@ tags:                               #标签
 
 * 可以看到，在这幅图中，最高的柱子高度基本没变，这是因为纯黑周围不会有比它黑的，所以纯黑的柱子在这个算法下无法被拆分，还可以看到灰度值较大的区域得到了一定的平滑。不过从图片上来说没有肉眼可见变化。
 
-### 2.2 Contrast Difference Metric
+#### 2.2 Contrast Difference Metric
 
 * 这个算法是在刚刚算法的基础上进行再次拆分，$$2.1$$能够把一个柱子拆成最多$$9$$个，而这个算法在刚刚**拆分完的基础上**再进行拆分。
 
@@ -84,7 +84,7 @@ tags:                               #标签
 
 * 然而很不幸的是，这个改进效果甚微，几乎看不到一点差别。
 
-### 2.3 Neighborhood Distinction Metric
+#### 2.3 Neighborhood Distinction Metric
 
 * 这个算法综合了上述两个算法，给出一个更加简单的实现方式。直接给每个像素分配权值为周围灰度值比它小的像素与他差的和，这样一来一个柱子最多能够被拆分为$$2041$$个柱子了。
 
@@ -96,7 +96,7 @@ tags:                               #标签
 
 * 可以看到在直方图右部由于更细的拆分使得灰度分布更加的平滑了。只是在图片中依然没有太多体现。
 
-### 2.4 总结
+#### 2.4 总结
 
 * 从上面可以看出，仅仅靠拆分柱子来提高对比度是不够的，当图片中某一些像素灰度值全都一样，却不表达任何意义的时候，这些像素会占用大量的灰度值区间，却不对图像效果做出贡献。为了改变这一状况，就需要把一些不重要的像素忽略，把一些重要的像素着重考虑。
 
@@ -106,7 +106,7 @@ tags:                               #标签
 
 * 而且有一点很重要的是，HE以及$$2.1,2.2$$的算法和我们如何设置权值并不冲突，也就是说我们可以随意地组合拆分方法和权值方法。
 
-### 3.1 Gradient
+#### 3.1 Gradient
 
 * 通常认为图像的边缘提供信息，于是可以考虑使用梯度作为像素的权值。拆分方式选择$$2.2$$，结果为
 
@@ -116,7 +116,7 @@ tags:                               #标签
 
 * 可以很明显的看到图像对比度相比之前有了较大的提升，从直方图也可以看出占有大部分像素的最高柱子不再占有大片的灰度值，这样使其他区域的对比度得到了增强。
 
-### 3.2 log Gradient
+#### 3.2 log Gradient
 
 * 这个想法是观察到有的像素梯度过大，为了抑制单个像素权值过大，我们可以使用$$\log(gradient+1)$$的方式替代梯度。结合拆分方式$$2.2$$，最后结果为
 
@@ -126,9 +126,9 @@ tags:                               #标签
 
 * 对比$$3.1$$可以发现图像整体亮度得到提高，很多原本完全看不到的细节也开始展现出来。已经达到了比较好的效果。
 
-### 3.3 CONTRAST-ACCUMULATED
+#### 3.3 CONTRAST-ACCUMULATED
 
-* 这个方法来自论文[《CONTRAST-ACCUMULATED HISTOGRAM EQUALIZATION FOR IMAGE ENHANCEMENT》][2]
+* 这个方法来自论文[CONTRAST-ACCUMULATED HISTOGRAM EQUALIZATION FOR IMAGE ENHANCEMENT][2]
 
 * 实际上算法的步骤很简单：($$S,L,\epsilon$$为预设参数)
 
@@ -166,9 +166,15 @@ $$\varphi_l(q)=\sum_{q'\in \mathcal N(q)}\max\Big(\frac{\mathbf B_l(q)-\mathbf B
 
 $$\varphi_l(q)=\frac{\vert\mathbf B_l(q_{left})-\mathbf B_l(q_{right})\vert+\vert\mathbf B_l(q_{top})-\mathbf B_l(q_{down})\vert}{255},(l=1,...,L)$$
 
-## 4.代码实现
+## 4.参考
 
-* language:matlab
+[Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics][1]
+
+[CONTRAST-ACCUMULATED HISTOGRAM EQUALIZATION FOR IMAGE ENHANCEMENT][2]
+
+## 5.附录
+
+* matlab代码
 
 ```
 % main.m
