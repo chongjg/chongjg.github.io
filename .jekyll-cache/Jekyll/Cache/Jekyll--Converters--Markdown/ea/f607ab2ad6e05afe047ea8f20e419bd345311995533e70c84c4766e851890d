@@ -1,0 +1,17 @@
+I"V<ul>
+  <li>（数字图像处理的第一个作业，结果是赶着完成的，看两篇论文并且实现搞了八个小时，最后写报告深深为自己英文水平着急，草草结尾还晚交了几分钟。</li>
+</ul>
+
+<h3 id="histogram-equalization">Histogram Equalization</h3>
+
+<ul>
+  <li>
+    <p>这个算法简称<strong>HE</strong>或者<strong>GHE(Global ~)</strong></p>
+  </li>
+  <li>
+    <p>算法的思想非常简单，一个灰度图的直方图往往是不均匀的。下面是在网上找的一张图片以及它的直方图。</p>
+  </li>
+</ul>
+
+<p><img src="" alt="" /></p>
+:ET

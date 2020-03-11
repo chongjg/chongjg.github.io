@@ -1,0 +1,83 @@
+I"�<ul>
+  <li>（数字图像处理的第一个作业，结果是赶着完成的，看两篇论文并且实现搞了八个小时，最后剩两个小时写报告，深深为自己英文水平着急，草草结尾还晚交了几分钟。裂开来。</li>
+</ul>
+
+<h2 id="histogram-equalization">Histogram Equalization</h2>
+
+<ul>
+  <li>
+    <p>这个算法简称<strong>HE</strong>或者<strong>GHE(Global ~)</strong></p>
+  </li>
+  <li>
+    <p>算法的思想非常简单，一个灰度图的直方图往往是不均匀的，这样对比度往往不高，我们要是能够使它的直方图变得更加均匀（比如每个灰度值的像素个数一样，它的对比度应该会比较好）。</p>
+  </li>
+  <li>
+    <p>下面是在网上找的一张图片以及它的直方图。</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/origin.jpg" alt="" /></p>
+
+<p><img src="https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/origin-hist.jpg" alt="" /></p>
+
+<ul>
+  <li>
+    <p>从上图的直方图中可以看到，像素的分布非常不均匀，绝大多数像素都是灰度值很小的。</p>
+  </li>
+  <li>
+    <p>通俗地讲，<strong>HE</strong>算法的思想就是让直方图中每个柱子进行不改变顺序的移动（可以合并，不能拆分），使得每个柱子的高度和它占用的灰度数相当。</p>
+  </li>
+  <li>
+    <p>从算法实现上讲，令<script type="math/tex">cnt(i),(0\leq i\leq 255)</script>表示图像每个灰度值的像素数量，<script type="math/tex">sum(i)</script>是<script type="math/tex">cnt</script>的前缀和。那么只需要把原本的灰度值<script type="math/tex">i</script>改成新的灰度值<script type="math/tex">sum(i)*255/sum(N)</script>即可。</p>
+  </li>
+  <li>
+    <p>算法的结果如下图所示</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/GHE.jpg" alt="" /></p>
+
+<p><img src="https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/GHE-hist.jpg" alt="" /></p>
+
+<ul>
+  <li>
+    <p>可以明显地看到直方图的柱子被移动得更均匀了，也就是柱子的高度和占的灰度数成正比了。</p>
+  </li>
+  <li>
+    <p>然而，也可以明显看到这个算法的不足，图像明暗分界处对比度被过分增强，而明和暗各自内部的对比度并没有得到很好的增强。从直方图上可以看出来，使用HE算法时，如果图像中存在非常多的某个灰度值的像素，那么就会导致非常多的灰度值不能被使用，从而有些地方对比度过大显得不自然，而有的地方对比度又没能得到很好的提高。</p>
+  </li>
+  <li>
+    <p>为了解决这个问题，我们需要找到一个把“柱子”拆分的方法。</p>
+  </li>
+</ul>
+
+<h2 id="neighborhood-metrics">Neighborhood Metrics</h2>
+
+<ul>
+  <li>
+    <p>这一部分内容来自论文<a href="https://www.researchgate.net/publication/224209864_Image_Contrast_Enhancement_using_Bi-Histogram_Equalization_with_Neighborhood_Metrics?enrichId=rgreq-319bc3ef6eb4fa0f9f562c5ffd925e65-XXX&amp;enrichSource=Y292ZXJQYWdlOzIyNDIwOTg2NDtBUzo0NTY1MTE5MTU4NTk5NjhAMTQ4NTg1MjMzMDAzOQ%3D%3D&amp;el=1_x_3&amp;_esc=publicationCoverPdf">《Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics》</a></p>
+  </li>
+  <li>
+    <p>考虑如何拆分柱子，实际上就是考虑怎么给柱子里包含的像素进行一个排序，然后分配灰度值的时候就可以不用全分配一个，而且可以挨个分配更好地利用灰度值。</p>
+  </li>
+</ul>
+
+<h3 id="voting-metric">Voting Metric</h3>
+
+<ul>
+  <li>
+    <p>这是论文中提到第一个算法，很好理解，就是看自己的周围<script type="math/tex">8</script>个像素，比自己白的有多少个，本着提高对比度的原则，周围比自己白的越多，就应该在柱子里尽量分配更黑的颜色。</p>
+  </li>
+  <li>
+    <p>可以看作每个像素有了一个权值，然后每个柱子根据权值内部排序，每个柱子最多拆分成<script type="math/tex">9</script>段，之后再对这些拆分的柱子进行HE算法即可。</p>
+  </li>
+  <li>
+    <p>按照上述思想可以得到以下结果</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Voting.jpg" alt="" /></p>
+
+<p><img src="https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Voting-hist.jpg" alt="" /></p>
+
+:ET
