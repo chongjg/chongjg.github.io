@@ -168,9 +168,9 @@ $$\varphi_l(q)=\frac{\vert\mathbf B_l(q_{left})-\mathbf B_l(q_{right})\vert+\ver
 
 ## 4.参考
 
-[Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics][1]
+[1] [Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics][1]
 
-[CONTRAST-ACCUMULATED HISTOGRAM EQUALIZATION FOR IMAGE ENHANCEMENT][2]
+[2] [CONTRAST-ACCUMULATED HISTOGRAM EQUALIZATION FOR IMAGE ENHANCEMENT][2]
 
 ## 5.附录
 
