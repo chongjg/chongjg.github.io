@@ -20,9 +20,9 @@ tags:                               #标签
 
 * 下面是在网上找的一张图片以及它的直方图。
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/origin.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/origin.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/origin-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/origin-hist.jpg)
 
 * 从上图的直方图中可以看到，像素的分布非常不均匀，绝大多数像素都是灰度值很小的。
 
@@ -32,9 +32,9 @@ tags:                               #标签
 
 * 算法的结果如下图所示
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/GHE.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/GHE.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/GHE-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/GHE-hist.jpg)
 
 * 可以明显地看到直方图的柱子被移动得更均匀了，也就是柱子的高度和占的灰度数成正比了。
 
@@ -54,13 +54,13 @@ tags:                               #标签
 
 * 可以看作每个像素有了一个权值，然后每个柱子根据权值内部排序，每个柱子最多拆分成$$9$$段（拆分效果如下图），之后再对这些拆分的柱子进行HE算法即可。
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/Voting-1.png)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/Voting-1.png)
 
 * 按照上述思想可以得到以下结果
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Voting.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/HE-Voting.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Voting-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/HE-Voting-hist.jpg)
 
 * 可以看到，在这幅图中，最高的柱子高度基本没变，这是因为纯黑周围不会有比它黑的，所以纯黑的柱子在这个算法下无法被拆分，还可以看到灰度值较大的区域得到了一定的平滑。不过从图片上来说没有肉眼可见变化。
 
@@ -74,13 +74,13 @@ tags:                               #标签
 
 * 拆分效果如下图所示
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/Contrast-1.png)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/Contrast-1.png)
 
 * 按照上述思想实现，可以得到以下结果
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Contrast.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/HE-Contrast.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Contrast-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/HE-Contrast-hist.jpg)
 
 * 然而很不幸的是，这个改进效果甚微，几乎看不到一点差别。
 
@@ -90,9 +90,9 @@ tags:                               #标签
 
 * 按照上述思想实现得到以下结果
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Neighborhood.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/HE-Neighborhood.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/HE-Neighborhood-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/HE-Neighborhood-hist.jpg)
 
 * 可以看到在直方图右部由于更细的拆分使得灰度分布更加的平滑了。只是在图片中依然没有太多体现。
 
@@ -110,9 +110,9 @@ tags:                               #标签
 
 * 通常认为图像的边缘提供信息，于是可以考虑使用梯度作为像素的权值。拆分方式选择$$2.2$$，结果为
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/Grad-HE-Contrast.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/Grad-HE-Contrast.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/Grad-HE-Contrast-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/Grad-HE-Contrast-hist.jpg)
 
 * 可以很明显的看到图像对比度相比之前有了较大的提升，从直方图也可以看出占有大部分像素的最高柱子不再占有大片的灰度值，这样使其他区域的对比度得到了增强。
 
@@ -120,9 +120,9 @@ tags:                               #标签
 
 * 这个想法是观察到有的像素梯度过大，为了抑制单个像素权值过大，我们可以使用$$\log(gradient+1)$$的方式替代梯度。结合拆分方式$$2.2$$，最后结果为
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/logGrad-HE-Contrast.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/logGrad-HE-Contrast.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/logGrad-HE-Contrast-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/logGrad-HE-Contrast-hist.jpg)
 
 * 对比$$3.1$$可以发现图像整体亮度得到提高，很多原本完全看不到的细节也开始展现出来。已经达到了比较好的效果。
 
@@ -152,9 +152,9 @@ $$\Phi(x,y)=\Bigg(\prod_{l=1}^L\max(\varphi_l'(x,y),\epsilon)\Bigg)^{\frac{1}{L}
 
 * 使用这个方法结合$$2.2$$，最后结果为
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/CACHE-HE-Contrast.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-HE-Contrast.jpg)
 
-![](https://github.com/chongjg/chongjg.github.io/blob/master/img/Contrast-enhancement/CACHE-HE-Contrast-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-HE-Contrast-hist.jpg)
 
 * 对于这幅图，该算法最终和$$3.2$$效果差不多。
 
