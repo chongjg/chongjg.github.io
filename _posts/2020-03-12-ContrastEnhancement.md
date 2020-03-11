@@ -152,9 +152,9 @@ $$\Phi(x,y)=\Bigg(\prod_{l=1}^L\max(\varphi_l'(x,y),\epsilon)\Bigg)^{\frac{1}{L}
 
 * 使用这个方法结合$$2.2$$，最后结果为
 
-![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-HE-Contrast.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-DP-HE-Contrast.jpg)
 
-![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-HE-Contrast-hist.jpg)
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-DP-HE-Contrast-hist.jpg)
 
 * 对于这幅图，该算法最终和$$3.2$$效果差不多。
 
