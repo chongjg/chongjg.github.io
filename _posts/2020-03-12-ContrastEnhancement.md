@@ -150,6 +150,10 @@ $$\Phi(x,y)=\Bigg(\prod_{l=1}^L\max(\varphi_l'(x,y),\epsilon)\Bigg)^{\frac{1}{L}
 
 * 根据经验，$$S$$取$$256$$，$$L$$取$$4$$，$$\epsilon$$取$$0.001$$。
 
+* 可以得到$$L$$个$$\varphi_l(q)$$长这样
+
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-DP-HE-Contrast-phi.jpg)
+
 * 使用这个方法结合$$2.2$$，最后结果为
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/CACHE-DP-HE-Contrast.jpg)
@@ -166,17 +170,119 @@ $$\varphi_l(q)=\sum_{q'\in \mathcal N(q)}\max\Big(\frac{\mathbf B_l(q)-\mathbf B
 
 $$\varphi_l(q)=\frac{\vert\mathbf B_l(q_{left})-\mathbf B_l(q_{right})\vert+\vert\mathbf B_l(q_{top})-\mathbf B_l(q_{down})\vert}{255},(l=1,...,L)$$
 
-## 4.参考
+## 4.预处理
+
+* 在语音信号处理中，预加重是一个常用的预处理技巧，于是我在想是不是图像也可以预加重，就是把高频分量加强，低频分量抑制。我只是做了一个简单的尝试，首先做二维傅里叶变换，然后直接根据频谱位置$$x,y$$到中心的归一化距离加上$$0.5$$作为滤波权值。
+
+* 最后的对比如下图所示，左侧没有预处理，右侧是预处理后再执行算法的
+
+![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/add-freq.jpg)
+
+* 可能这么对比不是很明显，但是在电脑上重合两幅图片不断切换时，能够很明显地看到右侧的图片细节部分变清晰了。可以仔细观察树干上的纹理，右侧图片的纹理是要比左侧清晰很多的。当然也有一点就是图像的噪声也被增强了，看起来的感觉就好像是：左侧的图像是右侧的图像做一个平滑滤波。
+
+## 5.总结
+
+* 总的来说，理论上效果最好的搭配应该是：频域预处理+拆分方法$$2.2$$+权值方法$$3.3$$，但是这个方案的时间效率是比较低的。
+
+* 频域预处理时间复杂度：$$O(MN\log(MN))$$
+
+* 拆分$$2.1$$及$$2.2$$时间复杂度：$$O(MNm^2)$$，$$m$$是周围统计范围。
+
+* 拆分$$2.3$$时间复杂度：$$O(MN\log(MN))$$
+
+* 梯度权值及对数梯度权值时间复杂度：$$O(MNl^2)$$，$$l$$是计算梯度的卷积核大小。
+
+* **CACHE**时间复杂度：$$O(MNL)$$，常数比较大。
+
+* 下面为使用MATLAB每种组合运行10次的总时间，单位秒，测试使用$$1023\times 682$$单通道图像。（不排除我个人代码写复杂的因素）
+
+<table>
+	<tr>
+	    <td colspan="2" rowspan="3"> </td>
+	    <td colspan="8">拆分算法</td>
+	</tr>
+	<tr>
+		<td colspan="2">HE</td>
+		<td colspan="2">Voting</td>
+		<td colspan="2">Contrast</td>
+		<td colspan="2">Neighborhood</td>
+	</tr>
+	<tr>
+		<td>不处理</td>
+		<td>预处理</td>
+		<td>不处理</td>
+		<td>预处理</td>
+		<td>不处理</td>
+		<td>预处理</td>
+		<td>不处理</td>
+		<td>预处理</td>
+	</tr>
+	<tr>
+	    <td rowspan="4">权值算法</td>
+	    <td> 全相等</td>
+	    <td> 0.1996</td>
+	    <td> 2.2534</td>
+	    <td> 1.2470</td>
+	    <td> 3.1890</td>
+	    <td> 3.4760</td>
+	    <td> 5.8460</td>
+	    <td rowspan="4"> 3.1830</td>
+	    <td rowspan="4"> 5.6290</td>
+	</tr>
+	<tr>
+	    <td> Grad</td>
+	    <td> 0.4920</td>
+	    <td> 2.6180</td>
+	    <td> 1.2600</td>
+	    <td> 3.5220</td>
+	    <td> 3.6800</td>
+	    <td> 6.2100</td>
+	</tr>
+	<tr>
+	    <td> logGrad</td>
+	    <td> 0.5970</td>
+	    <td> 2.8120</td>
+	    <td> 1.5480</td>
+	    <td> 3.6590</td>
+	    <td> 4.0660</td>
+	    <td> 6.2440</td>
+	</tr>
+	<tr>
+	    <td> CACHE</td>
+	    <td> 5.3010</td>
+	    <td> 7.7910</td>
+	    <td> 6.1620</td>
+	    <td> 7.9590</td>
+	    <td> 8.1010</td>
+	    <td> 10.5540</td>
+	</tr>
+	
+</table>
+
+* 根据具体的场景需要可以选择不同的组合，就人眼观察感受来说，**对数梯度权值加经典HE算法**效果已经非常不错了，而且速度上对于1023*682的单通道图片能够达到大约每秒17帧，效果已经很不错了。如果对于一些细节部分有更高的要求可以考虑加上预处理，但是注意这样也会引入一定噪声。
+
+## 6.参考
 
 [1] [Image Contrast Enhancement using Bi-Histogram Equalization with Neighborhood Metrics][1]
 
 [2] [CONTRAST-ACCUMULATED HISTOGRAM EQUALIZATION FOR IMAGE ENHANCEMENT][2]
 
-## 5.附录
+## 7.附录
 
-* matlab代码
+* matlab代码如下所示。
 
-```
+* 其中`grad,logGrad,CACHE_BP,CACHE_RG,CACHE_DP`函数对输入的图片输出等尺寸的权值矩阵。
+
+* `CACHE_BP,CACHE_RG,CACHE_DP`函数可以传入第二个参数为`ture`，则该函数会显示一个四个图片的`figure`将算法中的$$\varphi_l$$矩阵可视化（不传入第二个参数则默认为`false`，不会显示）
+
+* `GHE,HE_Voting,HE_Contrast,HE_Neighborhood`函数均返回得出使用相应HE算法后得到的结果图片，并且可以在`figure`中输出显示。
+
+* `GHE,HE_Voting,HE_Contrast`函数第二个参数表示给每个像素设置的用来做直方图统计的权值。
+
+* `GHE,HE_Voting,HE_Contrast,HE_Neighborhood`函数的最后一个隐藏参数可以输入为`false`，表示这个函数运行不需要显示结果图片到`figure`（该参数默认为`ture`）。
+
+
+```MATLAB
 % main.m
 clc;
 clear all;
@@ -184,12 +290,14 @@ close all;
 
 img = imread('dark_road_5.jpg');
 
+% img = highFreqEnhance(img);
+
 % Phi = ones(size(img));
+% Phi = Grad(img);
+% Phi = logGrad(img);
 % Phi = CACHE_BP(img);
 % Phi = CACHE_RG(img);
 % Phi = CACHE_DP(img);
-% Phi = Grad(img);
-% Phi = logGrad(img);
 
 % pic = GHE(img, Phi);
 % pic = HE_Voting(img, Phi);
@@ -198,10 +306,13 @@ img = imread('dark_road_5.jpg');
 % imwrite(pic, 'results/d-2.jpg');
 ```
 
-```
+```MATLAB
 % GHE.m
-function [output] = GHE(img, Phi)
+function [output] = GHE(img, Phi, Display)
 %% Global Histogram Equalization
+if ~exist('Display', 'var')
+    Display = false;
+end
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -224,6 +335,10 @@ end
 
 output = uint8(index(img + 1));
 
+if(~Display)
+    return
+end
+
 %% figure
 figure;
 set(gcf, 'outerposition', get(0, 'screensize'));
@@ -245,10 +360,14 @@ imshow(output);
 title('image(GHE)', 'FontSize', 18);
 ```
 
-```
+```MATLAB
 % HE_Voting.m
-function [output] = HE_Voting(img, Phi)
+function [output] = HE_Voting(img, Phi, Display)
 %% HE with Voting Metric
+if ~exist('Display', 'var')
+    Display = false;
+end
+
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -290,6 +409,10 @@ for i = 1 : n
     end
 end
 
+if(~Display)
+    return
+end
+
 %% figure
 figure;
 set(gcf, 'outerposition', get(0, 'screensize'));
@@ -311,10 +434,13 @@ imshow(output);
 title('image(HE Voting Metric)', 'FontSize', 18);
 ```
 
-```
+```MATLAB
 % HE_Contrast.m
-function [output] = HE_Contrast(img, Phi)
+function [output] = HE_Contrast(img, Phi, Display)
 %% HE with Voting Metric and contrast difference metric
+if ~exist('Display', 'var')
+    Display = false;
+end
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -383,6 +509,10 @@ for i = 1 : n
     end
 end
 
+if(~Display)
+    return
+end
+
 %% figure
 figure;
 set(gcf, 'outerposition', get(0, 'screensize'));
@@ -404,10 +534,14 @@ imshow(output);
 title('image(HE Voting&Contrast Metric)', 'FontSize', 18);
 ```
 
-```
+```MATLAB
 % HE_Neighborhood.m
-function [output] = HE_Neighborhood(img)
+function [output] = HE_Neighborhood(img, Display)
 %% HE with Neighborhood Metric
+if ~exist('Display', 'var')
+    Display = false;
+end
+
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -448,6 +582,10 @@ for i = 2 : n * m
     end
 end
 
+if(~Display)
+    return
+end
+
 %% figure
 figure;
 set(gcf, 'outerposition', get(0, 'screensize'));
@@ -469,7 +607,7 @@ imshow(output);
 title('image(HE Neighborhood Metric)', 'FontSize', 18);
 ```
 
-```
+```MATLAB
 % Grad.m
 function [output] = Grad(img)
 if(numel(size(img)) > 2)
@@ -490,9 +628,9 @@ dif2 = dif2(2:end-1, 2:end-1);
 output = (dif1 .* dif1 + dif2 .* dif2) .^ 0.5;
 ```
 
-```
+```MATLAB
 % logGrad.m
-function [output] = Grad(img)
+function [output] = logGrad(img)
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -511,10 +649,15 @@ dif2 = dif2(2:end-1, 2:end-1);
 output = log(1 + (dif1 .* dif1 + dif2 .* dif2) .^ 0.5);
 ```
 
-```
+```MATLAB
 % CACHE_DP.m
-function [output] = CACHE_DP(img)
+function [output] = CACHE_DP(img, Display)
 %% Contrast Accumulated Histogram Equalization
+
+if ~exist('Display','var')
+    Display = false;
+end
+
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -555,13 +698,26 @@ for l = 1 : L
     output = output .* max(imresize(phi{l}, [n, m]), eps);
 end
 
+if(Display)
+    figure;
+    set(gcf, 'outerposition', get(0, 'screensize'));
+    colormap('hot');
+    for k = 1 : 4
+        subplot(2, 2, k);
+        imagesc(phi{k});
+    end
+end
+
 output = output .^ (1 / L);
 ```
 
-```
+```MATLAB
 % CACHE_BP.m
-function [output] = CACHE_DP(img)
+function [output] = CACHE_BP(img, Display)
 %% Contrast Accumulated Histogram Equalization
+if ~exist('Display', 'var')
+    Display = false;
+end
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -602,13 +758,26 @@ for l = 1 : L
     output = output .* max(imresize(phi{l}, [n, m]), eps);
 end
 
+if(Display)
+    figure;
+    set(gcf, 'outerposition', get(0, 'screensize'));
+    colormap('hot');
+    for k = 1 : 4
+        subplot(2, 2, k);
+        imagesc(phi{k});
+    end
+end
+
 output = output .^ (1 / L);
 ```
 
-```
+```MATLAB
 % CACHE_RG.m
-function [output] = CACHE_DP(img)
+function [output] = CACHE_RG(img, Display)
 %% Contrast Accumulated Histogram Equalization
+if ~exist('Display', 'var')
+    Display = false;
+end
 if(numel(size(img)) > 2)
     img = rgb2gray(img);
 end
@@ -647,9 +816,42 @@ for l = 1 : L
     output = output .* max(imresize(phi{l}, [n, m]), eps);
 end
 
+if(Display)
+    figure;
+    set(gcf, 'outerposition', get(0, 'screensize'));
+    colormap('hot');
+    for k = 1 : 4
+        subplot(2, 2, k);
+        imagesc(phi{k});
+    end
+end
+
 output = output .^ (1 / L);
 ```
 
+```MATLAB
+%highFreqEnhance.m
+function [output] = highFreqEnhance(img)
+
+if(numel(size(img)) > 2)
+    img = rgb2gray(img);
+end
+
+[n, m] = size(img);
+
+img_fft = fftshift(fft2(img));
+
+for i = 1 : n
+    for j = 1 : m
+        h(i, j) = (sqrt(((i - n / 2) / n * 2) ^ 2 + ((j - m / 2) / m * 2) ^ 2) + 1) / 2;
+    end
+end
+img_fft = abs(ifft2(fftshift(img_fft .* h)));
+img_fft = img_fft - min(img_fft, [], 'all');
+img_fft = img_fft ./ max(img_fft, [], 'all');
+
+output = uint8(round(img_fft * 255));
+```
 
   [1]:https://www.researchgate.net/publication/224209864_Image_Contrast_Enhancement_using_Bi-Histogram_Equalization_with_Neighborhood_Metrics?enrichId=rgreq-319bc3ef6eb4fa0f9f562c5ffd925e65-XXX&enrichSource=Y292ZXJQYWdlOzIyNDIwOTg2NDtBUzo0NTY1MTE5MTU4NTk5NjhAMTQ4NTg1MjMzMDAzOQ%3D%3D&el=1_x_3&_esc=publicationCoverPdf
   [2]:https://www.researchgate.net/publication/323349746_Contrast-accumulated_histogram_equalization_for_image_enhancement?enrichId=rgreq-3df2813a03f08e26ebb9c7759f0a5618-XXX&enrichSource=Y292ZXJQYWdlOzMyMzM0OTc0NjtBUzo1OTg4OTc1NDYyNDAwMDFAMTUxOTc5OTcxMDA5Mg%3D%3D&el=1_x_3&_esc=publicationCoverPdf
