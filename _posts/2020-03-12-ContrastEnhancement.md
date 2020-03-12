@@ -282,7 +282,7 @@ $$\varphi_l(q)=\frac{\vert\mathbf B_l(q_{left})-\mathbf B_l(q_{right})\vert+\ver
 * `GHE,HE_Voting,HE_Contrast,HE_Neighborhood`函数的最后一个隐藏参数可以输入为`false`，表示这个函数运行不需要显示结果图片到`figure`（该参数默认为`ture`）。
 
 
-```MATLAB
+```matlab
 % main.m
 clc;
 clear all;
@@ -306,7 +306,7 @@ img = imread('dark_road_5.jpg');
 % imwrite(pic, 'results/d-2.jpg');
 ```
 
-```MATLAB
+```matlab
 % GHE.m
 function [output] = GHE(img, Phi, Display)
 %% Global Histogram Equalization
@@ -360,7 +360,7 @@ imshow(output);
 title('image(GHE)', 'FontSize', 18);
 ```
 
-```MATLAB
+```matlab
 % HE_Voting.m
 function [output] = HE_Voting(img, Phi, Display)
 %% HE with Voting Metric
@@ -434,7 +434,7 @@ imshow(output);
 title('image(HE Voting Metric)', 'FontSize', 18);
 ```
 
-```MATLAB
+```matlab
 % HE_Contrast.m
 function [output] = HE_Contrast(img, Phi, Display)
 %% HE with Voting Metric and contrast difference metric
@@ -534,7 +534,7 @@ imshow(output);
 title('image(HE Voting&Contrast Metric)', 'FontSize', 18);
 ```
 
-```MATLAB
+```matlab
 % HE_Neighborhood.m
 function [output] = HE_Neighborhood(img, Display)
 %% HE with Neighborhood Metric
@@ -607,7 +607,7 @@ imshow(output);
 title('image(HE Neighborhood Metric)', 'FontSize', 18);
 ```
 
-```MATLAB
+```matlab
 % Grad.m
 function [output] = Grad(img)
 if(numel(size(img)) > 2)
@@ -628,7 +628,7 @@ dif2 = dif2(2:end-1, 2:end-1);
 output = (dif1 .* dif1 + dif2 .* dif2) .^ 0.5;
 ```
 
-```MATLAB
+```matlab
 % logGrad.m
 function [output] = logGrad(img)
 if(numel(size(img)) > 2)
@@ -649,7 +649,7 @@ dif2 = dif2(2:end-1, 2:end-1);
 output = log(1 + (dif1 .* dif1 + dif2 .* dif2) .^ 0.5);
 ```
 
-```MATLAB
+```matlab
 % CACHE_DP.m
 function [output] = CACHE_DP(img, Display)
 %% Contrast Accumulated Histogram Equalization
@@ -711,7 +711,7 @@ end
 output = output .^ (1 / L);
 ```
 
-```MATLAB
+```matlab
 % CACHE_BP.m
 function [output] = CACHE_BP(img, Display)
 %% Contrast Accumulated Histogram Equalization
@@ -771,7 +771,7 @@ end
 output = output .^ (1 / L);
 ```
 
-```MATLAB
+```matlab
 % CACHE_RG.m
 function [output] = CACHE_RG(img, Display)
 %% Contrast Accumulated Histogram Equalization
@@ -829,7 +829,7 @@ end
 output = output .^ (1 / L);
 ```
 
-```MATLAB
+```matlab
 %highFreqEnhance.m
 function [output] = highFreqEnhance(img)
 

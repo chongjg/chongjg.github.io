@@ -1,4 +1,4 @@
-I"�<ul>
+I"�<ul>
   <li>（数字图像处理的第一个作业，结果是赶着完成的，看两篇论文并且实现搞了八个小时，最后剩两个小时写报告，深深为自己英文水平着急，草草结尾还晚交了几分钟。裂开来。</li>
 </ul>
 
@@ -381,35 +381,41 @@ L.a.d<Threshold<R.a.d %]]></script>时权值设置为<script type="math/tex">1</
     <p>其中<code class="highlighter-rouge">grad,logGrad,CACHE_BP,CACHE_RG,CACHE_DP</code>函数对输入的图片输出等尺寸的权值矩阵。</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">CACHE_BP,CACHE_RG,CACHE_DP</code>函数可以传入第二个参数为<code class="highlighter-rouge">true</code>，则该函数会显示一个四个图片的<code class="highlighter-rouge">figure</code>将算法中的<script type="math/tex">\varphi_l</script>矩阵可视化（不传入第二个参数则默认为<code class="highlighter-rouge">false</code>，不会显示）</p>
+    <p><code class="highlighter-rouge">CACHE_BP,CACHE_RG,CACHE_DP</code>函数可以传入第二个参数为<code class="highlighter-rouge">ture</code>，则该函数会显示一个四个图片的<code class="highlighter-rouge">figure</code>将算法中的<script type="math/tex">\varphi_l</script>矩阵可视化（不传入第二个参数则默认为<code class="highlighter-rouge">false</code>，不会显示）</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">GHE,HE_Voting,HE_Contrast,HE_Neighborhood</code>函数均返回得出使用相应HE算法后得到的结果图片，</p>
+    <p><code class="highlighter-rouge">GHE,HE_Voting,HE_Contrast,HE_Neighborhood</code>函数均返回得出使用相应HE算法后得到的结果图片，并且可以在<code class="highlighter-rouge">figure</code>中输出显示。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">GHE,HE_Voting,HE_Contrast</code>函数第二个参数表示给每个像素设置的用来做直方图统计的权值。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">GHE,HE_Voting,HE_Contrast,HE_Neighborhood</code>函数的最后一个隐藏参数可以输入为<code class="highlighter-rouge">false</code>，表示这个函数运行不需要显示结果图片到<code class="highlighter-rouge">figure</code>（该参数默认为<code class="highlighter-rouge">ture</code>）。</p>
   </li>
 </ul>
 
-<pre><code class="language-MATLAB">% main.m
-clc;
-clear all;
-close all;
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% main.m</span>
+<span class="nb">clc</span><span class="p">;</span>
+<span class="nb">clear</span> <span class="nb">all</span><span class="p">;</span>
+<span class="nb">close</span> <span class="nb">all</span><span class="p">;</span>
 
-img = imread('dark_road_5.jpg');
+<span class="n">img</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'dark_road_5.jpg'</span><span class="p">);</span>
 
-% img = highFreqEnhance(img);
+<span class="c1">% img = highFreqEnhance(img);</span>
 
-% Phi = ones(size(img));
-% Phi = Grad(img);
-% Phi = logGrad(img);
-% Phi = CACHE_BP(img);
-% Phi = CACHE_RG(img);
-% Phi = CACHE_DP(img);
+<span class="c1">% Phi = ones(size(img));</span>
+<span class="c1">% Phi = Grad(img);</span>
+<span class="c1">% Phi = logGrad(img);</span>
+<span class="c1">% Phi = CACHE_BP(img);</span>
+<span class="c1">% Phi = CACHE_RG(img);</span>
+<span class="c1">% Phi = CACHE_DP(img);</span>
 
-% pic = GHE(img, Phi);
-% pic = HE_Voting(img, Phi);
-% pic = HE_Contrast(img, Phi);
-% pic = HE_Neighborhood(img);
-% imwrite(pic, 'results/d-2.jpg');
-</code></pre>
+<span class="c1">% pic = GHE(img, Phi);</span>
+<span class="c1">% pic = HE_Voting(img, Phi);</span>
+<span class="c1">% pic = HE_Contrast(img, Phi);</span>
+<span class="c1">% pic = HE_Neighborhood(img);</span>
+<span class="c1">% imwrite(pic, 'results/d-2.jpg');</span>
+</code></pre></div></div>
 
 <pre><code class="language-MATLAB">% GHE.m
 function [output] = GHE(img, Phi, Display)
