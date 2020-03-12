@@ -281,6 +281,8 @@ $$\varphi_l(q)=\frac{\vert\mathbf B_l(q_{left})-\mathbf B_l(q_{right})\vert+\ver
 
 * `GHE,HE_Voting,HE_Contrast,HE_Neighborhood`函数的最后一个隐藏参数可以输入为`false`，表示这个函数运行不需要显示结果图片到`figure`（该参数默认为`ture`）。
 
+* 代码下载：[github](https://github.com/chongjg/Contrast-Enhancement)
+
 ```matlab
 % main.m
 clc;
