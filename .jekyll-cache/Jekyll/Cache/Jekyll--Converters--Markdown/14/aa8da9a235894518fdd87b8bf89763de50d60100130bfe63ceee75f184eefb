@@ -1,4 +1,4 @@
-I"��<ul>
+I"�<ul>
   <li>（数字图像处理的第一个作业，结果是赶着完成的，看两篇论文并且实现搞了八个小时，最后剩两个小时写报告，深深为自己英文水平着急，草草结尾还晚交了几分钟。裂开来。</li>
 </ul>
 
@@ -207,7 +207,7 @@ L.a.d<Threshold<R.a.d %]]></script>时权值设置为<script type="math/tex">1</
 
 <ul>
   <li>
-    <p>其中<script type="math/tex">q</script>是图像中的二维坐标，<script type="math/tex">\mathcal N(q)</script>是<script type="math/tex">q</script>的曼哈顿距离下的近邻，这里取上下左右四个。</p>
+    <p>其中<script type="math/tex">q</script>是图像中的二维坐标，<script type="math/tex">\mathcal N(q)</script>是<script type="math/tex">q</script>的冯诺依曼邻域，也就是曼哈顿距离为<script type="math/tex">1</script>，上下左右四个。</p>
   </li>
   <li>
     <p>第四步：对<script type="math/tex">\varphi_l(q)</script>通过双三次插值变换到原图像<script type="math/tex">\mathbf A</script>的大小，记作<script type="math/tex">\varphi_l'(x,y)</script>。</p>
@@ -269,7 +269,12 @@ L.a.d<Threshold<R.a.d %]]></script>时权值设置为<script type="math/tex">1</
 <p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Contrast-enhancement/add-freq.jpg" alt="" /></p>
 
 <ul>
-  <li>可能这么对比不是很明显，但是在电脑上重合两幅图片不断切换时，能够很明显地看到右侧的图片细节部分变清晰了。可以仔细观察树干上的纹理，右侧图片的纹理是要比左侧清晰很多的。当然也有一点就是图像的噪声也被增强了，看起来的感觉就好像是：左侧的图像是右侧的图像做一个平滑滤波。</li>
+  <li>
+    <p>可能这么对比不是很明显，但是在电脑上重合两幅图片不断切换时，能够很明显地看到右侧的图片细节部分变清晰了。可以仔细观察树干上的纹理，右侧图片的纹理是要比左侧清晰很多的。当然也有一点就是图像的噪声也被增强了，看起来的感觉就好像是：左侧的图像是右侧的图像做一个平滑滤波。</p>
+  </li>
+  <li>
+    <p>其实我也有尝试用锐化算法进行细节的增强，但看图片锐化确实能够使细节更加突出，但是会严重影响后续的对比度增强的算法效果</p>
+  </li>
 </ul>
 
 <h2 id="5总结">5.总结</h2>
@@ -282,7 +287,7 @@ L.a.d<Threshold<R.a.d %]]></script>时权值设置为<script type="math/tex">1</
     <p>频域预处理时间复杂度：<script type="math/tex">O(MN\log(MN))</script></p>
   </li>
   <li>
-    <p>拆分<script type="math/tex">2.1</script>及<script type="math/tex">2.2</script>时间复杂度：<script type="math/tex">O(MNm^2)</script>，<script type="math/tex">m</script>是周围统计范围。</p>
+    <p>拆分<script type="math/tex">2.1</script>及<script type="math/tex">2.2</script>时间复杂度：<script type="math/tex">O(MNm^2)</script>，<script type="math/tex">m</script>是邻域统计宽度。</p>
   </li>
   <li>
     <p>拆分<script type="math/tex">2.3</script>时间复杂度：<script type="math/tex">O(MN\log(MN))</script></p>
@@ -391,6 +396,9 @@ L.a.d<Threshold<R.a.d %]]></script>时权值设置为<script type="math/tex">1</
   </li>
   <li>
     <p><code class="highlighter-rouge">GHE,HE_Voting,HE_Contrast,HE_Neighborhood</code>函数的最后一个隐藏参数可以输入为<code class="highlighter-rouge">false</code>，表示这个函数运行不需要显示结果图片到<code class="highlighter-rouge">figure</code>（该参数默认为<code class="highlighter-rouge">ture</code>）。</p>
+  </li>
+  <li>
+    <p>代码下载：<a href="https://github.com/chongjg/Contrast-Enhancement">github</a></p>
   </li>
 </ul>
 
