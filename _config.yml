@@ -3,7 +3,7 @@ title: chongjg's Blog
 SEOTitle: chongjg's Blog
 header-img: img/post-bg-desk.jpg
 email: chongli@whu.edu.cn
-description: "青春不复返 时光不再回"
+description: "  "
 keyword: "chongjg, chongjg's Blog"
 url: "http://chongjg.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -11,7 +11,7 @@ github_repo: "https://github.com/chongjg/chongjg.github.io.git" # you code repos
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "a vegetable egg"
+sidebar-about-description: "an undergraduate from WHU"
 sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
