@@ -1,0 +1,141 @@
+I"�.<p>（所有截图及部分文字出自《DeepLearning》中文版）</p>
+
+<ul>
+  <li>以前学习神经网络真的是浅尝辄止，根本没有好好地深入研究，学习这一部分我感觉自己有很多收获。学习过程中明显感觉自己有多菜，很多地方都是思考了很久才想通或者现在还是没搞懂，但是学完后自己还是挺欣慰的，希望我的一些个人的理解能够给读者带来一点帮助。</li>
+</ul>
+
+<h2 id="第七章-深度学习中的正则化">第七章 深度学习中的正则化</h2>
+
+<ul>
+  <li>机器学习中的一个核心问题是设计不仅在训练数据上表现好，并且能在新输入上泛化好的算法。在机器学习中，许多策略显式地被设计来减少测试误差（可能会以增大训练误差为代价）。这些策略被统称为正则化。</li>
+</ul>
+
+<h3 id="一参数范数惩罚">一、参数范数惩罚</h3>
+
+<ul>
+  <li>许多正则化方法通过对目标函数<script type="math/tex">J</script>添加一个参数范数惩罚<script type="math/tex">\Omega(\mathbf \theta)</script>限制模型（如神经网络、线性回归或逻辑回归）的学习能力。我们将正则化后的目标函数记为</li>
+</ul>
+
+<script type="math/tex; mode=display">\hat J(\mathbf \theta;\mathbf X;\mathbf y)=J(\mathbf \theta;\mathbf X; \mathbf y)+\alpha \Omega(\mathbf \theta)</script>
+
+<ul>
+  <li>
+    <p>其中<script type="math/tex">\alpha\in[0,\infty)</script>是权衡范数惩罚项<script type="math/tex">\Omega</script>和标准目标函数<script type="math/tex">J</script>相对贡献的超参数。<script type="math/tex">\alpha</script>设置为<script type="math/tex">0</script>表示没有正则化。<script type="math/tex">\alpha</script>越大，对应正则化惩罚越大。</p>
+  </li>
+  <li>
+    <p>在探究不同范数的正则化表现之前，我们需要说明一下，在神经网络中，参数包括每一层仿射变换的权重和偏置，我们通常只对权重做惩罚而不对偏置做正则惩罚。</p>
+  </li>
+  <li>
+    <p>在神经网络的情况下，有时希望对网络的每一层使用单独的惩罚，并分配不同的<script type="math/tex">\alpha</script>系数。寻找合适的多个超参数的代价很大，因此为了减少搜索空间，我们会在所有层使用相同的权重衰减。</p>
+  </li>
+</ul>
+
+<h4 id="1l2参数正则化">1.L2参数正则化</h4>
+
+<ul>
+  <li>在前面已经看到过最简单而又最常见的参数范数惩罚，即通常被称为权重衰减（weight decay）的<script type="math/tex">L^2</script>参数范数惩罚。这个正则化策略通过向目标函数添加一个正则项<script type="math/tex">\Omega(\mathbf\theta)=\frac{1}{2}\left\| \mathbf \theta \right\|^2_2</script>，使权重更加接近原点。</li>
+</ul>
+
+<h4 id="2l1参数正则化">2.L1参数正则化</h4>
+
+<ul>
+  <li>
+    <p><script type="math/tex">L^2</script>权重衰减是权重衰减最常见的形式，我们还可以使用其他的方法限制模型参数的规模。一个选择是使用<script type="math/tex">L^1</script>正则化。</p>
+  </li>
+  <li>
+    <p>形式地，对模型参数<script type="math/tex">\mathbf \theta</script>的<script type="math/tex">L^1</script>正则化被定义为：</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\Omega(\mathbf \theta)=\left\|\mathbf \theta\right\|_1=\sum_i\vert\theta_i\vert</script>
+
+<ul>
+  <li>即各参数的绝对值之和。与<script type="math/tex">L^2</script>范数类似，正则化时不考虑偏置参数，且可以通过正超参数<script type="math/tex">\alpha</script>来控制权重衰减的强度。因此正则化的目标函数就是：</li>
+</ul>
+
+<script type="math/tex; mode=display">\overset{\sim}J(\mathbf w;\mathbf X;\mathbf y)=\alpha\left\|\mathbf w\right\|_1+J(\mathbf w;\mathbf X;\mathbf y)</script>
+
+<ul>
+  <li>
+    <p>可以发现<script type="math/tex">L^1</script>正则化的效果与<script type="math/tex">L^2</script>大不一样，<script type="math/tex">L^1</script>正则化不再是线性地缩放每个参数，而是添加了一项与<script type="math/tex">\mathrm{sign}(w_i)</script>同号的常数。这样我们不一定能得到<script type="math/tex">J(\mathbf w;\mathbf X;\mathbf y)</script>二次近似的直接算数解（<script type="math/tex">L^2</script>正则化时可以）</p>
+  </li>
+  <li>
+    <p>相比<script type="math/tex">L^2</script>正则化，<script type="math/tex">L^1</script>正则化会产生更加<strong>稀疏</strong>的解。此处稀疏性指的是最优值中的一些参数为<script type="math/tex">0</script>。</p>
+  </li>
+  <li>
+    <p>由<script type="math/tex">L^1</script>正则化导出的稀疏性质已经被广泛地用于<strong>特征选择</strong>机制。特征选择从可用的特征子集选择出有意义的特征，化简机器学习问题，即<script type="math/tex">L^1</script>惩罚使部分子集的权重为零，表明相应的特征可以被安全地忽略。</p>
+  </li>
+</ul>
+
+<h3 id="二作为约束的范数惩罚">二、作为约束的范数惩罚</h3>
+
+<ul>
+  <li>
+    <p>假设现在我们想约束<script type="math/tex">\Omega(\mathbf \theta)</script>小于某个常数<script type="math/tex">k</script>。</p>
+  </li>
+  <li>
+    <p>我们可以把参数范数惩罚看作对权重强加的约束。如果<script type="math/tex">\Omega</script>是<script type="math/tex">L^2</script>范数，那么权重就是被约束在一个<script type="math/tex">L^2</script>球中。如果<script type="math/tex">\Omega</script>是<script type="math/tex">L^1</script>范数，那么权重就是被约束在一个<script type="math/tex">L^1</script>范数限制的区域中。而且可以通过增加或减小<script type="math/tex">\alpha</script>来大致收缩或扩大约束区域。较大的<script type="math/tex">\alpha</script>，将得到一个较小的约束区域。较小的<script type="math/tex">\alpha</script>，将得到一个较大的约束区域。当然我们并不能直接从一个<script type="math/tex">\alpha</script>得到对应的<script type="math/tex">k</script>，因为他们之间的关系还取决于<script type="math/tex">J</script>的形式。</p>
+  </li>
+  <li>
+    <p>有时候，我们希望使用显示的限制，而不是惩罚。如第4.4节所述，可以修改下降算法，使其先计算<script type="math/tex">J(\mathbf\theta)</script>的下降步，然后将<script type="math/tex">\mathbf\theta</script>投影到满足<script type="math/tex">% <![CDATA[
+\Omega(\mathbf\theta)<k %]]></script>的最近点。如果我们知道什么样的<script type="math/tex">k</script>是合适的而不想花时间寻找对应此<script type="math/tex">k</script>的<script type="math/tex">\alpha</script>值，这个方法很有用。</p>
+  </li>
+  <li>
+    <p>另一个使用显式约束和重投影而不是使用惩罚强加约束的原因是惩罚可能会导致目标函数非凸而使算法陷入局部极小（对应于小的<script type="math/tex">\mathbf\theta</script>）。重投影实现的显式约束不鼓励权重接近原点，所以通过重投影实现的显式约束只在权重变大并试图离开限制区域时产生作用。</p>
+  </li>
+  <li>
+    <p>最后，因为重投影的显式约束还对优化过程增加了一定的稳定性，所以这是另一个好处。Hinton et al. (2012c) 建议结合使用约束和高学习速率，这样能更快地探索参数空间，并保持一定的稳定性。</p>
+  </li>
+  <li>
+    <p>Hinton et al. (2012c) 尤其推荐由Srebro and Shraibman (2005) 引入的策略：约束神经网络层的权重矩阵每列的范数，而不是限制整个权重矩阵的 Frobenius 范数。分别限制每一列的范数可以防止某一隐藏单元有非常大的权重。在实践中，列范数的限制总是通过重投影的显式约束来实现。</p>
+  </li>
+</ul>
+
+<h3 id="三正则化和欠约束问题">三、正则化和欠约束问题</h3>
+
+<ul>
+  <li>机器学习中很多线性模型，包括线性回归和PCA，都依赖于对矩阵<script type="math/tex">\mathbf X^T\mathbf X</script>求逆。只要<script type="math/tex">\mathbf X^T\mathbf X</script>是奇异的，这些方法就会失效。在这种情况下，正则化的许多形式对应求逆<script type="math/tex">\mathbf X^T\mathbf X+\alpha \mathbf I</script>。这个正则化矩阵可以保证是可逆的。</li>
+</ul>
+
+<h3 id="四数据集增强">四、数据集增强</h3>
+
+<ul>
+  <li>
+    <p>让机器学习模型泛化得更好的最好办法是使用更多的数据进行训练。当然，在实践中，我们拥有的数据量是很有限的。解决这个问题的一种方法是创建假数据并 添加到训练集中。对于一些机器学习任务，创建新的假数据相当简单。</p>
+  </li>
+  <li>
+    <p>对分类来说这种方法是最简单的。我们可以轻易通过转换训练集中的<script type="math/tex">\mathbf x</script>来生成新的<script type="math/tex">(x,y)</script>对。（不过并不是所有的任务都适用这种方法）</p>
+  </li>
+  <li>
+    <p>数据集增强对一个具体的分类问题来说是特别有效的方法：对象识别。图像是高维的并包括各种巨大的变化因素，其中有许多可以轻易地模拟。即使模型已使用卷积和池化技术（第九章）对部分平移保持不变，沿训练图像每个方向平移几个像素的操作通常可以大大改善泛化。许多其他操作如旋转图像或缩放图像也已被证明非常有效。</p>
+  </li>
+  <li>
+    <p>但是要注意上述操作变换图像时不要使其分类变化，比如’6’和’9’如果旋转角度太大就会使正确分类变化。</p>
+  </li>
+  <li>
+    <p>另外在神经网络的输入层注入噪声也是常见的数据集增强方式。</p>
+  </li>
+</ul>
+
+<h3 id="五半监督学习">五、半监督学习</h3>
+
+<ul>
+  <li>在半监督学习的框架下，<script type="math/tex">P(\mathbf x)</script>产生的未标记样本和<script type="math/tex">P(\mathbf x,\mathbf y)</script>中的标记样本都用于估计<script type="math/tex">P(\mathbf y\vert \mathbf x)</script>或者根据<script type="math/tex">\mathbf x</script>预测<script type="math/tex">\mathbf y</script>。</li>
+</ul>
+
+<h3 id="六多任务学习">六、多任务学习</h3>
+
+<ul>
+  <li>
+    <p>多任务学习是通过合并几个任务中的样例（可以视为对参数施加的软约束）来提高泛化的一种方式。正如额外的训练样本能够将模型参数推向 具有更好泛化能力的值一样，当模型的一部分被多个额外的任务共享时，这部分将被约束为良好的值（如果共享合理），通常会带来更好的泛化能力。</p>
+  </li>
+  <li>
+    <p>图7.2展示了多任务学习中非常普遍的一种形式，其中不同的监督任务（给定<script type="math/tex">x</script>预测<script type="math/tex">y(i)</script>）共享相同的输入<script type="math/tex">x</script>以及一些中间层表示<script type="math/tex">h^{(share)}</script>，能学习共同的因素池。该模型通常可以分为两类相关的参数：</p>
+  </li>
+  <li>具体任务的参数（只能从各自任务的样本中实现良好的泛化）。如图7.2中的上层。</li>
+  <li>所有任务共享的通用参数（从所有任务的汇集数据中获益）。如图7.2中的下层。因为共享参数，其统计强度可大大提高（共享参数的样本数量相对于单任务模式增加的比例），并能改善泛化和泛化误差的范围(Baxter, 1995)。当然，仅当不同的任务之间存在某些统计关系的假设是合理（意味着某些参数能通过不同任务共享） 时才会发生这种情况。</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-36.png" alt="" /></p>
+
+:ET
