@@ -253,7 +253,7 @@ $$\hat {\mathbf X}=\underset{\mathbf X}{\mathrm{arg\ min}}\parallel\mathbf Y-\ma
 
 $$\parallel\mathbf X\parallel_{\mathbf w,*}=\underset{i}{\sum}w_i\sqrt{\lambda_i\mathbf X}$$
 
-* 论文中详细地介绍了权值$$\mathbf w$$如何定义、如何近似上述方程使得可以通过迭代求解等等。
+* 论文中详细地介绍了权值$$\mathbf w$$如何定义、如何近似上述方程使得可以通过迭代求解等等。但是数学证明及转化对我来说过于复杂，遂放弃。
 
 ## 参考
 
