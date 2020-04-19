@@ -2,7 +2,7 @@
 layout:     post                    # 使用的布局（不需要改）
 title:      《DeepLearning》第七章               # 标题 
 subtitle:   花书部分知识点摘要         #副标题
-date:       2020-03-25              # 时间
+date:       2020-04-20              # 时间
 author:     chongjg                      # 作者
 header-img: img/post-bg-2015.jpg    #这篇文章标题背景图片
 catalog: true                       # 是否归档
