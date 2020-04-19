@@ -1,0 +1,324 @@
+I"�6<ul>
+  <li>
+    <p>数字图像处理课程<strong>图像去噪</strong>课堂展示总结，部分理解有点困难的算法没有进行记录，下面算法基本都是看一眼就能get到主要思想的经典算法。</p>
+  </li>
+  <li>
+    <p>若无特殊说明，<script type="math/tex">S_{ij}</script>是以<script type="math/tex">(i,j)</script>为中心，宽<script type="math/tex">m</script>，高<script type="math/tex">n</script>的矩形邻域。</p>
+  </li>
+</ul>
+
+<h2 id="问题定义">问题定义</h2>
+
+<script type="math/tex; mode=display">y=x+n</script>
+
+<ul>
+  <li><script type="math/tex">y</script>是观察到的带噪图像，<script type="math/tex">x</script>是未知的无噪声图像，<script type="math/tex">n</script>是高斯白噪声。要通过已知的<script type="math/tex">y</script>求<script type="math/tex">x</script>的估计<script type="math/tex">\hat x</script>。</li>
+</ul>
+
+<h2 id="一空间域滤波">一、空间域滤波</h2>
+
+<h4 id="1均值派">1.均值派</h4>
+
+<h6 id="11-算术均值">1.1 算术均值</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{1}{mn}\sum_{(s,t)\in S_{ij}}y(s,t)</script>
+
+<h6 id="12-几何均值">1.2 几何均值</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\Big [\prod_{(s,t)\in S_{ij}}y(s,t)\Big ]^{\frac{1}{mn}}</script>
+
+<h6 id="13-高斯均值">1.3 高斯均值</h6>
+
+<ul>
+  <li>通过高斯函数<script type="math/tex">f(x,y)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{x^2+y^2}{2\sigma^2}}</script>给邻域<script type="math/tex">S_{ij}</script>每个像素赋予一个权重再进行加权平均，是一种改良版的均值滤波。(<script type="math/tex">\frac{1}{W}</script>是权值归一化参数)</li>
+</ul>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{1}{W}\underset{(s,t)\in S_{ij}}{\sum}y(s,t)*f(s-i,t-j)</script>
+
+<ul>
+  <li>常用的三阶、五阶高斯卷积核：</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\frac{1}{16}
+\left[
+\begin{matrix}
+1 & 2 & 1\\
+2 & 4 & 2\\
+1 & 2 & 1\\
+\end{matrix}
+\right]
+\quad \quad \quad
+\frac{1}{273}
+\left[
+\begin{matrix}
+1 & 4 & 7 & 4 & 1\\
+4 & 16 & 26 & 16 & 4\\
+7 & 26 & 41 & 26 & 7\\
+4 & 16 & 26 & 16 & 4\\
+1 & 4 & 7 & 4 & 1\\
+\end{matrix}
+\right] %]]></script>
+
+<h6 id="14-双边滤波">1.4 双边滤波</h6>
+
+<ul>
+  <li>
+    <p><strong>双边滤波</strong>可以理解为在高斯滤波的基础上进行的改进。高斯滤波在均值滤波的基础上考虑到离中心像素的距离越远，其影响也会越小，而双边滤波则在此基础上考虑到如果像素值差距很大，影响也应该较小。</p>
+  </li>
+  <li>
+    <p>举个例子，一张图片左边是黑色右边是白色，高斯滤波直接将边缘两侧差距巨大的像素无差别考虑，因此会在边界产生灰色边缘。而双边滤波由于异侧像素值差距较大会大大减小其影响从而更好地保留边缘特征。对于其他边缘原理相同，公式如下所示。(<script type="math/tex">\frac{1}{W}</script>是权重归一化参数)</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{1}{W}\underset{(s,t\in S_{ij})}{\sum}y(s,t)*e^{-\frac{(i-s)^2+(j-t)^2}{2\sigma_1^2}}e^{-\frac{[y(i,j)-y(s,t)]^2}{2\sigma_2^2}}</script>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Image-Denoising/bilateral-filter.png" alt="" /></p>
+
+<h6 id="15-谐波均值">1.5 谐波均值</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{mn}{\underset{(s,t\in S_{ij})}{\sum}\frac{1}{y(s,t)}}</script>
+
+<h6 id="16-逆谐波均值">1.6 逆谐波均值</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{\underset{(s,t\in S_{ij})}{\sum}g(s,t)^{Q+1}}{\sum_{(s,t\in S_{ij})}g(s,t)^Q}</script>
+
+<h6 id="17-递归均值">1.7 递归均值</h6>
+
+<ul>
+  <li>
+    <p>首先构造<script type="math/tex">\mathbf B</script>为<script type="math/tex">01</script>矩阵，0表示为噪声，1表示不是噪声。如果<script type="math/tex">\mathbf B</script>矩阵已知，那么这会是一个比较不错的算法。</p>
+  </li>
+  <li>
+    <p>然后看每一个噪声的4邻域，如果4邻域有超过2个为非噪声，则将原图这个噪声点像素值设置为4邻域的4次方平均值。</p>
+  </li>
+  <li>
+    <p>再看剩下噪声的8邻域，如果8邻域有超过2个为非噪声，则将原图这个噪声点像素设置为8邻域的8次方平均值。</p>
+  </li>
+  <li>
+    <p>当某次遍历没有噪声被修改，算法结束。</p>
+  </li>
+</ul>
+
+<h6 id="18-非局部均值">1.8 非局部均值</h6>
+
+<ul>
+  <li>对任意像素<script type="math/tex">(i,j)</script>有一个邻域窗口（比如<script type="math/tex">7*7</script>），窗口中每个块（比如<script type="math/tex">3*3</script>）会有一个相较于中心块的相似度。设中心为<script type="math/tex">(i,j)</script>的块为<script type="math/tex">A</script>，对于邻域窗口中的一个中心为<script type="math/tex">(s,t)</script>的块<script type="math/tex">B</script>，其相似度<script type="math/tex">S(s,t)</script>定义如下(<script type="math/tex">A_{m,n},B_{m,n}</script>表示块内像素值)</li>
+</ul>
+
+<script type="math/tex; mode=display">S(s,t)=e^{-\frac{\underset{(m,n)}{\sum}(A_{m,n}-B_{m,n})^2}{2\sigma^2}}</script>
+
+<ul>
+  <li>则有</li>
+</ul>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{1}{\underset{(s,t)}{\sum}S(s,t)}\underset{(s,t)\in S_{ij}}{\sum}y(s,t)*S(s,t)</script>
+
+<h4 id="2统计派">2.统计派</h4>
+
+<h6 id="21-中值滤波">2.1 中值滤波</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\underset{(s,t)\in S_{ij}}{\mathrm{median}}\{ y(s,t)\}</script>
+
+<h6 id="22-最大值最小值滤波">2.2 最大值/最小值滤波</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\underset{(s,t)\in S_{ij}}{\mathrm{max}}\{ y(s,t)\}</script>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\underset{(s,t)\in S_{ij}}{\mathrm{min}}\{ y(s,t)\}</script>
+
+<h6 id="23-中点滤波">2.3 中点滤波</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{1}{2}\Big(\underset{(s,t)\in S_{ij}}{\mathrm{max}}\{ y(s,t)\}+\underset{(s,t)\in S_{ij}}{\mathrm{min}}\{ y(s,t)\}\Big)</script>
+
+<h6 id="24-alpha剪枝均值">2.4 alpha剪枝均值</h6>
+
+<script type="math/tex; mode=display">\hat x(i,j)=\frac{1}{mn-d}\underset{(s,t)\in S'_{ij}}{\sum}y(s,t)</script>
+
+<ul>
+  <li><strong><script type="math/tex">\alpha-</script>剪枝均值</strong>就是在原本的<script type="math/tex">S_{ij}</script>邻域内各删除灰度值最小和最大的<script type="math/tex">\frac{d}{2}</script>个点后求均值。</li>
+</ul>
+
+<h6 id="25-自适应中值滤波">2.5 自适应中值滤波</h6>
+
+<ul>
+  <li>通俗地说，就是如果<script type="math/tex">y(i,j)</script>在<script type="math/tex">S_{ij}</script>领域内既不是最大值也不是最小值，那么<script type="math/tex">\hat x(i,j)=y(i,j)</script>，否则<script type="math/tex">\hat x(i,j)</script>为<script type="math/tex">y</script>的<script type="math/tex">S_{ij}</script>邻域的中值。</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\hat x(i,j)=\left\{
+\begin{aligned}
+&\underset{(s,t)\in S_{ij}}{\mathrm{median}}\{y(s,t)\}  &y(i,j)=\underset{(s,t)\in S_{ij}}{\mathrm{min}}\{y(s,t)\}\ or\ \underset{(s,t)\in S_{ij}}{\mathrm{max}}\{y(s,t)\}\\
+&y(i,j)  &y(i,j)\neq \underset{(s,t)\in S_{ij}}{\mathrm{min}}\{y(s,t)\}\ or\ \underset{(s,t)\in S_{ij}}{\mathrm{max}}\{y(s,t)\}\\
+\end{aligned}
+\right. %]]></script>
+
+<h2 id="二变换域滤波">二、变换域滤波</h2>
+
+<h4 id="1傅里叶频域滤波">1.傅里叶频域滤波</h4>
+
+<ul>
+  <li>
+    <p>直接将<script type="math/tex">y</script>的频域图像<script type="math/tex">Y</script>对滤波器<script type="math/tex">H</script>进行矩阵点乘得到<script type="math/tex">\hat x</script>的频域图像<script type="math/tex">\hat X</script>。</p>
+  </li>
+  <li>
+    <p>令<script type="math/tex">D(u,v)=(u^2+v^2)^\frac{1}{2}</script></p>
+  </li>
+</ul>
+
+<h6 id="11-低通滤波">1.1 低通滤波</h6>
+
+<ul>
+  <li>理想低通滤波器：</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+H(u,v)=\left\{
+\begin{aligned}
+&1 &if\ D(u,v)\leq D_0\\
+&0 &otherwise\\
+\end{aligned}
+\right. %]]></script>
+
+<ul>
+  <li>巴特沃斯低通滤波器：</li>
+</ul>
+
+<script type="math/tex; mode=display">H(u,v)=\frac{1}{1+\Big[\frac{D(u,v)}{D_0}\Big]^{2n}}</script>
+
+<ul>
+  <li>高斯低通滤波器：</li>
+</ul>
+
+<script type="math/tex; mode=display">H(u,v)=e^{-\frac{D^2(u,v)}{2D_0^2}}</script>
+
+<h6 id="12-带阻滤波">1.2 带阻滤波</h6>
+
+<ul>
+  <li>理想带阻滤波器：</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+H(u,v)=\left\{
+\begin{aligned}
+&0 &if\ D_0-\frac{W}{2}\leq D(u,v)\leq D_0+\frac{W}{2}\\
+&1 &otherwise\\
+\end{aligned}
+\right. %]]></script>
+
+<ul>
+  <li>巴特沃斯带阻滤波器：</li>
+</ul>
+
+<script type="math/tex; mode=display">H(u,v)=\frac{1}{1+\Big[\frac{WD(u,v)}{D^2(u,v)-D_0^2}\Big]^{2n}}</script>
+
+<ul>
+  <li>高斯带阻滤波器：</li>
+</ul>
+
+<script type="math/tex; mode=display">H(u,v)=1-e^{-\Big[\frac{D^2(u,v)-D_0^2}{WD(u,v)}\Big]^2}</script>
+
+<h6 id="13-高通带通滤波">1.3 高通、带通滤波</h6>
+
+<script type="math/tex; mode=display">H_{HP}(u,v)=1-H_{LP}(u,v)</script>
+
+<script type="math/tex; mode=display">H_{BP}(u,v)=1-H_{BR}(u,v)</script>
+
+<h6 id="14-陷波滤波">1.4 陷波滤波</h6>
+
+<ul>
+  <li>通过移动高通滤波器的中心点，可以设计陷波滤波器（Notch filter）</li>
+</ul>
+
+<script type="math/tex; mode=display">H_{NR}(u,v)=H_{HP}(u-u_0,v-v_0)*H_{HP}(u+u_0,v+v_0)</script>
+
+<ul>
+  <li>上面是对频域中<script type="math/tex">(u_0,v_0)</script>附近进行抑制，由于频域的对称性<script type="math/tex">(-u_0,-v_0)</script>也要同样处理。如果要对多个点进行抑制，直接将滤波器相乘即可。</li>
+</ul>
+
+<script type="math/tex; mode=display">H_{NR}(u,v)=\prod_{k=1}^QH_{HP}(u-u_k,v-v_k)*H_{HP}(u+u_k,v+v_k)</script>
+
+<h4 id="2基于矩阵特征变换滤波">2.基于矩阵特征变换滤波</h4>
+
+<h6 id="21-加权核范数最小化">2.1 加权核范数最小化</h6>
+
+<ul>
+  <li>
+    <p>（这个算法非常需要数学基础，如果要完全搞懂需要非常繁琐的证明，本人已放弃，有兴趣的可以看<strong>参考</strong>的5）</p>
+  </li>
+  <li>
+    <p>首先回忆线性代数的一些知识</p>
+  </li>
+  <li>
+    <p><strong>矩阵的秩</strong></p>
+  </li>
+</ul>
+
+<p><script type="math/tex">\quad\quad</script>矩阵的秩表示矩阵的所有行向量或所有列向量最多选出多少能组成线性无关组。也就是最多有多少行向量或列向量彼此都线性无关。矩阵的秩记作<script type="math/tex">rank(\mathbf X)</script>，它也等于矩阵奇异值非零值的个数。</p>
+
+<ul>
+  <li><strong>范数</strong></li>
+</ul>
+
+<p><script type="math/tex">\quad</script> 1）向量范数（1-范数、2-范数、<script type="math/tex">\infty</script>-范数、p-范数）</p>
+
+<script type="math/tex; mode=display">\left\|x\right\|_1=\sum_{i=1}^N\vert x_i\vert</script>
+
+<script type="math/tex; mode=display">\left\|x\right\|_2=\Big(\sum_{i=1}^N\vert x_i\vert^2\Big)^{\frac{1}{2}}</script>
+
+<script type="math/tex; mode=display">\left\|x\right\|_{\infty}=\max_i\vert x_i\vert</script>
+
+<script type="math/tex; mode=display">\left\|x\right\|_p=\Big(\sum_{i=1}^N\vert x_i\vert^p\Big)^{\frac{1}{p}}</script>
+
+<p><script type="math/tex">\quad</script> 2）矩阵范数</p>
+
+<p><script type="math/tex">\quad \quad</script>1-范数：列向量每个元素绝对值之和的最大值</p>
+
+<script type="math/tex; mode=display">\left\|\mathbf X\right\|_1=\max_j\sum_{i=1}^N\vert\mathbf X_{i,j}\vert</script>
+
+<p><script type="math/tex">\quad \quad</script>2-范数：奇异值的最大值，或者说是<script type="math/tex">\mathbf{XX}^T</script>特征值<script type="math/tex">\lambda</script>最大值开根号</p>
+
+<script type="math/tex; mode=display">\left\|\mathbf X\right\|_2=\max_i\sqrt{\lambda_i}</script>
+
+<p><script type="math/tex">\quad \quad\infty</script>-范数：行向量每个元素绝对值之和的最大值</p>
+
+<script type="math/tex; mode=display">\left\|\mathbf X\right\|_{\infty}=\max_i\sum_{j=1}^N\vert\mathbf X_{i,j}\vert</script>
+
+<p><script type="math/tex">\quad\quad</script>Frobenius范数：每个元素的平方的和开根号</p>
+
+<script type="math/tex; mode=display">\left\|\mathbf X\right\|_F=\sqrt{\sum_i\sum_j\mathbf X^2_{i,j}}</script>
+
+<p><script type="math/tex">\quad \quad</script>核-范数：奇异值的和（<a href="http://chongjg.com/2020/03/04/DeepLearning1/#3%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3">奇异值分解</a>），即<script type="math/tex">\mathbf{XX}^T</script>特征值开根号的和</p>
+
+<script type="math/tex; mode=display">\left\|\mathbf X\right\|_*=\sum_i\sqrt{\lambda_i}</script>
+
+<ul>
+  <li>总之，该算法可以用于主成分分析、图像补全、图像去噪。全文基本都是围绕着如何解下面这一方程展开：</li>
+</ul>
+
+<script type="math/tex; mode=display">\hat {\mathbf X}=\underset{\mathbf X}{\mathrm{arg\ min}}\parallel\mathbf Y-\mathbf X \parallel^2_F+\parallel \mathbf X \parallel_{\mathbf w,*}</script>
+
+<ul>
+  <li></li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+  <li>
+    <p>颜佳,武汉大学数字图像处理课程课件</p>
+  </li>
+  <li>
+    <p>DIP课堂展示</p>
+  </li>
+  <li>
+    <p>Tomasi C, Manduchi R. Bilateral filtering for gray and color images[C]//Computer Vision, 1998. Sixth International Conference on. IEEE, 1998: 839-846.</p>
+  </li>
+  <li>
+    <p>He K, Sun J, Tang X. Guided image filtering[J]. IEEE transactions on pattern analysis &amp; machine intelligence, 2013 (6): 1397-1409.</p>
+  </li>
+  <li>
+    <p>Shuhang Gu, Qi Xie, Deyu Meng, Wangmeng Zuo, Xiangchu Feng &amp; Lei Zhang. (2017). Weighted nuclear norm minimization and its applications to low level vision. International Journal of Computer Vision, 121(2), 183-208.</p>
+  </li>
+</ol>
+
+:ET

@@ -43,19 +43,19 @@ $$\mathbf A \cdot \vec a=\vec b$$
 
 #### 3.奇异值分解
 
-* $$\mathbf A$$的**奇异向量**、**奇异值**与$$\mathbf A\mathbf A^T,\mathbf A^T\mathbf A$$的**特征向量**、**特征值**之间的关系推导：
+* $$\mathbf A$$的**奇异向量**、**奇异值**与$$\mathbf A\mathbf A^T,\mathbf A^T\mathbf A$$的**特征向量**、**特征值**之间的关系推导：(注意$$D$$只有对角线有非零值，$$\mathbf\lambda,\mathbf\lambda'$$的非零值部分也是完全相同的)
 
 $$\mathbf A=\mathbf{UDV}^T$$
 
 $$\mathbf A^T=\mathbf{VD}^T\mathbf U^T$$
 
-$$\mathbf{AA}^T=\mathbf{UDV}^T\mathbf{VD}^T\mathbf U^T=\mathbf{UDD}^T\mathbf U^T=\mathbf Udiag(\lambda)\mathbf U^T$$
+$$\mathbf{AA}^T=\mathbf{UDV}^T\mathbf{VD}^T\mathbf U^T=\mathbf{UDD}^T\mathbf U^T=\mathbf Udiag(\mathbf \lambda)\mathbf U^T$$
 
-$$\mathbf A^T\mathbf A=\mathbf{VD}^T\mathbf U^T\mathbf{UDV}^T=\mathbf{VD}^T\mathbf{DV}^T=\mathbf Vdiag(\lambda')\mathbf V^T$$
+$$\mathbf A^T\mathbf A=\mathbf{VD}^T\mathbf U^T\mathbf{UDV}^T=\mathbf{VD}^T\mathbf{DV}^T=\mathbf Vdiag(\mathbf \lambda')\mathbf V^T$$
 
-$$\mathbf{DD}^T=diag(\lambda)$$
+$$\mathbf{DD}^T=diag(\mathbf\lambda)$$
 
-$$\mathbf D^T\mathbf D=diag(\lambda')$$
+$$\mathbf D^T\mathbf D=diag(\mathbf\lambda')$$
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-7.png)
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/deeplearning/deeplearning-8.png)
