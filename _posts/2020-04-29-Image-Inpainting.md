@@ -130,6 +130,7 @@ $$w(p,q)=dir(p,q)*dst(p,q)*lev(p,q)$$
 
 #include "opencv2/photo.hpp"
 
+
 #include<cmath>
 
 #include<queue>
@@ -153,9 +154,12 @@ using namespace cv;
 
 #define INSIDE 2
 
+
 #define epsilon 6
 
+
 #define X first
+
 #define Y second
 
 const int To[4][2] = { {1,0}, {-1,0}, {0,1}, {0,-1} };
