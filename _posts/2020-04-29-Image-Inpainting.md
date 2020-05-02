@@ -35,9 +35,9 @@ tags:                               #标签
 
 #### 2.修复单个像素
 
-* 考虑修复一个与**BAND**相邻的未知点$$p$$，如上图(b)所示，对于附近某一个已知(**BAND和KNOWN**)的点$$q$$，可以通过$$p=I(q)+\nabla I(q)*(p-q)$$来预测待修复点$$p$$。
+* 考虑修复一个与**BAND**相邻的未知点 $$p$$，如上图(b)所示，对于附近某一个已知(**BAND和KNOWN**)的点 $$q$$，可以通过 $$I(p)=I(q)+\nabla I(q)*(p-q)$$ 来预测待修复点 $$p$$。
 
-* 基于这个思路，可以以$$p$$为圆心$$\varepsilon$$为半径画一个圆，如上图(a)，圆内已知像素集合记为$$B_\varepsilon(p)$$，对于任意$$q\in B_\varepsilon$$都会对$$I(p)$$有一个预测值，对每一个预测赋予合适的权值$$w(p,q)$$，最后用归一化加权预测结果作为像素修复的值，且此后将像素视为已知，继续修复下一个像素。
+* 基于这个思路，可以以 $$p$$ 为圆心 $$\varepsilon$$ 为半径画一个圆，如上图(a)，圆内已知像素集合记为 $$B_\varepsilon(p)$$，对于任意 $$q\in B_\varepsilon$$ 都会对 $$I(p)$$ 有一个预测值，对每一个预测赋予合适的权值 $$w(p,q)$$，最后用归一化加权预测结果作为像素修复的值，且此后将像素视为已知，继续修复下一个像素。
 
 $$I(p)=\frac{\underset{q\in B_\varepsilon(p)}{\sum}w(p,q)[I(q)+\nabla I(q)(p-q)]}{\underset{q\in B_\varepsilon(p)}{\sum} w(p,q)}$$
 
@@ -45,9 +45,9 @@ $$I(p)=\frac{\underset{q\in B_\varepsilon(p)}{\sum}w(p,q)[I(q)+\nabla I(q)(p-q)]
 
 * 前面已经提到是一个一个像素修复，而顺序则是沿着边界往中心蔓延挨个修复。
 
-* 令$$T(p)$$表示像素$$p$$离**BAND**的最近距离，就可以通过$$T(p)$$从小到大修复未知的像素。（$$T$$相等的点连起来可看做等高线）
+* 令 $$T(p)$$ 表示像素 $$p$$ 离**BAND**的最近距离，就可以通过 $$T(p)$$ 从小到大修复未知的像素。（$$T$$ 相等的点连起来可看做等高线）
 
-* $$T(p)$$通过求解下面方程得到，实际上不是严格的距离。
+* $$T(p)$$ 通过求解下面方程得到，实际上不是严格的距离。
 
 $$\vert\nabla T\vert=1,\quad with\; T=0\; in\; BAND$$
 
@@ -55,13 +55,13 @@ $$\vert\nabla T\vert=1,\quad with\; T=0\; in\; BAND$$
 
 $$\max(D^{-x}T,-D^{+x}T,0)^2+\max(D^{-y}T,-D^{+y}T,0)^2=1$$
 
-* 其中:($$D^{\pm y}$$类似)
+* 其中：($$D^{\pm y}$$ 类似)
 
 $$D^{-x}T(i,j)=T(i,j)-T(i-1,j)$$
 
 $$D^{+x}T(i,j)=T(i+1,j)-T(i,j)$$
 
-* 令$$T_0=T(i,j),T_1=T(i+\Delta i,j),T_2=T(i,j+\Delta j)$$，则有：
+* 令 $$T_0=T(i,j),T_1=T(i+\Delta i,j),T_2=T(i,j+\Delta j)$$，则有：
 
 $$
 \begin{aligned}
@@ -78,7 +78,7 @@ $$T_0=\frac{(T_1+T_2)\pm\sqrt{(2-(T_1-T_2)^2)}}{2}$$
 
 * 此时对于**KNOWN**类型的点将 $$T$$ 取反，这样通过 $$T$$ 相减就有等高线差值的意义了。
 
-* 最后使用$$3\times 3\; tent\; filter$$处理 $$T$$，在网上查了一下这里的$$tent\; filter$$可能是指如下函数：
+* 最后使用 $$3\times 3\; \mathrm{tent}\; \mathrm{filter}$$ 处理 $$T$$，在网上查了一下这里的 $$\mathrm{tent}\; \mathrm{filter}$$ 可能是指如下函数：
 
 $$
 f(x)=\left\{
@@ -93,9 +93,9 @@ $$
 
 #### 4.权值设置
 
-* 考虑待修复点$$p$$及已知点$$q\in B_\varepsilon(p)$$
+* 考虑待修复点 $$p$$ 及已知点 $$q\in B_\varepsilon(p)$$
 
-1.方向部分：$$\nabla T$$的方向如果和 $$(p-q)$$ 的方向一致，则给予更大权重，设置为两者的点积。
+1.方向部分：$$\nabla T$$ 的方向如果和 $$(p-q)$$ 的方向一致，则给予更大权重，设置为两者的点积。
 
 $$dir(p,q)=\frac{p-q}{\parallel p-q\parallel}\cdot \nabla T$$
 
@@ -103,7 +103,7 @@ $$dir(p,q)=\frac{p-q}{\parallel p-q\parallel}\cdot \nabla T$$
 
 $$dst(p,q)=\frac{d_0^2}{\parallel p-q\parallel^2}$$
 
-3.等高线部分：$$T(p)$$和$$T(q)$$差距越大，权重越小
+3.等高线部分：$$T(p)$$ 和 $$T(q)$$ 差距越大，权重越小
 
 $$lev(p,q)=\frac{T_0}{1+\vert T(p)-T(q)\vert}$$
 
