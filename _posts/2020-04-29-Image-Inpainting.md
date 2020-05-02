@@ -121,18 +121,21 @@ $$w(p,q)=dir(p,q)*dst(p,q)*lev(p,q)$$
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Image-Inpainting/TELEA-result.jpg)
 
-```C++
-#include "opencv2/imgproc.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/photo.hpp"
+```c++
 
-#include<cmath>
-#include<queue>
-#include<cstdio>
-#include<cstring>
-#include<cstdlib>
-#include<iostream>
-#include<algorithm>
+#include "opencv2/imgproc.hpp"
+
+#include "opencv2/highgui.hpp"  
+
+#include "opencv2/photo.hpp"  
+
+#include<cmath>  
+#include<queue>  
+#include<cstdio>  
+#include<cstring>  
+#include<cstdlib>  
+#include<iostream>  
+#include<algorithm>  
 
 using namespace std;
 using namespace cv;
