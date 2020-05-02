@@ -1,0 +1,40 @@
+I"�<p><strong>(持续更新中…)</strong></p>
+
+<h2 id="telea">TELEA</h2>
+
+<ul>
+  <li>
+    <p>（再也不脑抽用C++实现这种算法了）</p>
+  </li>
+  <li>
+    <p>这个算法是opencv自带的图像修复算法，直接说算法的流程吧：</p>
+  </li>
+</ul>
+
+<h4 id="区域划分">区域划分</h4>
+
+<ul>
+  <li>把每个像素标记为<strong>KNOWN、BAND、INSIDE</strong>三种</li>
+</ul>
+
+<ol>
+  <li>
+    <p><strong>INSIDE</strong>：待修复的像素，表示是待修复的块的内部像素。</p>
+  </li>
+  <li>
+    <p><strong>BAND</strong>：与待修复的像素相邻的已知像素，表示块的边界。</p>
+  </li>
+  <li>
+    <p><strong>KNOWN</strong>：其他已知像素。</p>
+  </li>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Image-Inpainting/inpainting-principle.png" alt="" /></p>
+
+<ul>
+  <li>
+    <p>如图(a)所示，</p>
+
+  </li>
+</ul>
+:ET
