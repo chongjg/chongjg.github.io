@@ -1,0 +1,19 @@
+I"5<p><strong>(持续更新中…)</strong></p>
+
+<h2 id="telea">TELEA</h2>
+
+<ul>
+  <li>
+    <p>（再也不脑抽用C++实现这种算法了）</p>
+  </li>
+  <li>
+    <p>这个算法是opencv自带的图像修复算法，直接说算法的流程吧：</p>
+  </li>
+</ul>
+
+<h4 id="第一步">第一步</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1]:http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.98.5505&amp;rep=rep1&amp;type=pdf
+[2]:https://www.math.ucla.edu/~bertozzi/papers/cvpr01.pdf
+</code></pre></div></div>
+:ET

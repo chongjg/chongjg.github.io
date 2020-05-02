@@ -1,0 +1,22 @@
+I"�<p><strong>(持续更新中…)</strong></p>
+
+<h2 id="telea">TELEA</h2>
+
+<ul>
+  <li>
+    <p>（再也不脑抽用C++实现这种算法了）</p>
+  </li>
+  <li>
+    <p>这个算法是opencv自带的图像修复算法，直接说算法的流程吧：</p>
+  </li>
+</ul>
+
+<h4 id="区域划分">区域划分</h4>
+
+<ul>
+  <li>
+    <p>把每个像素标记为<strong>KNOWN、BAND、INSIDE</strong>三种，分别表示<strong>已知、边界、未知</strong>的像素，</p>
+
+  </li>
+</ul>
+:ET
