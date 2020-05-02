@@ -145,6 +145,7 @@ $$w(p,q)=dir(p,q)*dst(p,q)*lev(p,q)$$
 
 #include<algorithm>
 
+
 using namespace std;
 using namespace cv;
 
@@ -161,6 +162,7 @@ using namespace cv;
 #define X first
 
 #define Y second
+
 
 const int To[4][2] = { {1,0}, {-1,0}, {0,1}, {0,-1} };
 
