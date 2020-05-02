@@ -117,31 +117,40 @@ $$w(p,q)=dir(p,q)*dst(p,q)*lev(p,q)$$
 
 * 自己写的效果和opencv自带函数相比有一定的差距，可能代码还有小bug或者具体实现和作者还有点出入，但是已经不想折腾了。
 
-* 从左到右分别是原图，opencv结果，我自己写的代码结果。
+* 从左到右分别是原图，opencv结果，我自己写的代码结果。(代码见附录)
 
 ![](https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Image-Inpainting/TELEA-result.jpg)
 
-```c++
+## 附录
 
+``` c++
 #include "opencv2/imgproc.hpp"
 
-#include "opencv2/highgui.hpp"  
+#include "opencv2/highgui.hpp"
 
-#include "opencv2/photo.hpp"  
+#include "opencv2/photo.hpp"
 
-#include<cmath>  
-#include<queue>  
-#include<cstdio>  
-#include<cstring>  
-#include<cstdlib>  
-#include<iostream>  
-#include<algorithm>  
+#include<cmath>
+
+#include<queue>
+
+#include<cstdio>
+
+#include<cstring>
+
+#include<cstdlib>
+
+#include<iostream>
+
+#include<algorithm>
 
 using namespace std;
 using namespace cv;
 
 #define KNOWN 0
+
 #define BAND 1
+
 #define INSIDE 2
 
 #define epsilon 6
@@ -149,7 +158,7 @@ using namespace cv;
 #define X first
 #define Y second
 
-const int To[4][2] = { {1,0}, {-1,0}, {0,1}, {0,-1}};
+const int To[4][2] = { {1,0}, {-1,0}, {0,1}, {0,-1} };
 
 int B[epsilon * epsilon * 4 + 1][2];
 int Btop = -1;
