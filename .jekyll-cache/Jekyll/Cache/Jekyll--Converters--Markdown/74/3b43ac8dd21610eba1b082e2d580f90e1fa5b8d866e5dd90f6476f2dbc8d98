@@ -1,4 +1,4 @@
-I"�%<p><strong>(持续更新中…)</strong></p>
+I"�'<p><strong>(持续更新中…)</strong></p>
 
 <h2 id="telea">TELEA</h2>
 
@@ -39,10 +39,10 @@
 
 <ul>
   <li>
-    <p>考虑修复一个与<strong>BAND</strong>相邻的未知点<script type="math/tex">p</script>，如上图(b)所示，对于附近某一个已知(<strong>BAND和KNOWN</strong>)的点<script type="math/tex">q</script>，可以通过<script type="math/tex">p=I(q)+\nabla I(q)*(p-q)</script>来预测待修复点<script type="math/tex">p</script>。</p>
+    <p>考虑修复一个与<strong>BAND</strong>相邻的未知点 <script type="math/tex">p</script>，如上图(b)所示，对于附近某一个已知(<strong>BAND和KNOWN</strong>)的点 <script type="math/tex">q</script>，可以通过 <script type="math/tex">I(p)=I(q)+\nabla I(q)*(p-q)</script> 来预测待修复点 <script type="math/tex">p</script>。</p>
   </li>
   <li>
-    <p>基于这个思路，可以以<script type="math/tex">p</script>为圆心<script type="math/tex">\varepsilon</script>为半径画一个圆，如上图(a)，圆内已知像素集合记为<script type="math/tex">B_\varepsilon(p)</script>，对于任意<script type="math/tex">q\in B_\varepsilon</script>都会对<script type="math/tex">I(p)</script>有一个预测值，对每一个预测赋予合适的权值<script type="math/tex">w(p,q)</script>，最后用归一化加权预测结果作为像素修复的值，且此后将像素视为已知，继续修复下一个像素。</p>
+    <p>基于这个思路，可以以 <script type="math/tex">p</script> 为圆心 <script type="math/tex">\varepsilon</script> 为半径画一个圆，如上图(a)，圆内已知像素集合记为 <script type="math/tex">B_\varepsilon(p)</script>，对于任意 <script type="math/tex">q\in B_\varepsilon</script> 都会对 <script type="math/tex">I(p)</script> 有一个预测值，对每一个预测赋予合适的权值 <script type="math/tex">w(p,q)</script>，最后用归一化加权预测结果作为像素修复的值，且此后将像素视为已知，继续修复下一个像素。</p>
   </li>
 </ul>
 
@@ -55,10 +55,10 @@
     <p>前面已经提到是一个一个像素修复，而顺序则是沿着边界往中心蔓延挨个修复。</p>
   </li>
   <li>
-    <p>令<script type="math/tex">T(p)</script>表示像素<script type="math/tex">p</script>离<strong>BAND</strong>的最近距离，就可以通过<script type="math/tex">T(p)</script>从小到大修复未知的像素。（<script type="math/tex">T</script>相等的点连起来可看做等高线）</p>
+    <p>令 <script type="math/tex">T(p)</script> 表示像素 <script type="math/tex">p</script> 离<strong>BAND</strong>的最近距离，就可以通过 <script type="math/tex">T(p)</script> 从小到大修复未知的像素。（<script type="math/tex">T</script> 相等的点连起来可看做等高线）</p>
   </li>
   <li>
-    <p><script type="math/tex">T(p)</script>通过求解下面方程得到，实际上不是严格的距离。</p>
+    <p><script type="math/tex">T(p)</script> 通过求解下面方程得到，实际上不是严格的距离。</p>
   </li>
 </ul>
 
@@ -71,7 +71,7 @@
 <script type="math/tex; mode=display">\max(D^{-x}T,-D^{+x}T,0)^2+\max(D^{-y}T,-D^{+y}T,0)^2=1</script>
 
 <ul>
-  <li>其中:(<script type="math/tex">D^{\pm y}</script>类似)</li>
+  <li>其中：(<script type="math/tex">D^{\pm y}</script> 类似)</li>
 </ul>
 
 <script type="math/tex; mode=display">D^{-x}T(i,j)=T(i,j)-T(i-1,j)</script>
@@ -79,7 +79,7 @@
 <script type="math/tex; mode=display">D^{+x}T(i,j)=T(i+1,j)-T(i,j)</script>
 
 <ul>
-  <li>令<script type="math/tex">T_0=T(i,j),T_1=T(i+\Delta i,j),T_2=T(i,j+\Delta j)</script>，则有：</li>
+  <li>令 <script type="math/tex">T_0=T(i,j),T_1=T(i+\Delta i,j),T_2=T(i,j+\Delta j)</script>，则有：</li>
 </ul>
 
 <script type="math/tex; mode=display">% <![CDATA[
@@ -102,7 +102,7 @@
     <p>此时对于<strong>KNOWN</strong>类型的点将 <script type="math/tex">T</script> 取反，这样通过 <script type="math/tex">T</script> 相减就有等高线差值的意义了。</p>
   </li>
   <li>
-    <p>最后使用<script type="math/tex">3\times 3\; tent\; filter</script>处理 <script type="math/tex">T</script>，在网上查了一下这里的<script type="math/tex">tent\; filter</script>可能是指如下函数：</p>
+    <p>最后使用 <script type="math/tex">3\times 3\; \mathrm{tent}\; \mathrm{filter}</script> 处理 <script type="math/tex">T</script>，在网上查了一下这里的 <script type="math/tex">\mathrm{tent}\; \mathrm{filter}</script> 可能是指如下函数：</p>
   </li>
 </ul>
 
@@ -120,10 +120,10 @@
 <h4 id="4权值设置">4.权值设置</h4>
 
 <ul>
-  <li>考虑待修复点<script type="math/tex">p</script>及已知点<script type="math/tex">q\in B_\varepsilon(p)</script></li>
+  <li>考虑待修复点 <script type="math/tex">p</script> 及已知点 <script type="math/tex">q\in B_\varepsilon(p)</script></li>
 </ul>
 
-<p>1.方向部分：<script type="math/tex">\nabla T</script>的方向如果和 <script type="math/tex">(p-q)</script> 的方向一致，则给予更大权重，设置为两者的点积。</p>
+<p>1.方向部分：<script type="math/tex">\nabla T</script> 的方向如果和 <script type="math/tex">(p-q)</script> 的方向一致，则给予更大权重，设置为两者的点积。</p>
 
 <script type="math/tex; mode=display">dir(p,q)=\frac{p-q}{\parallel p-q\parallel}\cdot \nabla T</script>
 
@@ -131,7 +131,7 @@
 
 <script type="math/tex; mode=display">dst(p,q)=\frac{d_0^2}{\parallel p-q\parallel^2}</script>
 
-<p>3.等高线部分：<script type="math/tex">T(p)</script>和<script type="math/tex">T(q)</script>差距越大，权重越小</p>
+<p>3.等高线部分：<script type="math/tex">T(p)</script> 和 <script type="math/tex">T(q)</script> 差距越大，权重越小</p>
 
 <script type="math/tex; mode=display">lev(p,q)=\frac{T_0}{1+\vert T(p)-T(q)\vert}</script>
 
@@ -141,7 +141,7 @@
 
 <script type="math/tex; mode=display">w(p,q)=dir(p,q)*dst(p,q)*lev(p,q)</script>
 
-<h4 id="实验结果及代码">实验结果及代码</h4>
+<h4 id="实验结果">实验结果</h4>
 
 <ul>
   <li>
@@ -151,38 +151,55 @@
     <p>自己写的效果和opencv自带函数相比有一定的差距，可能代码还有小bug或者具体实现和作者还有点出入，但是已经不想折腾了。</p>
   </li>
   <li>
-    <p>从左到右分别是原图，opencv结果，我自己写的代码结果。</p>
+    <p>从左到右分别是原图，opencv结果，我自己写的代码结果。(代码见附录)</p>
   </li>
 </ul>
 
 <p><img src="https://raw.githubusercontent.com/chongjg/chongjg.github.io/master/img/Image-Inpainting/TELEA-result.jpg" alt="" /></p>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="cp">#include "opencv2/imgproc.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/photo.hpp"
+<h2 id="附录">附录</h2>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include "opencv2/imgproc.hpp"
 </span>
-<span class="cp">#include&lt;cmath&gt;  
-#include&lt;queue&gt;  
-#include&lt;cstdio&gt;  
-#include&lt;cstring&gt;  
-#include&lt;cstdlib&gt;  
-#include&lt;iostream&gt;  
-#include&lt;algorithm&gt;  
+<span class="cp">#include "opencv2/highgui.hpp"
 </span>
+<span class="cp">#include "opencv2/photo.hpp"
+</span>
+
+<span class="cp">#include&lt;cmath&gt;
+</span>
+<span class="cp">#include&lt;queue&gt;
+</span>
+<span class="cp">#include&lt;cstdio&gt;
+</span>
+<span class="cp">#include&lt;cstring&gt;
+</span>
+<span class="cp">#include&lt;cstdlib&gt;
+</span>
+<span class="cp">#include&lt;iostream&gt;
+</span>
+<span class="cp">#include&lt;algorithm&gt;
+</span>
+
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">cv</span><span class="p">;</span>
 
 <span class="cp">#define KNOWN 0
-#define BAND 1
-#define INSIDE 2
 </span>
+<span class="cp">#define BAND 1
+</span>
+<span class="cp">#define INSIDE 2
+</span>
+
 <span class="cp">#define epsilon 6
 </span>
+
 <span class="cp">#define X first
-#define Y second
 </span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">To</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">}};</span>
+<span class="cp">#define Y second
+</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">To</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">}</span> <span class="p">};</span>
 
 <span class="kt">int</span> <span class="n">B</span><span class="p">[</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">Btop</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
