@@ -1,0 +1,96 @@
+I"�<p>(不定时更新)</p>
+
+<p>下面部分推导是博主自己的理解,如有错误欢迎指正。</p>
+
+<h2 id="矩阵求导">矩阵求导</h2>
+
+<h2 id="不相容线性方程最小二乘法">不相容线性方程最小二乘法</h2>
+
+<h2 id="关于n元高斯分布的一些理解">关于n元高斯分布的一些理解</h2>
+
+<ul>
+  <li>
+    <p>一元高斯分布</p>
+
+    <script type="math/tex; mode=display">f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}</script>
+  </li>
+  <li>
+    <p>多元高斯分布</p>
+
+    <p><script type="math/tex">f(x_1,x_2,...,x_n)=\frac{1}{(\sqrt{2\pi})^n|\mathbf \Sigma|^{\frac{1}{2}}}e^{-\frac{(\mathbf x-\mathbf{\mu_x})^\mathrm T(\mathbf \Sigma)^{-1}(\mathbf x-\mathbf{\mu_x})}{2}}</script>
+$\mathbf \Sigma$是随机变量$(X_1,X_2,…,X_n)$的协方差矩阵，不妨设$\mathbf{\mu_X}=\mathbf 0$</p>
+  </li>
+  <li>
+    <p>构造互相独立的随机变量$Y_1,Y_2,…,Y_n\sim \mathcal N(0,1)$</p>
+
+    <p>使得</p>
+
+    <p><script type="math/tex">% <![CDATA[
+\begin{align}
+X_1=&a_{11}Y_1\\
+X_2=&a_{21}Y_1+a_{22}Y_2\\
+...\\
+X_n=&a_{n1}Y_1+a_{n2}Y_2+...+a_{nn}Y_n
+\end{align} %]]></script>
+则有</p>
+
+    <script type="math/tex; mode=display">\mathbf \sigma^2_{X_iX_j}=\sum^{\min(i,j)}_{k=1}a_{ik}a_{jk}\sigma^2_{Y_k}</script>
+  </li>
+  <li></li>
+  <li>
+    <p>则有</p>
+
+    <script type="math/tex; mode=display">\frac{X_i}{\sigma_i}\sim\mathcal N(\frac{\mu_i}{\sigma_i},1)</script>
+  </li>
+  <li>，可以找到两个互相独立的随机变量$A_1,A_2\sim \mathcal N(\mu,\sigma^2)$，使得</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+X_1&=a_{11}A_1+a_{12}A_2\\
+X_2&=a_{21}A_1+a_{22}A_2
+\end{align} %]]></script>
+
+<ul>
+  <li>1.$X_1,X_2$独立，则$A_1=X_1,A_2=X_2$</li>
+  <li>2.$X_1,X_2$不独立，考虑$A_1,A_2$符合</li>
+</ul>
+
+<p>https://zhuanlan.zhihu.com/p/58987388</p>
+
+<h2 id="样本方差">样本方差</h2>
+
+<ul>
+  <li>设$X_1,X_2,…,X_n$是总体$X$的样本，$x_1,x_2,…,x_n$是一组样本观测值，则可定义：</li>
+</ul>
+
+<p>样本均值：</p>
+
+<script type="math/tex; mode=display">\bar X=\frac{1}{n}\sum^n_{i=1}X_i</script>
+
+<p>样本方差：</p>
+
+<script type="math/tex; mode=display">S^2=\frac{1}{n-1}\sum^n_{i=1}(X_i-\bar X)^2</script>
+
+<ul>
+  <li>
+    <p>这个 $\frac{1}{n-1}$ 是不太好理解的地方，需要推一下公式，出现这个的主要原因还是样本均值和$X$的数学期望并不是完全相同的(虽然看做相同误差可能也比较小)</p>
+  </li>
+  <li>
+    <p>令$\mu$为$X$的期望，可推导样本方差：</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+S^2=&E\Big[(X-\mu)^2\Big]\\
+=&\frac{1}{n}\sum^n_{i=1}(X_i-\mu)^2\\
+=&\frac{1}{n}\sum^n_{i=1}(X_i-\bar X+\bar X-\mu)^2\\
+=&\frac{1}{n}\sum^n_{i=1}\Big[(X_i-\bar X)^2-2(X_i-\bar X)(\bar X-\mu)+(\bar X-\mu)^2\Big]\\
+=&\frac{1}{n}\sum^n_{i=1}\Big[(X_i-\bar X)^2+(\bar X-\mu)^2\Big]\\
+=&\frac{1}{n}\sum^n_{i=1}\Big[(X_i-\bar X)^2+\frac{1}{n^2}(\sum^n_{j=1}X_j-n\mu)^2\Big]\\
+=&\frac{1}{n}\sum^n_{i=1}\Big[(X_i-\bar X)^2+\frac{1}{n^2}D[\sum^n_{j=1}X_j]\Big]\\
+=&\frac{1}{n}\sum^n_{i=1}\Big[(X_i-\bar X)^2+S^2\Big]\\
+=&\frac{1}{n-1}\sum^n_{i=1}(X_i-\bar X)^2
+\end{align} %]]></script>
+:ET
