@@ -297,18 +297,22 @@ $$Var[\mathbf x]=\frac{1}{m-1}\mathbf X^T\mathbf X$$
 
 * 在第二章中有：
 
-$$\mathbf X^T\mathbf X=\mathbf W\mathbf \Lambda\mathbf W^T$$
+$$
+\mathbf X^T\mathbf X=\mathbf V\mathbf \Lambda\mathbf V^T
+$$
 
 * 再结合前面特征分解或奇异值分解的知识，不难得出
 
-$$\mathbf X^T\mathbf X=(\mathbf{U\Sigma W}^T)^T\mathbf{U\Sigma W}^T=\mathbf{W\Sigma}^2\mathbf W^T$$
+$$
+\mathbf X^T\mathbf X=(\mathbf{U\Sigma V}^T)^T\mathbf{U\Sigma V}^T=\mathbf{V\Sigma}^2\mathbf V^T\\
+\begin{align}
+Var[\mathbf z]&=\frac{1}{m-1}\mathbf Z^T\mathbf Z \\
+&=\frac{1}{m-1}\mathbf W^T\mathbf X^T\mathbf{XW} \\
+&=\frac{1}{m-1}\mathbf W^T\mathbf{V\Sigma}^2\mathbf V^T\mathbf W
+\end{align}
+$$
 
-$$Var[\mathbf z]=\frac{1}{m-1}\mathbf Z^T\mathbf Z \\
-=\frac{1}{m-1}\mathbf W^T\mathbf X^T\mathbf{XW} \\
-=\frac{1}{m-1}\mathbf W^T\mathbf{W\Sigma}^2\mathbf W^T\mathbf W \\
-=\frac{1}{m-1}\mathbf \Sigma^2$$
-
-* 由上可知，$$\mathbf z$$中的元素是彼此无关的。
+* 要使$\mathbf z$各个维度无关，只需要令$\mathbf W=\mathbf V$即可，即有$Var[\mathbf z]=\frac{1}{m-1}\mathbf \Sigma^2$
 
 #### 10.k-均值聚类
 
