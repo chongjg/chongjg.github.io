@@ -127,14 +127,14 @@ $$\hat x(i,j)=\frac{1}{mn-d}\underset{(s,t)\in S'_{ij}}{\sum}y(s,t)$$
 
 * 通俗地说，就是如果$$y(i,j)$$在$$S_{ij}$$领域内既不是最大值也不是最小值，那么$$\hat x(i,j)=y(i,j)$$，否则$$\hat x(i,j)$$为$$y$$的$$S_{ij}$$邻域的中值。
 
-$$\hat x(i,j)=\left\{
+$$
+\hat x(i,j)=\left\{
 \begin{aligned}
 &\underset{(s,t)\in S_{ij}}{\mathrm{median}}\{y(s,t)\}  &y(i,j)=\underset{(s,t)\in S_{ij}}{\mathrm{min}}\{y(s,t)\}\ or\ \underset{(s,t)\in S_{ij}}{\mathrm{max}}\{y(s,t)\}\\
 &y(i,j)  &y(i,j)\neq \underset{(s,t)\in S_{ij}}{\mathrm{min}}\{y(s,t)\}\ or\ \underset{(s,t)\in S_{ij}}{\mathrm{max}}\{y(s,t)\}\\
 \end{aligned}
 \right.
 $$
-
 ## 二、变换域滤波
 
 #### 1.傅里叶频域滤波
@@ -147,14 +147,14 @@ $$
 
 * 理想低通滤波器：
 
-$$H(u,v)=\left\{
+$$
+H(u,v)=\left\{
 \begin{aligned}
 &1 &if\ D(u,v)\leq D_0\\
 &0 &otherwise\\
 \end{aligned}
 \right.
 $$
-
 * 巴特沃斯低通滤波器：
 
 $$H(u,v)=\frac{1}{1+\Big[\frac{D(u,v)}{D_0}\Big]^{2n}}$$
@@ -167,7 +167,8 @@ $$H(u,v)=e^{-\frac{D^2(u,v)}{2D_0^2}}$$
 
 * 理想带阻滤波器：
 
-$$H(u,v)=\left\{
+$$
+H(u,v)=\left\{
 \begin{aligned}
 &0 &if\ D_0-\frac{W}{2}\leq D(u,v)\leq D_0+\frac{W}{2}\\
 &1 &otherwise\\
@@ -267,4 +268,4 @@ $$\parallel\mathbf X\parallel_{\mathbf w,*}=\underset{i}{\sum}w_i\sqrt{\lambda_i
 
 5. Shuhang Gu, Qi Xie, Deyu Meng, Wangmeng Zuo, Xiangchu Feng & Lei Zhang. (2017). Weighted nuclear norm minimization and its applications to low level vision. International Journal of Computer Vision, 121(2), 183-208.
 
-  [1]:http://chongjg.com/2020/03/04/DeepLearning1/#3%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3
+[1]:http://chongjg.com/2020/03/04/DeepLearning1/#3%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3
